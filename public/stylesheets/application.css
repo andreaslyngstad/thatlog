@@ -642,14 +642,10 @@ height: 65px;
   width:135px;
    
 }
-
-
-
 .employee_edit_link{
   cursor: pointer;
   title: "Edit";
-   display: inline-block;
-   
+  display: inline-block;   
   }
 
 /*project begin*/
@@ -664,23 +660,20 @@ height: 65px;
 /*project form*/
 
 /*project end*/
-
-
 #event_on_log_text{
   display: inline-block;
   width: 520px;
 }
+
 #times_on_log{
   display: inline-block;
   width:80px;
 }
+
 #end_on_log, #begin_on_log  {
   display: inline-block;
   width: 38px;
 }
-
-
-
 
 #footer {
   position: relative;
@@ -690,16 +683,11 @@ height: 65px;
   background: url(../images/grass.png) repeat-x;	
 }
 
-
-
 .instruction_1{
-
-width: 500px;
+ width: 500px;
  height: 200px;
- 
  float:right;
 }
-
 
 #registration{
 border:1px solid #999;
@@ -714,8 +702,6 @@ background: -webkit-gradient(linear,  left top, left bottom, from( #0230BA), to(
 background: -moz-linear-gradient(top, #0230BA, #3864E8 ) repeat scroll 0 0;
 filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#0230BA', endColorstr='#3864E8');
 -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#0230BA', endColorstr='#3864E8')";
-
-
 }
 
 .signup_firm, .signup_user{
@@ -747,9 +733,8 @@ top: 0px;
 left:424px;
 font-size: 14px;
 line-height: 35px;
-
-
 }
+
 .signup input{
 width:364px;padding:2px; font-size:20px;
 line-height: 1.2em;

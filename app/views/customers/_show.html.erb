@@ -29,8 +29,8 @@
   <div id="tabs-1"> 
     <div class="add_some">
        <a id="dialog_project" data-object="project">Add another</a>
-      <div id="dialog_project_form" class="dialog_form" title="Create new eeproject" style="display:none;">
-      <%= form_for([@firm, @project]) do |p| %>
+      <div id="dialog_project_form" class="dialog_form" title="Create new project" style="display:none;">
+      <%= form_for(@project) do |p| %>
       <%= p.hidden_field :customer_id %>
       <li><%= p.label :name %><%= p.text_field :name, :class => "required", :minlength => "2" %></li>
       <li><%= p.label :description %><%= p.text_field :description %></li>

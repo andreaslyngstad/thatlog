@@ -8,10 +8,8 @@ class CustomersController < ApplicationController
   def index
 	@firm = current_firm
     @customers = current_firm.customers.order("name ASC")
-    @log = Log.new
-    @todo = Todo.new
     @customer = Customer.new
-    @todos = current_firm.todos
+   
     
   end
 

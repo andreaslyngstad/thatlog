@@ -46,7 +46,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.save
         flash[:notice] = 'Todo was successfully created.'
-        format.html { redirect_to(firm_project_path(@firm, @project)) }
+        format.html { redirect_to(project_path(@project)) }
         format.xml  { render :xml => @todo, :status => :created, :location => @todo }
         format.js
       else

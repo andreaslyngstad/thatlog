@@ -399,7 +399,7 @@ $(document).ready(function() {
  
  $(".tracking_log").submitWithAjax();
 $("#form_holder").find(".edit_log").submitWithAjax();
-
+$(".open_tracking_select").UIdialogs_tracking_logs_links();
 $(".activate_project").activate_projects();
 $(".activate_projects_no_button").activate_projects_no_button();
 $("select#logs_pr_date_select").change(function(){
