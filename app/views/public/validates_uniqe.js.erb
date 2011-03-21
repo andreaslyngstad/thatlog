@@ -1,0 +1,7 @@
+<% if @firm.nil? %>
+$(".signup-form-field-subdomain em").remove();
+$(".signup-form-field-subdomain").append("<em class='ok'>Ok!</em>");
+<% else %>
+$(".signup-form-field-subdomain em").remove();
+$(".signup-form-field-subdomain").append("<em class='error'>This domain is taken.</em>")
+<% end %>

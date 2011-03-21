@@ -1,0 +1,36 @@
+
+<ul class="form_layout_todo">
+   <li style="color:green">New todo</li> 
+<%= form_for([@firm, @todo]) do |f| %>
+  <% if @todo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+      <ul>
+    </div>
+  <% end %>
+  
+    <li><%= f.label :name %>
+    <%= f.text_field :name %></li>
+<br />
+    <li>
+    <%= f.label :user_id %>
+    
+    <select id="todo_user_id" name="todo[user_id]" style="color:<%=current_user.user_color%>"><option value=""></option>
+      <%for user in @firm.users do %>
+      <option value="<%=user.id.to_i%>" style="color:<%=user.user_color%>" 
+      <%if user == current_user%>selected="<%=current_user.id.to_i%><%end%>">
+      <%= user.name %></option>
+      <% end %>
+     </select>
+<br />
+    <li>
+    <%= f.label :customer_id %>
+    <%= f.select(:customer_id, @firm.customers.map {|customer| [customer.name, customer.id]}, :prompt => "Select customer")%></li>
+<br />
+    <li>
+
+  
+    <%= f.submit "Save", :class => 'submit' %>
+
+<% end %>
+</ul>

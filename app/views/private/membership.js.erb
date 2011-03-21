@@ -1,0 +1,7 @@
+$("#user_<%= escape_javascript( @user.id.to_s )%>").remove()
+<% if @members.include?(@user)  %>
+$("#members").append("<%= escape_javascript(render("users/user_project")) %>");
+<% else %>
+$("#not_members").append("<%= escape_javascript(render("users/user_project")) %>");
+<% end %>
+$(".spinning").hide();

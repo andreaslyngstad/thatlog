@@ -1,0 +1,12 @@
+<div class="project_form_name_customer">
+      <div class="project_form_label"><%= f.label :name %></div><%= f.text_field :name %>
+      <div class="project_form_label">Customer</div><%= f.select(:customer_id, @customers.map {|customer| [customer.name, customer.id]}, :prompt => "Select customer")%>
+    </div>
+    <div class="project_form_desc_due">
+      <div class="project_form_label"><%= f.label :description %></div><%= f.text_field :description %>
+      <% if project.id.nil? %>
+            <div class="project_form_label"><%= f.label :due %></div><%= f.text_field :due, :class => "project_due_form", :id => "projectnew"  %>
+      <% else %>
+            <div class="project_form_label"><%= f.label :due %></div><%= f.text_field :due, :value => project.due.strftime("%m/%d/%Y"), :class => "project_due_form", :id => "project#{project.id.to_s}"  %>
+      <% end %>
+    </div>

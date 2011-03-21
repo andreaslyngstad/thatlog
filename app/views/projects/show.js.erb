@@ -1,0 +1,36 @@
+$(".flash_notice").empty();
+$(".dialog_form").remove();
+
+$(".show-view").empty();
+$(".show-view").append("<%= escape_javascript(render :partial => "projects/show", :locals => {:project => @project}) %>");
+$(".open_project_update").UIdialogs_edit_links();
+  $("#dialog_milestone").UIdialogs_links();
+ 
+  $("#dialog_task").UIdialogs_links();
+  
+  $(".open_milestone_update").UIdialogs_edit_links();
+  $(".open_todo_update").UIdialogs_edit_links();
+  $(".new_milestone").validateWithErrors();
+  $(".new_todo").validateWithErrors();
+$( "#tabs" ).tabs({ cache: true },
+  {spinner: '<img src="/images/spinner2.gif" />'},
+   {
+      ajaxOptions: {
+        
+        error: function( xhr, status, index, anchor ) {
+          $( anchor.hash ).html(
+            "Couldn't load this tab. We'll try to fix this as soon as possible. ");
+        }
+      }
+    });
+    
+$(".back_button").button().live("click", function(){
+	$('.spinning').show();
+	var object = $(this).attr("data-object");
+	var firm_id = $(this).attr("data-firm-id");
+	$.get("/firms/" + firm_id + "/" + object + "s/");
+	$(".inner").animate({left:0, duration:500});
+	$(".show-view").empty();
+	$(".show-view").append("<div class='show-view'><div class='list_header'>Loading....</div></div>");
+});
+$('.spinning').hide();

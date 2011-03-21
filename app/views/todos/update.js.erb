@@ -1,0 +1,8 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.delete(:notice))%>")
+$("#todo_<%= escape_javascript(@todo.id.to_s)%>").replaceWith("<%= escape_javascript(render @todo) %>")
+$("#todo_<%= escape_javascript(@todo.id.to_s)%>").css("background-color", "#DBFFDE");
+$(".open_todo_update").UIdialogs_edit_links();
+$("#dialog_todo").UIdialogs_links();
+$("#dialog_todo_form").UIdialogs();
+$(".spinning").hide();

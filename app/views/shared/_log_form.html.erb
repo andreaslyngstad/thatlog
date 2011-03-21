@@ -1,0 +1,10 @@
+
+
+<div id="log_form_rec">
+    <div id="log_form_text" style="text-align:center;">What are you workin on?</div>
+   <%= form_for @log do |n| %>
+  <%= n.text_field :log %> 
+    <div id="clock1"></div>
+  <%= image_submit_tag("../images/stop64.png", :class => "stop") %>  
+  <% end %>
+  </div>

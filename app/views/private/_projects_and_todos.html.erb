@@ -1,0 +1,44 @@
+<ul id="projects">
+    <p>Please pick a task</p>
+    
+  <% @all_projects.each do |project| %>
+  
+  <li id="project_<%= project.id.to_s %>" class="project">
+  <span class="arrow_close"></span>
+    <%= link_to(truncate_string(project.name), project_path(project)) %> <span id="todos_count"style="font-size:12px;">()</span>
+    </li>
+    <ul id="home_todos" style="display:none;"> 
+       
+  <% project.todos.where("completed = ?", false).each do |todo| %>
+ 
+  <div id="not_done_tasks">
+  <div class="info" id="todo_<%=todo.id%>"> 
+  <input class="done_box" id="<%=todo.id%>" type="checkbox"/> 
+  <%= todo.due.strftime('%d.%m.%y')%> 
+  <%= todo.name %>
+  <% if !todo.user.nil? %>
+  <%= todo.user.name %>
+  <% end %>
+  </div>
+  </div>
+  <% end %>
+  <% project.todos.where("completed = ?", true).each do |todo| %>
+  <div id="done_tasks">
+       <div class="info" id="todo_<%=todo.id%>"> 
+ 
+  <input class="done_box" id="<%=todo.id%>" type="checkbox" checked="checked"/>
+ 
+  <%= todo.due.strftime('%d.%m.%y')%> 
+  <%= todo.name %>
+  <% if !todo.user.nil? %>
+  <%= todo.user.name %>
+  <% end %>
+    </div> 
+ 
+  
+  <%end%>
+  
+  </ul>
+  <%end%>
+    
+  </ul>

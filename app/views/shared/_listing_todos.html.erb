@@ -1,0 +1,14 @@
+
+<div class="todos"> 
+  <ul>
+  <% @todos.each do |f|  %>
+  <li><%= f.name %> <span style="font-size:12px;color: <%= f.user.user_color %>"><%= f.user.name%></span>|
+  <% if f.customer.nil?%>
+  ----
+  <%else%>
+  <%= f.customer.name%></li>
+  <% end %>
+  <% end %>
+  </ul>
+</div>
+

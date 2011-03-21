@@ -1,0 +1,66 @@
+<div id="main_container">	
+<div id="left">
+	<div class="inner">
+		<div class="index-view">
+	<div class="list_header">
+		
+		<a id="dialog_project" data-object="project">Add new project</a>
+		<%= link_to "Archived projects", archive_path, :id => "archive"%>
+		
+		<div id="dialog_project_form" class="dialog_form" title="Create new project" style="display:none;">
+      <%= form_for([@firm, @project], :url =>  create_index_path) do |p| %>
+    
+      <li><%= p.label :name %><%= p.text_field :name, :class => "required"%></li>
+      <li><%= p.label :description %><%= p.text_field :description %></li>
+      <li><%= p.label :due %><%= p.text_field :due, :value => Time.now.strftime("%m/%d/%Y"), :id => "dialog_project_date" %></li>
+      <li><%= p.label :customer_id %><%= p.select(:customer_id, @firm.customers.map {|customer| [customer.name, customer.id]}, :prompt => "Select customer")%></li>
+      <li><%= p.submit 'Save', :class => 'submit' %></li>
+      <% end %>
+      </div>
+	    <div class="search">
+	        <input type="text" name="search" AUTOCOMPLETE=OFF value="" title="search" id="id_search_list">
+	    </div>
+	</div>
+  <ul id="cus_pro_us_listing">
+  	
+    <% for project in @projects %>
+  <li class="tab_list" id="project_<%= project.id.to_s %>"> 
+  <div class="tab_list_text">
+ <%= link_to project.name, project_path(project) %>
+   </div>
+    <span class='view-tabs-list' data-id="<%= project.id %>" data-object="project" title="View project" data-firm-id="<%= @firm.id %>"></span>
+
+ 
+  <%= link_to(project_path(project), :confirm => "This will destroy the project and all tasks and logs associated to this project. Are you sure? If not press the deactivate button. The project with its tasks and logs will not be accessable untill you reactivate the project.", :title => "Delete project", :method => :delete, :remote => true) do%>
+  <span class='delete-tabs-list'></span>
+    <% end %>
+
+ <span class='open_project_update edit-tabs-list edit' id="project_update" data-id="<%= project.id %>" data-object="project" title="Edit project"></span>
+   
+ <div class="dialog_form" id="project_update_<%= project.id %>_form" title="Update project" style="display:none;">
+      <%= form_for([@firm, project], :url =>  update_index_path(project)) do |f| %>
+      <li><%= f.label :name %><%= f.text_field :name %></li>
+      <li><%= f.label :description %><%= f.text_field :description %></li>
+      <li><%= f.label :due %><%= f.text_field :due, :value => project.due.strftime("%m/%d/%Y"), :id => "date_project_#{project.id}"  %></li>
+       <li><%= f.label :customer_id %><%= f.select(:customer_id, @firm.customers.map {|customer| [customer.name, customer.id]}, :prompt => "Select customer")%></li>
+      <li><%= f.submit 'Save', :class => 'submit' %></li>
+      <% end %>
+</div>
+  <a class="activate_project" data-object="project" data-id="<%= project.id.to_s %>">Archive</a>
+
+</li>
+<% end %>
+  </ul>
+  </div>
+  <div class="show-view">
+  	<div class="list_header">
+	
+	
+	Loading....
+	</div>
+  </div>
+  </div>
+</div>
+
+      
+</div>

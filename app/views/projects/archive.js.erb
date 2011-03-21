@@ -1,0 +1,7 @@
+$(".flash_notice").empty();
+$(".dialog_form").remove();
+$("#main_container").replaceWith("<%= escape_javascript(render("projects/archive")) %>");
+$("input#id_search_list").quicksearch('ul#cus_pro_us_listing li');
+$(".activate_project").activate_projects();
+$(".indicator").hide();
+$('.spinning').hide();

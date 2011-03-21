@@ -1,0 +1,18 @@
+<%= javascript_include_tag "employees"%>
+<div class="add_some">
+       <a id="dialog_employees">Add another</a>
+        <div id="dialog_employees_form" class="dialog_form" title="Create new employee" style="display:none;">  
+      <%= form_for(@customer.employees.new) do |f| %>
+      <%= f.hidden_field :customer_id %>
+      <li><%= f.label :name %><%= f.text_field :name, :class => "required", :minlength => "2"%></li>
+      <li><%= f.label :phone %><%= f.text_field :phone %></li>
+      <li><%= f.label :email %><%= f.text_field :email %></li>
+      <li><%= f.submit "save", :class => 'submit' %></li>
+      <% end %>
+      </div>
+    </div>
+  
+    <div class="listing_employees">
+      
+      <%= render @employees %>
+    </div>

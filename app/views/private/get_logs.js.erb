@@ -1,0 +1,40 @@
+
+<%= javascript_include_tag "logs"%>
+
+<div class="add_some">
+       <a id="dialog_log">Add another</a> 
+      <div id="dialog_log_form" class="dialog_form" title="Create new log" style="display:none;">
+      <%= form_for(@log) do |l| %>
+      <%= l.hidden_field :customer_id %>
+        <li><%= l.label :log %><%= l.text_field(:event, :class => "required", :minlength => "2", :AUTOCOMPLETE => "OFF") %></li>
+        <li><div class="date_on_log" id="date_on_log_<%= @log.id %>" data-log="<%= @log.id %>"><%= l.label :date %><%= l.text_field(:log_date, :value => Time.now.strftime("%m/%d/%Y"), :class => "date", :id => "log_date_new") %></div></li>
+        <li style="margin-bottom: 0px;"><%= l.label :from %><%= l.label :to, :style => "margin-left: 30px;" %></li>
+        <li><%= l.text_field(:begin_time, :value => Time.now.strftime("%H:%M"), :class => "log_times required clock", :id => "log_times_from_") %>
+        <%= l.text_field(:end_time, :value => Time.now.strftime("%H:%M"), :class => "log_times required clock", :id => "log_times_to_") %></li>
+        <li class="slider_range" log=""></li>
+        <li><%= l.label :project %>
+         <select class="big_select" id="log_project_id" log="<%= @log.id %>" name="log[project_id]">
+           <option value="" data-customer="">none</option>
+           <% @all_projects.each do |project| %>
+                  <option value="<%= project.id %>"><%= truncate_string(project.name) %></option>
+                  <% end %>
+          </select></li>
+          <li><%= l.label :Task %><%= l.label :done?, :style => "margin-left: 255px;" %><%= check_box_tag "done"%>
+            <select class="big_select" id="new_log_todo_id" name="log[todo_id]">
+              <option value="" id="value">Select a project</option>
+          </select></li>
+       <li><%= l.label :employee %>
+        <select class="big_select" id="log_employee_id" name="log[employee_id]">
+            <option value>none</option>
+            <% @log.customer.employees.each do |employee| %>
+              <option value="<%= employee.id %>"><%= truncate_string(employee.name)%></option>
+            <% end %>
+        </select>
+      <li><%= l.submit "Save", :class => "submit" %></li>
+    <% end %>
+   </div>
+     
+    </div>
+    <div class="listing_logs">
+      <%= render @logs %>
+    </div>

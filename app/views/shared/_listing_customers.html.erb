@@ -1,0 +1,19 @@
+
+<% @customers.each do |f|  %>
+<div class="customer"> 
+  <%= mail_to f.email, image_tag("../images/mail.png"), :title => "Send a email"%>
+  <div class="quick_log_link" style="cursor: pointer; float:left;">
+  <img src=" ../images/circle-plus.png" title="Add a quick log" />|</div>
+  <%= link_to f.name, firm_customer_path(@firm, f) %>
+  <div class="quick_log_form" style="display: none;">
+  <%=  form_for [@firm, f, @log], :html => {:class => "new_quick_log"} do |n| %>
+  <%= n.text_field :log %>  
+  <%= n.submit "Save"%>
+  <% end %>
+  </div> 
+</div>
+
+  
+
+ 
+<% end %> 

@@ -1,0 +1,104 @@
+<div id="log_<%=log.id%>"> 
+ <div id="log_info_<%=log.id%>" class="info" data-log="<%= log.id %>">
+ 	<div class="gravatar">
+ 	<%= gravatar(log.user, "gravatar32") %>
+ 	</div>
+  <div class="event_on_log">
+    <%= log.event %>
+     </div>
+   <div class="date_and_times_on_log">
+   	<% if !log.end_time.nil? %>
+    <%= log.log_date.strftime('%d/%m/%y') %> <%= hours(log.end_time - log.begin_time)%>:<%= min(log.end_time - log.begin_time)%>:<%= sec(log.end_time - log.begin_time)%>  
+    <%= log.begin_time.strftime('%H:%M')%>    
+    <%=log.end_time.strftime('%H:%M')%>
+      </div>
+ <div class="delete_edit">
+ 	
+  <span class="open_log_update edit" id="log_update" data-id="<%= log.id %>">edit</span>
+  <%= link_to "delete", log, :confirm => "Are you sure?", :title => "Delete log", :method => :delete, :class => "delete_log", :remote => true%>
+  </div>
+  </div>
+  <div class="dialog_form" id="log_update_<%= log.id %>_form" title="Update log" style="display:none;">
+      <%= form_for(log) do |f| %>
+      <%= f.hidden_field :customer_id %>
+        <li><%= f.label :log %><%= f.text_field(:event, :class => "required", :minlength => "2", :AUTOCOMPLETE => "OFF") %></li>
+        <li><div class="date_on_log"><%= f.label :date, :class => "required" %><%= f.text_field(:log_date, :value => log.log_date.strftime("%m/%d/%Y"), :class => "log_date", :id => "log_date_edit_#{log.id}") %></div></li>
+        <li style="margin-bottom: 0px;"><%= f.label :from %><%= f.label :to, :style => "margin-left: 30px;" %></li>
+        <li><%= f.text_field(:begin_time, :value => log.begin_time.strftime("%H:%M"), :class => "log_times required clock", :id => "log_times_from_#{log.id}") %>
+        <%= f.text_field(:end_time, :value => log.end_time.strftime("%H:%M"), :class => "log_times required clock", :id => "log_times_to_#{log.id}") %></li>
+       <li id="slider_range_<%= log.id %>" log="<%= log.id %>"></li>
+        
+        <li><%= f.label :project %>
+         <select class="big_select" id="log_project_id" log="<%= log.id %>" name="log[project_id]">
+           <option value="" data-customer="">none</option>
+           <% @all_projects.each do |project| %>
+                <% if project == log.project  %>
+                  <option value="<%= project.id %>" selected="selected"><%= truncate_string(project.name) %></option>
+                <% else %>
+                  <option value="<%= project.id %>"><%= truncate_string(project.name) %></option>
+                  <% end %>
+                 <% end %>
+          </select></li>
+          <li><%= f.label :Task %>
+            <% if !log.todo.nil? %>
+            <% if log.todo.completed == true %>
+            <%= f.label :done?, :style => "margin-left: 255px;" %><%= check_box_tag "done", 1 ,true %>
+            <% else %>
+            <%= f.label :done?, :style => "margin-left:255px;" %><%= check_box_tag "done" %>
+            <% end %>
+            <% else %>
+            <%= f.label :done?, :style => "margin-left: 255px;" %><%= check_box_tag "done" %>
+            <% end %>
+            <select class="big_select" id="log_todo_id_<%= log.id %>" name="log[todo_id]">
+              <% if log.project.nil? %>
+          <option value="" id="value">Select a project</option>
+          <%else%>
+          <option value>none</option>
+          <% log.project.todos.each do |todo| %>
+          <% if todo == log.todo %>
+          <option value="<%= todo.id %>" selected="selected"><%=truncate_string(todo.name)%></option>
+          <%else%>
+          <option value="<%= todo.id %>"><%= truncate_string(todo.name)%></option>
+          <% end %>
+          <% end %>
+          <% end %>
+          </select></li>
+          <li><%= f.label :customer %>
+            <select class="big_select" id="log_customer_id_<%= log.id %>" log="<%= log.id %>" name="log[customer_id]">
+              <% if !log.project.nil? and !log.project.customer.nil? %>
+              <option value="<%=log.project.customer.id%>" selected="selected"><%=truncate_string(log.project.customer.name)%></option>
+              <% else %>
+              <option value="">none</option>
+              <% @customers.each do |customer| %>
+              <% if customer == log.customer %>
+              <option value="<%= customer.id %>" selected="selected"><%= truncate_string(customer.name) %></option>
+              <% else %>
+              <option value="<%= customer.id %>"><%= truncate_string(customer.name) %></option>
+              <% end %>
+              <% end %>
+              <% end %>
+            </select>
+       <li><%= f.label :employee %>
+        <select class="big_select" id="log_employee_id_<%= log.id %>" name="log[employee_id]">
+            <option value>none</option>
+            <% if !log.customer.nil? %>
+            <% log.customer.employees.each do |employee| %>
+              <% if employee == log.employee %>
+          <option value="<%= employee.id %>" selected="selected"><%=truncate_string(employee.name)%></option>
+          <%else%>
+          <option value="<%= employee.id %>"><%= truncate_string(employee.name)%></option>
+          <% end %>
+            <% end %>
+            <% end %>
+        </select></li>
+        
+      <li><%= f.submit "Save", :class => "submit" %></li>
+    <% end %>
+   </div>
+    <% else %>
+    Running...
+    </div>
+    <% end %>
+  
+  
+</div>

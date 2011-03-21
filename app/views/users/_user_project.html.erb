@@ -1,0 +1,9 @@
+<div class="user_info" id="user_<%=@user.id.to_s%>"> 
+	<% if @project.users.include?(@user) %>
+    <input class="membership" project_id="<%= @project.id.to_s%>" id="<%=@user.id.to_s%>" type="checkbox" checked="checked"/>
+    <% else %>
+    <input class="membership" project_id="<%= @project.id.to_s%>" id="<%=@user.id.to_s%>" type="checkbox"/>
+    <% end %>
+    <%= gravatar(@user, "gravatar64") %>
+    <%= @user.name %>
+    </div>

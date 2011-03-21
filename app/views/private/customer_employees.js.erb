@@ -1,0 +1,40 @@
+
+<% if @log.nil? %>
+	$(".new_log").find("select.big_select").selectmenu("destroy");
+  $("#new_log_employee_id").empty();
+  <% if @employees.is_a? String %>
+    $("#new_log_employee_id").append("<option value=''>" + "<%= escape_javascript(@employees) %>" + "</option>");
+  <% else %>
+  <% if @employees.empty? %>
+  $("#new_log_employee_id").append("<option value=''>No employees</option>");
+  <% else %>
+   $("#new_log_employee_id").append("<option value=''>none</option>");
+    <% @employees.each do |employees| %>
+    $("#new_log_employee_id").append("<option value='" + "<%= escape_javascript(employees.id.to_s) %>" + "'>" + "<%= escape_javascript(employees.name) %>" + "</option>");
+    <% end %>
+    <% end %>
+  <% end %>
+  $(".new_log").find("select.big_select").selectmenu({width:369});
+<% else %>
+
+  
+  $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").selectmenu("destroy");
+  $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").empty();
+  <% if @employees.is_a? String %>
+    $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>" + "<%= escape_javascript(@employees) %>" + "</option>");
+  <% else %>
+  <% if @employees.empty? %>
+  $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>No employees</option>");
+  <% else %>
+  $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>none</option>");
+    <% @employees.each do |employees| %>
+    $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value='" + "<%= escape_javascript(employees.id.to_s) %>" + "'>" + "<%= escape_javascript(employees.name) %>" + "</option>");
+     <% end %>
+  <% end %>
+  <% end %>
+  
+  $("#edit_log_<%= escape_javascript(@log.id.to_s) %>").find("select.big_select").selectmenu({width:369});
+  $("#edit_log_<%= escape_javascript(@log.id.to_s) %>").find("select.small_selector").selectmenu({width:200});
+<% end %>
+
+$(".spinning").hide();

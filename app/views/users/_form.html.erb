@@ -1,0 +1,12 @@
+<ul class="form_layout">
+   <li style="color:green">New user</li> 
+    <%= form_for (@user) do |f| %>
+    <li><%= f.label :name %><%= f.text_field :name%> </li>
+  
+  <li><%= f.label :email %><%= f.text_field :email %></li>
+  <li><%= f.label :password %><%= f.password_field :password %></li>
+  <li><%= f.label :password%><%= f.password_field :password_confirmation %></li>
+  <li><%= f.label :manager%><%= f.check_box :manager %></li>
+  <li><%= f.submit "Save", :class => "submit" %></li>
+</ul>
+<% end %>

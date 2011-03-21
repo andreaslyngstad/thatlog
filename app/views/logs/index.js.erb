@@ -1,0 +1,27 @@
+$(".flash_notice").empty();
+$(".dialog_form").remove();
+$("#main_container").replaceWith("<%= escape_javascript(render("logs/index")) %>");
+ $(".tracking_log").submitWithAjax();
+$("#form_holder").find(".edit_log").submitWithAjax();
+ $(".small_selector").selectmenu({width:200});
+ $("#dialog_log").UIdialogs_log_links();
+  $(".open_tracking_select").UIdialogs_tracking_logs_links();
+  $(".open_log_update").UIdialogs_edit_logs_links();
+  $(".new_log").validateWithErrors();
+
+$(".slider_range").slider({
+        range: true,
+        min: 0,
+        max: 1439,
+        values: [ 740, 1020 ],
+        step:10,
+        slide: slideTime
+    });
+$("select#logs_pr_date_select").change(function(){
+  $('.spinning').show();
+  var time = this.value
+  $.get("/logs_pr_date/" + time)
+  
+  });
+
+$(".indicator").hide();

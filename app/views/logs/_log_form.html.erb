@@ -1,0 +1,87 @@
+<%= javascript_include_tag "jquery.stopwatch"%>
+ <script type="text/javascript">
+    $(function() {
+      $('.clock1').stopwatch();
+    });
+      </script>
+
+   <%= form_for(log)  do |n| %>
+   <div class="log_form blue">
+ <div id="log_form_text" style="text-align:center;">Let's start loggyit!</div> 
+   <%= n.hidden_field :user_id, :value => current_user.id%>
+   <div class="tracking_container">
+   <%= n.text_field :event, :class => "tracking_log_event"  %> 
+    <div class="clock1"></div>
+    <div class="start_button">
+  <%= image_submit_tag("../images/start64.png", :controller => "logs", :action => "update", :method => :put, :class => "start") %>
+   </div>
+   <div class="stop_button" style="display:none;">
+  <%= image_submit_tag("../images/stop64.png", :controller => "logs", :action => "update", :class => "stop", :method => :put) %>
+  </div>
+  </div>
+  
+    <div class="tracking_select blue" style="display: none;">
+	<div id="tracking_project_task">
+    <%= n.label :project %>
+         <select class="small_selector" id="log_project_id" log="<%= log.id %>" name="log[project_id]">
+           <option value="" data-customer="">none</option>
+           <% @all_projects.each do |project| %>
+                <% if project == log.project  %>
+                  <option value="<%= project.id %>" selected="selected"><%= truncate_string(project.name) %></option>
+                <% else %>
+                  <option value="<%= project.id %>"><%= truncate_string(project.name) %></option>
+                  <% end %>
+                 <% end %>
+          </select>
+          <div><%= n.label :Task %>
+          <select class="small_selector" id="log_todo_id_<%= log.id %>" name="log[todo_id]">
+              <% if log.project.nil? %>
+          <option value="" id="value">Select a project</option>
+          <%else%>
+          <option value>none</option>
+          <% log.project.todos.each do |todo| %>
+          <% if todo == log.todo %>
+          <option value="<%= todo.id %>" selected="selected"><%=truncate_string(todo.name)%></option>
+          <%else%>
+          <option value="<%= todo.id %>"><%= truncate_string(todo.name)%></option>
+          <% end %>
+          <% end %>
+          <% end %>
+          </select>
+                      <% if !log.todo.nil? %>
+            <% if log.todo.completed == true %>
+            <%= n.label :done?%><%= check_box_tag "done", 1 ,true, {:style => "margin:13px 0 0 7px"} %>
+            <% else %>
+            <%= n.label :done?%><%= check_box_tag "done", 1, false, {:style => "margin:13px 0 0 7px"}  %>
+            <% end %>
+            <% else %>
+            <%= n.label :done?%><%= check_box_tag "done", 1, false, {:style => "margin:13px 0 0 7px"}  %>
+            <% end %>
+           </div> </div>
+           <div id="tracking_customer_employee">
+          <%= n.label :customer %>
+          	<%= n.select(:customer_id, @customers.map {|customer| [truncate_string(customer.name), customer.id]},
+          	{ :prompt => "Select customer"}, :class => "small_selector", :id => "log_customer_id_#{log.id}", :log => "#{log.id}" )%>
+       <%= n.label :employee %>
+       <select class="small_selector" id="log_employee_id_<%= log.id %>" name="log[employee_id]">
+            <option value>none</option>
+            <% if !log.customer.nil? %>
+            <% log.customer.employees.each do |employee| %>
+              <% if employee == log.employee %>
+          <option value="<%= employee.id %>" selected="selected"><%=truncate_string(employee.name)%></option>
+          <%else%>
+          <option value="<%= employee.id %>"><%= truncate_string(employee.name)%></option>
+          <% end %>
+            <% end %>
+            <% end %>
+        </select>
+    
+     
+      </div>
+      </div>
+      <div class="open_tracking_select_container">
+    <a class="open_tracking_select" title="Details" data-id="<%= log.id %>"></a></div>
+  <% end %>
+
+ </div>
+

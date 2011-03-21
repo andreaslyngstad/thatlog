@@ -1,0 +1,24 @@
+<div id="left">
+<ul id="cus_pro_us_listing">
+<%= render @customers %>
+</ul>
+</div>
+<div id="right">
+  <ul class="form_layout_search">
+    <div class="search">
+      <li>Search
+        <input type="text" name="search" value="" id="id_search_list">
+      </li>
+    </div>
+  </ul>
+<ul class="form_layout">
+   <li style="color:green">New customer</li>   
+    <%= form_for([@firm, @customer]) do |f| %>
+   <li><%= f.label :name %><%= f.text_field :name %></li>
+   <li><%= f.label :phone %><%= f.text_field :phone %></li>
+   <li><%= f.label :email %><%= f.text_field :email %></li>
+   <li><%= f.label :address %><%= f.text_field :address %></li>
+   <li><%= f.submit 'Save', :class => 'submit' %></li>
+    <% end %>
+</ul> 
+</div>

@@ -1,0 +1,52 @@
+<div class="list_header">
+	
+	<a class="back_button">Back</a>
+		<%=h @customer.name %>
+</div>
+<div id="description">
+  
+	<%=h @customer.name %><br/>
+	Phone:
+	<%=h @customer.phone %><br/>
+	Email:
+	<%= mail_to "#{@customer.email}" %><br/>
+	Address:
+	<%=h @customer.address %><br/>
+
+</div>
+<div class="graphs">Grafer</div>
+
+
+   <div id="tabs">
+  <ul>
+    
+    <li><a href="#tabs-1">Projects</a></li>
+    <li><a href="/get_logs/<%= @customer.id %>">Logs<span>&nbsp;</span></a></li>
+    <li><a href="/get_employees/<%= @customer.id %>">Employees<span>&nbsp;</span></a></li>
+  </ul>
+  
+  
+  <div id="tabs-1"> 
+    <div class="add_some">
+       <a id="dialog_project" data-object="project">Add another</a>
+      <div id="dialog_project_form" class="dialog_form" title="Create new eeproject" style="display:none;">
+      <%= form_for([@firm, @project]) do |p| %>
+      <%= p.hidden_field :customer_id %>
+      <li><%= p.label :name %><%= p.text_field :name, :class => "required", :minlength => "2" %></li>
+      <li><%= p.label :description %><%= p.text_field :description %></li>
+      <li><%= p.label :due %><%= p.text_field :due, :value => Time.now.strftime("%m/%d/%Y"), :id => "dialog_project_date"   %></li>
+      <li><%= p.submit 'Save', :class => 'submit' %></li>
+      <% end %>
+      </div>
+    </div>
+    <div class="listing_projects">
+      <%= render @projects %>
+    </div>
+   
+  </div>
+  <div id="tabs-2">
+   </div>
+   <div id="tabs-3">
+
+  </div>
+</div>

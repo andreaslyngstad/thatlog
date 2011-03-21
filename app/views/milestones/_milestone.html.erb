@@ -1,0 +1,19 @@
+<div class="info" id="milestone_<%=milestone.id%>">   
+  <%= milestone.due.strftime('%d.%m.%y')%> 
+  <%= milestone.goal %>
+  <div class="delete_edit">
+  <span class="open_milestone_update edit" id="milestone_update" data-id="<%= milestone.id %>" data-object="milestone">edit</span>
+  <%= link_to "delete", milestone, :confirm => "Are you sure?", :title => "Delete milestone", :method => :delete, :class => "delete_milestone", :remote => true%>
+</div>
+
+ <div class="dialog_form" id="milestone_update_<%= milestone.id %>_form" title="Update milestone" style="display:none;">
+ <%= form_for milestone do |f| %>
+ <li><%= f.label :goal %><%= f.text_field :goal %></li>
+ <li><%= f.label :due %><%= f.text_field :due, :value => milestone.due.strftime("%m/%d/%Y"), :id => "date_milestone_#{milestone.id}" %></li>
+ <li><%= f.submit "Save", :class => 'submit' %></li>
+ 
+  <% end %>
+  
+  </div>
+ 
+  </div>

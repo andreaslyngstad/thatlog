@@ -1,0 +1,70 @@
+<li id="log_<%=log.id%>" style="width:800px; display:inline; float:left;"> 
+  <div id="log_info_<%=log.id%>" class="log_info" data-log="<%= log.id %>">
+
+  <%= log.event %>
+  <span style="float:right; padding-right:70px;"><%= hours(log.end - log.begin)%>:<%= min(log.end - log.begin)%>:<%= sec(log.end - log.begin)%>  
+  <%= log.begin.strftime('%H:%M')%>    
+  <%=log.end.strftime('%H:%M')%></span>
+    <div id="customer_project_todo_on_log">
+      Customer:
+      <div id="customer_on_log"> 
+        <% if !log.customer.nil? %>
+        <%=truncate_string(log.customer.name)%>
+        <% else %>
+        none
+        <% end %>
+      </div>
+      Project:
+      <div id="project_on_log">
+        <% if !log.project.nil?%>  
+        <%=truncate_string(log.project.name)%>
+        <% else %>
+        none
+        <% end %>
+      </div>
+      Task:
+       <div id="todo_on_log">
+      <% if !log.todo.nil? %> 
+        <%= truncate_string(log.todo.name)%>
+        <% else %>
+        none
+        <% end %> 
+      </div>
+      </div>
+      
+      </div>  
+   
+    <div id="update_log_<%=log.id.to_s%>">
+   <div id="update_log_form" style="display:none;">
+     <div class="close_log_update" data-log="<%= log.id %>">close</div>
+    <%= form_for( log, :html => {:class => "edit_log_on_fly"}) do |f| %>
+    <div id="event_on_log_text"><%= f.text_field(:event, :style => "width:500px;") %></div>
+    <div id="end_on_log"><%= f.time_select( :end) %></div>
+    <div id="begin_on_log"><%= f.time_select(:begin) %></div>
+    <br/>
+      <li id="customer_project_todo_on_log">
+        Customer: <div id="customer_on_log_select"><%= f.select(:customer_id, current_user.firm.customers.map {|customer| [customer.name, customer.id]}, {:prompt => "Select customer"})%></div>
+        Project: <div id="project_on_log_select"><%= f.select(:project_id, current_user.firm.projects.map {|project| [project.name, project.id]}, {:prompt => "Select project"}, :class => "log_project_class", :log => "#{log.id}" )%></div>
+        Task: <div id="todo_on_log_select"><select class="log_todo_class" id="log_todo_id" name="log[todo_id]">
+          <% if log.project.nil? %>
+          <option value="" id="value">Please select a project</option>
+          <%else%>
+          <% log.project.todos.each do |todo| %>
+          <% if todo == log.todo %>
+          <option value="<%= todo.id %>" selected="selected"><%=truncate_string(todo.name)%></option>
+          <%else%>
+          <option value="<%= todo.id %>"><%= truncate_string(todo.name)%></option>
+          <% end %>
+          <% end %>
+          
+          <%end%>
+          </select>
+          </div>
+          <%= f.submit "Save" %> <a class="continue" id="continue_<%= log.id %>" data-log="<%= log.id %>">Continue</a>
+          
+      </li>
+    <% end %>
+   </div>
+   </div>
+   
+  </li>

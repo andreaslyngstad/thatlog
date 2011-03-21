@@ -1,0 +1,27 @@
+
+$(".flash_notice").empty();
+$(".flash_notice").append("<%= escape_javascript(flash.delete(:notice))%>");
+<% if !@log.begin_time.nil? and !@log.end_time.nil? %>
+$("#log_<%= escape_javascript(@log.id.to_s)%>").replaceWith("<%= escape_javascript(render(:partial => @log)) %>");
+$("#log_<%= escape_javascript(@log.id.to_s)%>").css("background-color", "#DBFFDE");
+$(".open_log_update").UIdialogs_edit_logs_links();
+$("#dialog_log").UIdialogs_links();
+
+
+$(".spinning").hide();
+<% end %>
+<% if @log.begin_time.nil? and @log.end_time.nil? %>
+
+$(".highlight-class").removeClass("highlight-class");
+$(".listing_logs").prepend("<%= escape_javascript(render(:partial => Log.find(Log.where("tracking IS ?", true).last))) %>");
+$("#log_form_text").empty();
+$("#form_holder").empty();
+$("#form_holder").append("<%= escape_javascript(render(:partial => "logs/log_form", :locals => { :log => @log})) %>");
+$("#form_holder").find(".edit_log").submitWithAjax();
+$("#form_holder").find(".edit_log #log_event").val('');
+$(".open_tracking_select").UIdialogs_tracking_logs_links();
+$(".open_log_update").UIdialogs_edit_logs_links();
+$(".spinning").hide();
+<%end%>
+$(".spinning").hide();
+

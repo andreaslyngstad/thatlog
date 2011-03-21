@@ -1,0 +1,15 @@
+<ul class="form_layout">
+  
+<%= form_for @firm do |f| %>
+  <% @firm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+ 
+  <li>
+    <%= f.label :Name %>
+    <%= f.text_field :name %>
+  </li>
+  <br />
+  <li><%= f.submit "Register" %></li>
+<% end %>
+</ul>

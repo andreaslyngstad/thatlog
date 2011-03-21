@@ -1,0 +1,6 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.delete(:notice))%>")
+$("#new_todo")[0].reset();
+$("#not_done_tasks").append("<%= escape_javascript(render(:partial => @todo)) %>");
+$(".open_todo_update").UIdialogs_edit_links();
+$(".spinning").hide();

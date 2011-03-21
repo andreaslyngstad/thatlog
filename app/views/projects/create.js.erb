@@ -1,0 +1,7 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.delete(:notice))%>")
+$(".listing_projects").append("<%= escape_javascript(render(:partial => @project)) %>");
+$(".open_project_update").UIdialogs_edit_links();
+$(".activate_project").activate_projects();
+$("#new_project")[0].reset();
+$(".spinning").hide();

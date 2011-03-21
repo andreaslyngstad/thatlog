@@ -1,0 +1,9 @@
+<% if object.errors.any? %>
+    <div id='error_explanation' style="color:red;">
+      <p>Could not save because:</p>	
+      <% object.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+     
+    </div>
+  <% end %>

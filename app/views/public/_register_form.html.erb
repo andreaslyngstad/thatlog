@@ -1,0 +1,45 @@
+<div class="signup signup_firm">
+<%= form_for :firm, :url => firms_path,  :html => { :class => "register_firm", :id => "register_firm" } do |firm| %>
+ 
+ 
+ <div class="signup-form-field">
+    <%= firm.label :Firm_name %>
+    <%= firm.text_field :name, :class => "required form-input", :AUTOCOMPLETE => "OFF" %>
+    </div>
+ <div class="signup-form-field-subdomain">
+    <%= firm.label :Secure_Site, :title => "This is the domain for your firms loggyit account" %>
+    <%= firm.text_field :subdomain, :class => "required noSpecialChars form-input register_firm_subdomain", :AUTOCOMPLETE => "OFF" %>
+   <div id="loggyit_sub">.loggyit.com</div>
+  </div>
+<div class="not_required" style="display: none;">
+	<div class="signup-form-field">
+    <%= firm.label :phone %>
+    <%= firm.text_field :phone, :class => "form-input", :AUTOCOMPLETE => "OFF" %>
+    </div>
+	<div class="signup-form-field">
+    <%= firm.label :Address %>
+    <%= firm.text_field :address, :class => "form-input", :AUTOCOMPLETE => "OFF" %>
+    </div>
+    <div class="signup-form-field">
+    <%= firm.label :language %>
+    <%= firm.language_select :lang,  nil, {},  :class => "form-input" %>
+    </div>
+	<div class="signup-form-field">
+    <%= firm.label :currency %>
+    <%= firm.currency_select :currency, ["US Dollar", "British Pound", "Euro", "Norwegian Kroner", "Swedish Krona"],  {},  :class => "form-input"%>
+    </div>
+	<div class="signup-form-field">
+    <%= firm.label :time_zone %>
+    <%= firm.time_zone_select :time_zone,  nil, :class => "form-input", :default => "UTC"%>
+    </div>
+	
+    
+	</div>
+
+  <%= firm.submit "next", :class => "submit" %>
+  
+<% end %>
+<div class="open_not_required_container">
+    <a href="" class="open_not_required" title="Fill in not required field"></a>
+    </div>
+</div>

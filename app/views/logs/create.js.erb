@@ -1,0 +1,19 @@
+$(".flash_notice").empty()
+$(".flash_notice").append("<%= escape_javascript(flash.delete(:notice))%>");
+$(".listing_logs").prepend("<%= escape_javascript(render(:partial => @log)) %>");
+$(".open_log_update").UIdialogs_edit_logs_links();
+$("#new_log")[0].reset();
+ $("select#log_project_id").change(function(){
+  $('.spinning').show();
+  var log_id = $(this).attr("log")
+  var project_id = this.value
+  if(project_id === ""){
+    $.get("/project_todos/0/" + log_id)
+  }else{
+    var project_id = this.value
+  $.get("/project_todos/" + project_id + "/" + log_id)
+  }
+  });
+$(".spinning").hide();
+
+

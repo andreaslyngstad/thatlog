@@ -1,0 +1,20 @@
+<div class="employee" id="employee_<%= employee.id %>">
+<div class="info" id="employee_info_<%= employee.id %>">
+  <div class="employee_name"><%= truncate_string(employee.name) %></div>
+  <div class="employee_phone"><%= employee.phone %></div>
+  <div class="employee_email"><%= truncate_string(employee.email) %></div>
+ <div class="delete_edit">
+  <span class="open_employee_update edit" id="employee_update" data-id="<%= employee.id %>" data-object="employee">edit</span>
+  <%= link_to "delete", employee, :confirm => "Are you sure?", :title => "Delete employee", :method => :delete, :class => "delete_employee", :remote => true%>
+</div>
+</div>
+<div class="dialog_form" id="employee_update_<%= employee.id %>_form" title="Update employee" style="display:none;">
+    <%= form_for(employee) do |f| %>
+    <%= f.hidden_field :customer_id %>
+    <li><%= f.label :name %><%= f.text_field :name %></li>
+    <li><%= f.label :phone %><%= f.text_field :phone %></li>
+    <li><%= f.label :email %><%= f.text_field :email %></li>
+    <li><%= f.submit "save", :class => 'submit' %></li>
+    <% end %>
+</div>
+</div>

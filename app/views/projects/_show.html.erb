@@ -1,0 +1,113 @@
+<div class="list_header">
+	
+	<a class="back_button" data-object="project" data-firm-id="<%= current_firm.id %>">Back</a>
+		<%=h @project.name %> <% if !@project.customer.nil? %> linked to<%= @project.customer.name %><% end %>
+</div>
+<div id="description">
+	<%= @project.description %>
+</div>
+<div id="charts">	
+	
+	<div id="todos_chart">
+		
+	<%= done_not_done(@done_todos, @not_done_todos) %>
+	</div>
+	<div id="milestones_chart">
+		<p>Milestones</p> 
+		<% @project.milestones.order("due ASC").each do |milestone|%>
+		<% if milestone.passed %>
+		<div class="milestone_goal_passed"><%= milestone.goal %></div>
+		
+		<% else %>
+		<div class="milestone_goal_not_passed"><%= milestone.goal %></div>
+		
+		<% end %>
+		<% end %>
+
+	</div>
+	
+</div>  
+  <div id="tabs">
+    <ul>
+    <li><a href="#tabs-1">Tasks</a></li>
+    <li><a href="#tabs-2">Milestones</a></li>
+    <li><a href="/get_logs_project/<%= @project.id %>">Logs<span>&nbsp;</span></a></li>
+    <li><a href="/get_users_project/<%= @project.id %>">Users<span>&nbsp;</span></a></li>
+    </ul>
+    <div id="tabs-1">
+  <span class="add_some">  
+    <a id="dialog_task">Add another</a>
+   
+    <div id="dialog_task_form" class="dialog_form" title="Create new task" style="display:none;">
+        <%= form_for @project.todos.build do |f| %>
+        <%= f.hidden_field :project_id %>
+        <%= f.hidden_field :firm_id, :value => current_firm.id%>
+          <li><%= f.label :name %><%= f.text_field :name %></li>
+          <li><%= f.label :user_id %>
+            <select id="todo_user_id" class="selector" name="todo[user_id]"><option value=""></option>
+              <%for user in @project.users do %>
+              <option value="<%=user.id.to_i%>"
+              <%if user == current_user%>selected="<%=current_user.id.to_i%><%end%>">
+              <%= user.name %></option>
+              <% end %>
+            </select> </li>
+          <% if @project.customer.nil? %>
+          <li><%= f.label :customer_id %><%= f.select(:customer_id, current_firm.customers.map {|customer| [customer.name, customer.id]}, {:prompt => "Select customer"}, {:class => "selector"})%></li>
+          <% else %>
+          
+          <% end %> 
+          <li><%= f.label :due %><%= f.text_field :due, :value => Time.now.strftime("%m/%d/%Y"), :id => "dialog_task_date" %></li>
+          <li><%= f.submit "Save", :class => 'submit' %></li>
+      <% end %>
+    </div>
+  </span>
+   
+  <div id="todos_list">
+   
+    <div id="not_done_tasks">
+    <%= render :partial => @not_done_todos %>
+    </div>
+    <br/>
+    <div id="done_tasks">
+      <%= render :partial => @done_todos %>
+    </div> 
+  </div>
+  
+  </div>
+  
+    
+  <div id="tabs-2">
+    <span class="add_some">
+      <a id="dialog_milestone">Add another</a>
+      
+      <div id="dialog_milestone_form" class="dialog_form" title="Create new milestone" style="display:none;">
+        <%= form_for Milestone.new(:project => @project) do |n| %>
+      <%= n.hidden_field :project_id %>
+      <%= n.hidden_field :firm_id, :value => current_firm.id%>
+      <li><%= n.label :goal %><%= n.text_field :goal, :class => "required", :minlength => "2", :AUTOCOMPLETE => "OFF" %></li>
+      <li><%= n.label :due %><%= n.text_field :due, :value => Time.now.strftime("%m/%d/%Y"), :id => "dialog_milestone_date" %></li> 
+      <li><%= n.submit "Save", :class => 'submit'%></li> 
+       <% end %>
+    </div>
+  </span>
+    <div id="listing_milestones">
+   <%= render :partial => @project.milestones.order("due ASC")   %>
+     
+    </div>
+    
+   
+  
+  </div> 
+  <div id="tabs-3">
+
+  </div> 
+  <div id="tabs-4">
+
+  </div> 
+</div>  
+    
+    
+  
+
+
+

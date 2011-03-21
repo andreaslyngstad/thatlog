@@ -1,0 +1,7 @@
+$(".flash_notice").empty();
+$(".dialog_form").remove();
+$("#main_container").replaceWith("<%= escape_javascript(render("users/index")) %>");
+$(".open_user_update").UIdialogs_edit_links();
+$("#dialog_user").UIdialogs_links();
+$("input#id_search_list").quicksearch('ul#cus_pro_us_listing li');
+$(".indicator").hide();

@@ -1,0 +1,41 @@
+.view-tabs-list, .edit-tabs-list, .delete-tabs-list, .view-mail-list{
+display:inline-block;
+margin:10px 10px 10px 10px; 
+width: 16px;
+height: 16px;
+cursor:pointer;
+float:right;
+}
+.view-tabs-list{
+background: url( ../images/show.png) no-repeat;
+}
+.view-tabs-list:hover{
+background: url( ../images/show_hover.png) no-repeat;
+}
+.view-mail-list{
+background: url( ../images/mail.png) no-repeat;
+}
+.view-mail-list:hover{
+background: url( ../images/mail_hover.png) no-repeat;
+}
+.edit-tabs-list {
+
+background: url( ../images/edit.png) no-repeat;
+}
+.edit-tabs-list:hover{
+background: url( ../images/edit_hover.png) no-repeat;
+}
+.delete-tabs-list{
+background: url( ../images/trash.png) no-repeat;
+}
+.delete-tabs-list:hover{
+background: url( ../images/trash_hover.png) no-repeat;
+}
+.activate_project{
+display:inline-block;
+height: 25px;
+padding:0 0 5px 0;
+float:right;
+
+}
+ 

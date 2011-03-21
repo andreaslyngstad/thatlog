@@ -1,0 +1,26 @@
+  <li class="tab_list" id="user_<%= user.id.to_s %>"> 
+    
+   <%= gravatar(user, "gravatar32") %>
+   <div class="tab_list_text">
+    <%= link_to user.name, user_path(user) %>
+    </div>
+    <span class='view-tabs-list' data-id="<%= user.id %>" data-object="user" title="View user" data-firm-id="<%= @firm.id %>"></span>
+ 
+  <%= link_to(user_path(user), :confirm => "Are you sure?", :title => "Delete user", :method => :delete, :remote => true) do%>
+  <span class='delete-tabs-list'></span>
+    <% end %>
+
+ <span class='open_user_update edit-tabs-list edit' id="user_update" data-id="<%= user.id %>" data-object="user" title="Edit user"></span>
+    <div class="dialog_form" id="user_update_<%= user.id %>_form" title="Update user" style="display:none;">
+   		<%= form_for(user) do |f| %>
+  <li><%= f.label :name %><%= f.text_field :name%> </li>
+  <li><%= f.label :email %><%= f.text_field :email %></li>
+  <li><%= f.label :phone %><%= f.text_field :phone %></li>
+  <li><%= f.label :password %><%= f.password_field :password %></li>
+  <li><%= f.label :password%><%= f.password_field :password_confirmation %></li>
+  <li><%= f.label :manager%><%= f.check_box :manager %></li>
+  <li><%= f.submit "Save", :class => "submit" %></li>
+  <% end %>
+    </div>
+    <%= mail_to user.email,{} ,:title => "Send a email", :class => "view-mail-list"%>
+  </li>

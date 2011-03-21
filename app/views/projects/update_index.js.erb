@@ -1,0 +1,8 @@
+$(".flash_notice").empty();
+$(".flash_notice").append("<%= escape_javascript(flash.delete(:notice))%>");
+$("#project_<%= escape_javascript(@project.id.to_s)%>").replaceWith("<%= escape_javascript( render :partial => "projects_index", :locals => { :project => @project })  %>")
+$(".activate_project").activate_projects();
+$(".open_project_update").UIdialogs_edit_links();
+$("#dialog_project").UIdialogs_links();
+$("#dialog_project_form").UIdialogs();
+$(".spinning").hide();

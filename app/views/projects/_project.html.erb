@@ -1,0 +1,21 @@
+<div  id="project_<%= project.id %>">
+<div class="info" id="project_info_<%= project.id %>">
+  <div class="project_name"><%= link_to truncate_string(project.name), project_path( project) %></div>
+  <div class="project_desc"><%= truncate_string(project.description) %></div>
+  <div class="project_due"><%= project.due.strftime('%d/%m/%y') %></div>
+<div class="delete_edit_archive">
+  <span class="open_project_update edit" id="project_update" data-id="<%= project.id %>" data-object="project">edit</span>
+  <%= link_to "delete", project, :confirm => "This will destroy the project and all tasks and logs associated to this project. Are you sure? If not press the deactivate button. The project with its tasks and logs will not be accessable untill you reactivate the project.", 
+  :title => "Delete project", :method => :delete, :class => "delete_project", :remote => true%>
+  <a class="activate_projects_no_button" data-object="project" data-id="<%= project.id.to_s %>">Archive</a>
+</div>
+</div>
+<div class="dialog_form" id="project_update_<%= project.id %>_form" title="Update project" style="display:none;">
+      <%= form_for(project) do |f| %>
+      <li><%= f.label :name %><%= f.text_field :name %></li>
+      <li><%= f.label :description %><%= f.text_field :description %></li>
+      <li><%= f.label :due %><%= f.text_field :due, :value => project.due.strftime("%m/%d/%Y"), :id => "date_project_#{project.id}"  %></li>
+      <li><%= f.submit 'Save', :class => 'submit' %></li>
+      <% end %>
+</div>
+</div>

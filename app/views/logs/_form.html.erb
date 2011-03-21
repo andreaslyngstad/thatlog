@@ -1,0 +1,98 @@
+<%= form_for(log, :html => {:class => "edit_log_on_fly"}) do |f| %>
+    <div id="event_on_log_text"><%= f.text_field(:event, :style => "width:500px;") %></div>
+      <div id="customer_employee_project_todo_on_log_form">
+        <div class="projects_and_todos">
+         <div id="project_on_log_select">
+           <div class="log_form_label">Project</div>
+         <select class="log_project_class" id="log_project_id" log="<%= log.id %>" name="log[project_id]">
+           <option value="" data-customer="">none</option>
+           <% @all_projects.each do |project| %>
+           <% if !project.customer.nil? %>
+           <% if project == log.project  %>
+        <option value="<%= project.id %>" selected="selected" data-customer="<%= project.customer.name %>"><%= truncate_string(project.name) %></option>
+        <% else %>
+       <option value="<%= project.id %>" data-customer="<%= project.customer.name %>"><%= truncate_string(project.name) %></option>
+        <% end %>
+        
+        <% else %>
+        <% if project == log.project  %>
+        <option value="<%= project.id %>" selected="selected" data-customer="nil"><%= truncate_string(project.name) %></option>
+        <% else %>
+       <option value="<%= project.id %>" data-customer="nil"><%= truncate_string(project.name) %></option>
+        <% end %>
+        
+        
+        <% end %>
+        <% end %>
+
+        </select>
+             </div>
+         <div id="todo_on_log_select"><div class="log_form_label">Task</div>
+           <select class="log_todo_class" id="log_todo_id" name="log[todo_id]">
+          <% if log.project.nil? %>
+          <option value="" id="value">Select a project</option>
+          <%else%>
+          <option value>none</option>
+          <% log.project.todos.each do |todo| %>
+          <% if todo == log.todo %>
+          <option value="<%= todo.id %>" selected="selected"><%=truncate_string(todo.name)%></option>
+          <%else%>
+          <option value="<%= todo.id %>"><%= truncate_string(todo.name)%></option>
+          <% end %>
+          <% end %>
+          <% end %>
+          </select>
+          </div>
+       
+       </div> 
+       <div class="customer_and_employeee">
+         <div id="customer_on_log_select">
+           <div class="log_form_label">Customer</div>
+         <select class="log_customer_class" id="log_customer_id" log="<%= log.id %>" name="log[customer_id]">
+           <option value="" data-customer="">none</option>
+           <% @customers.each do |customer| %>
+        
+        <% if customer == log.customer  %>
+        <option value="<%= customer.id %>" selected="selected"><%= truncate_string(customer.name) %></option>
+        <% else %>
+       <option value="<%= customer.id %>"><%= truncate_string(customer.name) %></option>
+        <% end %>
+        <% end %>
+
+        </select>
+             </div>
+         <div id="employee_on_log_select"><div class="log_form_label">Employee</div>
+           <select class="log_employee_class" id="log_employee_id" name="log[employee_id]">
+          <% if log.customer.nil? %>
+          <option value="" id="value">Select a customer</option>
+          <%else%>
+          <option value>none</option>
+          <% log.customer.employees.each do |employee| %>
+          <% if employee == log.employee %>
+          <option value="<%= employee.id %>" selected="selected"><%=truncate_string(employee.name)%></option>
+          <%else%>
+          <option value="<%= employee.id %>"><%= truncate_string(employee.name)%></option>
+          <% end %>
+          <% end %>
+          <% end %>
+          </select>
+          </div>
+       </div> 
+       <% if log.id.nil? %>
+        <div class="date_on_log" id="date_on_log_<%= log.id %>" data-log="<%= log.id %>"><div class="log_form_label">Date</div><%= f.text_field(:log_date, :value => Time.now.strftime("%m/%d/%Y"), :class => "log_date", :id => "log_new") %></div>  
+        <div id="times_on_log">
+        <div id="begin_on_log"><div class="log_form_label">From</div><%= f.text_field(:begin_time, :value => Time.now.strftime("%H:%M"), :class => "log_times") %></div>
+        <div id="end_on_log"><div class="log_form_label">To</div><%= f.text_field(:end_time, :value => Time.now.strftime("%H:%M"), :class => "log_times") %></div>
+       <% else %>
+         <div class="date_on_log" id="date_on_log_<%= log.id %>" data-log="<%= log.id %>"><div class="log_form_label">Date</div><%= f.text_field(:log_date, :value => log.log_date.strftime("%m/%d/%Y"), :class => "log_date", :id => "log#{log.id.to_s}") %></div>  
+        <div id="times_on_log">
+        <div id="begin_on_log"><div class="log_form_label">From</div><%= f.text_field(:begin_time, :value => log.begin_time.strftime("%H:%M"), :class => "log_times") %></div>
+        <div id="end_on_log"><div class="log_form_label">To</div><%= f.text_field(:end_time, :value => log.end_time.strftime("%H:%M"), :class => "log_times") %></div>
+       <% end %>
+    </div>
+   </div>
+       
+      <%= f.submit "Save" %>
+    
+    <% end %>
+   

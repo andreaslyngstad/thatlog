@@ -1,0 +1,47 @@
+
+
+<div class="info" id="todo_<%=todo.id%>"> 
+  <% if todo.completed == false %>
+  <input class="done_box" id="<%=todo.id%>" type="checkbox"/>
+  <% else %>
+  <input class="done_box" id="<%=todo.id%>" type="checkbox" checked="checked"/>
+  <% end %>
+  
+  <%= todo.due.strftime('%d.%m.%y')%> 
+  <%= todo.name %>
+ <% if !todo.user.nil? %>
+  <%= todo.user.name %>
+<% end %>
+   <div class="delete_edit">
+  <span class="open_todo_update edit" id="todo_update" data-id="<%= todo.id %>" data-object="todo">edit</span>
+  <%= link_to "delete", todo, :confirm => "Are you sure?", :title => "Delete task", :method => :delete, :class => "delete_todo", :remote => true%>
+</div>
+
+ <div class="dialog_form" id="todo_update_<%= todo.id %>_form" title="Update task" style="display:none;">
+ <%= form_for todo do |f| %>
+ <li><%= f.label :name %><%= f.text_field :name %></li>
+          <li><%= f.label :user_id %><%= f.select(:user_id, @project.users.map {|user| [user.name, user.id]}, {:prompt => "Select user"}, {:class => "selector"})%></li>
+          <% if !@project.nil? and @project.customer.nil? %>
+          <li><%= f.label :customer_id %><%= f.select(:customer_id, current_firm.customers.map {|customer| [customer.name, customer.id]}, {:prompt => "Select customer"}, {:class => "selector"})%></li>
+          <% end %> 
+          <% if @project.nil? %>
+          
+         <li><%= f.label :project_id %><%= f.select(:project_id, current_firm.projects.map {|project| [project.name, project.id]}, {:prompt => "Select project"}, {:class => "selector"})%></li>   
+         <% if todo.project.customer.nil? %>
+         <li><%= f.label :customer_id %><%= f.select(:customer_id, current_firm.customers.map {|customer| [customer.name, customer.id]}, {:prompt => "Select customer"}, {:class => "selector"})%></li>
+			<% else %>
+			
+          <% end %>
+          <% end %>
+          
+
+          
+          <li><%= f.label :due %><%= f.text_field :due, :value => todo.due.strftime("%m/%d/%Y"), :id => "date_todo_#{todo.id}" %></li>
+          <li><%= f.submit "Save", :class => 'submit' %></li>
+ 
+  <% end %>
+  
+  </div>
+ 
+  </div>
+

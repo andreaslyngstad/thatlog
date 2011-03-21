@@ -1,0 +1,55 @@
+<div class="list_header">
+	
+	<a class="back_button">Back</a>
+		<%=h @user.name %>
+</div>
+<div id="description">
+  
+	 <%=h @user.name %><br/>
+	Phone:
+	 <%=h @user.phone %><br/>
+	Email:
+	<%=h @user.email %><br/>
+	
+
+</div>
+<div id="tabs">
+  <ul>
+    
+    <li><a href="#tabs-1">Tasks</a></li>
+    <li><a href="/get_logs_user/<%= @user.id %>">Logs<span>&nbsp;</span></a></li>
+   
+  </ul>
+  
+  
+  <div id="tabs-1"> 
+    <span class="add_some">  
+    <a id="dialog_task">Add another</a>
+   
+    <div id="dialog_task_form" class="dialog_form" title="Create new task" style="display:none;">
+        <%= form_for @user.todos.build do |f| %>
+        <%= f.hidden_field :user_id %>
+          <li><%= f.label :name %><%= f.text_field :name %></li>
+          <li><%= f.label :customer_id %><%= f.select(:customer_id, @firm.customers.map {|customer| [customer.name, customer.id]}, {:prompt => "Select customer"}, {:class => "selector"})%></li>   
+          <li><%= f.label :project_id %><%= f.select(:project_id, @firm.projects.map {|project| [project.name, project.id]}, {:prompt => "Select project"}, {:class => "selector"})%></li>   
+          <li><%= f.label :due %><%= f.text_field :due, :value => Time.now.strftime("%m/%d/%Y"), :id => "dialog_task_date" %></li>
+          <li><%= f.submit "Save", :class => 'submit' %></li>
+      <% end %>
+    </div>
+  </span>
+   
+  <div id="todos_list">
+   
+    <div id="not_done_tasks">
+    <%= render :partial => @not_done_todos %>
+    </div>
+    <br/>
+    <div id="done_tasks">
+      <%= render :partial => @done_todos %>
+    </div> 
+  </div>
+  </div>
+  <div id="tabs-2">
+   </div>
+  
+</div>

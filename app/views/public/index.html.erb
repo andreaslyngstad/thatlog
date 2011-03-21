@@ -1,0 +1,4 @@
+<% if !current_user.nil? %>
+
+<%= link_to current_firm.subdomain, root_url(:subdomain => current_firm.subdomain) %>
+<% end %>

@@ -1,0 +1,14 @@
+
+<div id="main_container">
+<div id="home_left">
+  Show tasks for 
+
+ <%= select(:user, :id, @users.map {|user| [user.name, user.id]}, {:prompt => "All users"}, :class => "small_selector")%>
+  <%= render "private/projects_and_todos" %>
+
+</div>
+<div id="center">
+  
+    </div>
+
+
