@@ -8,7 +8,12 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Logit
   class Application < Rails::Application
-    config.colorize_logging = false
+    config.colorize_logging = true
+    
+    config.to_prepare { 
+  Devise::SessionsController.layout "registration" 
+  Devise::PasswordsController.layout "registration"
+	} 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

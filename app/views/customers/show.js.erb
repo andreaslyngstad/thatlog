@@ -18,9 +18,5 @@ $( "#tabs" ).tabs({ cache: true },
       }
     });
     
-$(".back_button").button().click(function(){
-	$(".inner").animate({left:0, duration:500});
-	$(".show-view").empty();
-	$(".show-view").append("<div class='show-view'><div class='list_header'>Loading....</div></div>");
-});
+$(".back_button").back_button_function();
 $('.spinning').hide();

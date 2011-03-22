@@ -29,6 +29,10 @@ font-size:30px;
  
  
 }
+#check{
+width: 15px;
+margin: 10px 0px 0px 0
+}
 #header a {text-decoration: none; color:#fff;}
 #user_nav {
   position:fixed; top:50px;right:5px;
@@ -713,7 +717,7 @@ background: -moz-linear-gradient(center bottom, #ffffff 50%, #ebf4fb 80%);
 -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ebf4fb', EndColorStr='#ffffff')";
 -moz-border-radius: 3px;
 -webkit-border-radius: 3px;
-padding: 20px 0px 0px 0px;
+padding: 20px;
 border:1px solid #999;
 }
 
@@ -725,7 +729,7 @@ display: block;
 position: relative;
 height: 60px;
 width: 550px;
-margin: 0 20px 0 20px;
+
 }
 .signup .signup-form-field-subdomain #loggyit_sub{
 position: absolute;
@@ -756,7 +760,7 @@ width: 150px;
 line-height: 30px;
 }
 .signup .submit	{
-display: block;margin-left:170px;cursor:pointer;padding-top:2px;width:100px;border:1px solid #999; font-size:20px;background:#fff;
+display: block;margin-left:150px;cursor:pointer;padding-top:2px;width:100px;border:1px solid #999; font-size:20px;background:#fff;
 background: #2E8D11;
 background: -webkit-gradient(linear, 0% 100%, 0% 0%, color-stop(0, #2E8D11), color-stop(0.7, #72C152), color-stop(0.96, #72C152), color-stop(1, #99EB79));
 background: -moz-linear-gradient(center bottom, #2E8D11 0%, #72C152 70%, #72C152 96%, #99EB79 99%) repeat scroll 0 0;

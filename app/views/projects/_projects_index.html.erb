@@ -1,7 +1,7 @@
  <li class="tab_list" id="project_<%= project.id.to_s %>"> 
   
  <%= link_to project.name, project_path(project) %>
- <a class="activate_project" data-object="project" data-id="<%= project.id.to_s %>">Archive</a>
+
   <span class='view-tabs-list' data-id="<%= project.id %>" data-object="project" title="View project" data-firm-id="<%= @firm.id %>"></span>
  
   <%= link_to(project_path(project), :confirm => "Are you sure?", :title => "Delete project", :method => :delete, :remote => true) do%>
@@ -19,5 +19,5 @@
       <li><%= f.submit 'Save', :class => 'submit' %></li>
       <% end %>
 </div>
-
+ <a class="activate_project" data-object="project" data-id="<%= project.id.to_s %>">Archive</a>
 </li>

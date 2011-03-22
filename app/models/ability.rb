@@ -13,7 +13,7 @@ class Ability
      else
        if user
         can :read, Firm
-        can :read, User, :firm => {:id => user.firm_id}
+        can :manage, User, :firm => {:id => user.firm_id}
         can :read, Customer, :firm => {:id => user.firm_id}
         can :read, Project, :firm => {:id => user.firm_id}
         can :manage, Log, :firm => {:id => user.firm_id}

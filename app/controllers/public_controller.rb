@@ -1,5 +1,5 @@
 class PublicController < ApplicationController
-  skip_before_filter :require_user
+  skip_before_filter :authenticate_user!
   layout "registration"
   def index
     
@@ -21,7 +21,7 @@ class PublicController < ApplicationController
     @user.update_attributes(:manager => "true") 
         if @user.save
           flash[:notice] = "Registration successful."
-         redirect_to(users_path(:subdomain => @firm.name))
+         redirect_to(root_url(:subdomain => @firm.name))
         else
           render :action => 'first_user'
       end

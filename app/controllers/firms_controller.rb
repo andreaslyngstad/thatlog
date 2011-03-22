@@ -1,6 +1,6 @@
 class FirmsController < ApplicationController
   authorize_resource :firm
-  skip_before_filter :require_user, :only => [:create]
+  skip_before_filter :authenticate_user!, :only => [:create]
   
   # GET /firms
   # GET /firms.xml

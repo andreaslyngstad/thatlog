@@ -312,7 +312,17 @@ function time_to_value(time){
     return hours + min
 }
 
-
+jQuery.fn.back_button_function = function(){
+  $(this).live("click", function(){
+	$('.spinning').show();
+	var object = $(this).attr("data-object");
+	$.getScript("/" + object + "s");
+	$(".inner").animate({left:0, duration:500});
+	$(".show-view").empty();
+	$(".show-view").append("<div class='show-view'><div class='list_header'>Loading....</div></div>");
+	return false
+});
+};
 	
 ///////////////////////////////////////////////////////////////document.ready///////////////////////////////////////////////////////
 
@@ -346,6 +356,7 @@ $(document).ready(function() {
         }
       }
     });
+$(".back_button").back_button_function();
 
 //jquery UI dialogs
   

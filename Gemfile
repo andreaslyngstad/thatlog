@@ -6,13 +6,12 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
 gem "cancan"
 gem 'jquery-rails'
 gem 'linecache'
-gem "bullet", "2.0.0.rc1"
 gem "tabs_on_rails"
 gem "mongrel"
+gem "devise"
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -31,6 +30,9 @@ gem "mongrel"
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'launchy'
+  gem 'database_cleaner'
+end

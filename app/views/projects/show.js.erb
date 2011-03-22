@@ -24,13 +24,5 @@ $( "#tabs" ).tabs({ cache: true },
       }
     });
     
-$(".back_button").button().live("click", function(){
-	$('.spinning').show();
-	var object = $(this).attr("data-object");
-	var firm_id = $(this).attr("data-firm-id");
-	$.get("/firms/" + firm_id + "/" + object + "s/");
-	$(".inner").animate({left:0, duration:500});
-	$(".show-view").empty();
-	$(".show-view").append("<div class='show-view'><div class='list_header'>Loading....</div></div>");
-});
+$(".back_button").button()
 $('.spinning').hide();

@@ -1,9 +1,14 @@
 GIT
-  remote: git://github.com/binarylogic/authlogic.git
-  revision: 66ed79515919fe13016911b10ebe734cf8718dc7
+  remote: git://github.com/jnicklas/capybara.git
+  revision: 549e67336c712a1ef2119ce5ff64dbbc7542480f
   specs:
-    authlogic (2.1.6)
-      activesupport
+    capybara (0.4.1.1)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (>= 0.0.27)
+      xpath (~> 0.1.3)
 
 GEM
   remote: http://rubygems.org/
@@ -37,25 +42,50 @@ GEM
     activesupport (3.0.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    bcrypt-ruby (2.1.4-x86-mingw32)
     builder (2.1.2)
-    bullet (2.0.0.rc1)
     cancan (1.4.0)
     cgi_multipart_eof_fix (2.5.0)
+    childprocess (0.1.8)
+      ffi (~> 1.0.6)
+    configuration (1.2.0)
+    daemons (1.1.0)
+    database_cleaner (0.6.6)
+    devise (1.1.3)
+      bcrypt-ruby (~> 2.1.2)
+      warden (~> 0.10.7)
+    diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    fastthread (1.0.7)
+    ffi (1.0.7)
+      rake (>= 0.8.7)
+    ffi (1.0.7-x86-mingw32)
+      rake (>= 0.8.7)
     gem_plugin (0.2.3)
     i18n (0.4.1)
     jquery-rails (0.2.4)
       rails (~> 3.0)
+    json_pure (1.5.1)
+    launchy (0.4.0)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
     linecache (0.43)
     mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    mongrel (1.1.5)
+      cgi_multipart_eof_fix (>= 2.4)
+      daemons (>= 1.0.3)
+      fastthread (>= 1.0.1)
+      gem_plugin (>= 0.2.3)
     mongrel (1.1.5-x86-mingw32)
       cgi_multipart_eof_fix (>= 2.4)
       gem_plugin (>= 0.2.3)
+    nokogiri (1.4.4)
+    nokogiri (1.4.4-x86-mingw32)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -76,6 +106,25 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
+    rspec-rails (2.5.0)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.5.0)
+    rubyzip (0.9.4)
+    selenium-webdriver (0.1.4)
+      childprocess (>= 0.1.7)
+      ffi (>= 1.0.7)
+      json_pure
+      rubyzip
     sqlite3-ruby (1.3.1)
     sqlite3-ruby (1.3.1-x86-mingw32)
     tabs_on_rails (1.3.2)
@@ -83,18 +132,25 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    warden (0.10.7)
+      rack (>= 1.0.0)
+    xpath (0.1.3)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
   x86-mingw32
 
 DEPENDENCIES
-  authlogic!
-  bullet (= 2.0.0.rc1)
   cancan
+  capybara!
+  database_cleaner
+  devise
   jquery-rails
+  launchy
   linecache
   mongrel
   rails (= 3.0.0)
+  rspec-rails
   sqlite3-ruby
   tabs_on_rails

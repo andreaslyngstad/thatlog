@@ -46,10 +46,10 @@ class ProjectsController < ApplicationController
   
   def create_index
     @project = Project.new(params[:project])
-   
+    @firm = current_firm
     @project.active = true
     @project.users << current_user
-    @project.firm = current_firm
+    @project.firm = @firm
       respond_to do |format|
       if @project.save
       flash[:notice] = "Project is added."
@@ -59,8 +59,9 @@ class ProjectsController < ApplicationController
   end
 
   def update
+  	@firm = current_firm
     @project = Project.find(params[:id])
-    @customers = current_firm.customers
+    @customers = @firm.customers
     respond_to do |format|
       if @project.update_attributes(params[:project])
         flash[:notice] = "Project was successfully saved."
@@ -72,8 +73,9 @@ class ProjectsController < ApplicationController
     end
   end
   def update_index
+  	@firm = current_firm
   	@project = Project.find(params[:id])
-   @customers = current_firm.customers
+   @customers = @firm.customers
     respond_to do |format|
       if @project.update_attributes(params[:project])
         flash[:notice] = "Project was successfully saved."

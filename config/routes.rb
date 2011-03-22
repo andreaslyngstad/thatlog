@@ -2,6 +2,8 @@ require 'subdomain'
 Logit::Application.routes.draw do
 	
   	
+  devise_for :users
+
 	resources :firms
 	resources :customers	
 	resources :employees
@@ -17,12 +19,11 @@ Logit::Application.routes.draw do
       post "create_first_user"
     end
   end    
-  resources :user_sessions
+ 
   
  
   
-  match "/login" => "user_sessions#new"
-  match "/logout" => "user_sessions#destroy"
+  
   
   match "/private" => "private#index",  :as => :private
   match "/archive" => "projects#archive",  :as => :archive

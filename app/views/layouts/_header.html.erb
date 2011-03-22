@@ -11,7 +11,7 @@
   <%= Time.now.strftime('%d.%m.%y')%>|<span class="jclock"></span>
 	<span class="spinning" style="display:none;"></span>
 	<span class="flash_notice" style="color: #87E32B;"><%= flash[:notice] %></span>
-	<span style="color: red;"><%= flash[:error] %></span>
+	<span class="flash_notice" style="color: red;"><%= flash[:error] %></span>
   <div id="user_nav">
   
     <% if current_user %>
@@ -20,10 +20,10 @@
     <%= link_to "Logs", logs_path(:subdomain => current_user.firm.name)%> |
       <%= link_to "Customers", customers_path %> |
       <%= link_to "Users", users_path(:subdomain => current_user.firm.name) %> |
-      <%= link_to "Logout", logout_path%>
+      <%= link_to "Sign out", destroy_user_session_path%>
     <% else %>
-      <%= link_to "Register", register_path %> |
-      <%= link_to "Login",login_path %>
+      <%= link_to "Register", new_user_registration_path %> |
+      <%= link_to "Sign in", new_user_session_path %>
     <% end %>
     <div class="link_text"></div>
   </div>
