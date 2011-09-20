@@ -18,13 +18,14 @@ class ProjectsController < ApplicationController
 
   def show
   	
-    @project = current_firm.projects.find(params[:id])  
+    @project = current_firm.projects.find(params[:id])
+    @users = @project.users
     @milestone = Milestone.new(:project => @project)
-    @milestones = @project.milestones
+    @milestones = @project.milestones.includes(:user)
     @todo = Todo.new(:project => @project)
-    @done_todos = @project.todos.where(["completed = ?", true]).includes(:user)
-    @not_done_todos = @project.todos.where(["completed = ?", false]).includes(:user)
-    
+    @done_todos = @project.todos.where(["completed = ?", true]).includes( {:user => [:memberships]})
+    @not_done_todos = @project.todos.where(["completed = ?", false]).includes({:user => [:memberships]})
+    @hours = @project.logs.sum(:hours)
   end
 
   def edit
@@ -38,7 +39,7 @@ class ProjectsController < ApplicationController
     @project.users << current_user
       respond_to do |format|
       if @project.save
-      flash[:notice] = "Project is added."
+      flash[:notice] = flash_helper("Project is added.")
       format.js
       end
       end
@@ -52,7 +53,7 @@ class ProjectsController < ApplicationController
     @project.firm = @firm
       respond_to do |format|
       if @project.save
-      flash[:notice] = "Project is added."
+      flash[:notice] = flash_helper("Project is added.")
       format.js
       end
       end
@@ -64,7 +65,7 @@ class ProjectsController < ApplicationController
     @customers = @firm.customers
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        flash[:notice] = "Project was successfully saved."
+        flash[:notice] = flash_helper("Project was successfully saved.")
         format.js
       else
         format.html { render :action => "edit" }
@@ -78,7 +79,7 @@ class ProjectsController < ApplicationController
    @customers = @firm.customers
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        flash[:notice] = "Project was successfully saved."
+        flash[:notice] = flash_helper("Project was successfully saved.")
         format.js
       else
         format.html { render :action => "edit" }
@@ -94,7 +95,7 @@ class ProjectsController < ApplicationController
    @project.destroy
     
     respond_to do |format|
-      flash[:notice] = 'Project was deleted.'
+      flash[:notice] = flash_helper('Project was deleted.')
       format.html { redirect_to projects_path }
       format.js
     end

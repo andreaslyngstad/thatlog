@@ -3,7 +3,7 @@ class Milestone < ActiveRecord::Base
   validates_presence_of :goal
   
   def passed
-  	Time.now > due
+  	Time.now.in_time_zone > due
   end
  
 end

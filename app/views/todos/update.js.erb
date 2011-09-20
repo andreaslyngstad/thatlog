@@ -5,4 +5,5 @@ $("#todo_<%= escape_javascript(@todo.id.to_s)%>").css("background-color", "#DBFF
 $(".open_todo_update").UIdialogs_edit_links();
 $("#dialog_todo").UIdialogs_links();
 $("#dialog_todo_form").UIdialogs();
+$("body").find(".dialog_form:last").remove();
 $(".spinning").hide();

@@ -17,16 +17,17 @@
   
  <div id="main">
 <div id="above_header">
+	<ul class="hmenu">
+	    <%= render 'devise/menu/registration_items' %>
+	    <%= render 'devise/menu/login_items' %>
+			</ul>
   Loggyit 
-   
+  
   </div>
 
 
 <div id="all_container">
-
-	
-
-<div id="main_container">
+<div id="register_container">
 	
 <%= yield %>
 </div>

@@ -1,4 +1,5 @@
 <%= javascript_include_tag "employees"%>
+<div class="log_menu">
 <div class="add_some">
        <a id="dialog_employees">Add another</a>
         <div id="dialog_employees_form" class="dialog_form" title="Create new employee" style="display:none;">  
@@ -11,8 +12,13 @@
       <% end %>
       </div>
     </div>
+    </div>
   
     <div class="listing_employees">
-      
+      <div class="info" > 
+	<div class="name_todo info_head">Name</div>
+	<div class="project_todo info_head">Phone</div>
+	<div class="user_todo info_head">Email</div>
+  </div>
       <%= render @employees %>
     </div>

@@ -1,0 +1,29 @@
+
+<div id="left">
+<%= render "home_header" %>
+  	<div class="html_tab_content" id="tabs-1"> 
+  		<div class="timesheet">
+  		<%= form_tag "/report_for" %>
+  		<ul>
+			From <%= text_field_tag 'from', time_zone_now.strftime("%m/%d/%Y"),  :class => "range_date", :style => "font-size:80%;"%>  
+			To <%= text_field_tag 'to', time_zone_now.strftime("%m/%d/%Y"), :class => "range_date", :style => "font-size:80%;"  %>
+  		<li>User</li>
+  		<li><%= select_tag :user_id, options_from_collection_for_select(@users, "id", "name"), :class => "big_select", :include_blank => 'Select User' %></li>
+  		
+  		<li>Project</li>
+  		<li><%= select_tag :project_id, options_from_collection_for_select(@projects, "id", "name"), :class => "big_select", :include_blank => 'Select Project'  %></li>
+  		<li>Customer</li>
+  		<li><%= select_tag :customer_id, options_from_collection_for_select(@customers, "id", "name"), :class => "big_select", :include_blank => 'Select Customer' %></li>
+  		
+  		 <li><%= submit_tag "Make report", :class => 'submit' %></li>
+  	</ul>
+	</div>
+	</div>
+ </div>
+    
+
+    
+   
+
+
+

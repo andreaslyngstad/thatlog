@@ -1,10 +1,12 @@
   <li class="tab_list" id="user_<%= user.id.to_s %>"> 
-    
-   <%= gravatar(user, "gravatar32") %>
+    <div class="left">
+   <%= image(user, "image32") %>
+   </div>
    <div class="tab_list_text">
     <%= link_to user.name, user_path(user) %>
     </div>
-    <span class='view-tabs-list' data-id="<%= user.id %>" data-object="user" title="View user" data-firm-id="<%= @firm.id %>"></span>
+    <%= link_to "", user_path(user), :class => 'view-tabs-list', :title => "View user" %>
+    
  
   <%= link_to(user_path(user), :confirm => "Are you sure?", :title => "Delete user", :method => :delete, :remote => true) do%>
   <span class='delete-tabs-list'></span>
@@ -13,13 +15,16 @@
  <span class='open_user_update edit-tabs-list edit' id="user_update" data-id="<%= user.id %>" data-object="user" title="Edit user"></span>
     <div class="dialog_form" id="user_update_<%= user.id %>_form" title="Update user" style="display:none;">
    		<%= form_for(user) do |f| %>
+   		<ul>
+   		
   <li><%= f.label :name %><%= f.text_field :name%> </li>
   <li><%= f.label :email %><%= f.text_field :email %></li>
   <li><%= f.label :phone %><%= f.text_field :phone %></li>
-  <li><%= f.label :password %><%= f.password_field :password %></li>
-  <li><%= f.label :password%><%= f.password_field :password_confirmation %></li>
-  <li><%= f.label :manager%><%= f.check_box :manager %></li>
-  <li><%= f.submit "Save", :class => "submit" %></li>
+   <li><%= f.label :password %><%= f.password_field :password, :class => "required", :minlength => "4" %></li>
+  <li><p><%= f.radio_button :roles, 'Admin', :checked => true %> <%= label :roles, 'Admin (can see and edit everything)' %></p>
+  		<p><%= f.radio_button :roles, 'Member' %> <%= label :roles, 'Member (can see everything and edit projects where they are members)' %></p>
+  		<p><%= f.radio_button :roles, 'External user' %> <%= label :roles, 'External user (can only see and edit projects where they are members)' %></p></li>
+  <li><%= f.submit "Save", :class => "submit" %></li></ul>
   <% end %>
     </div>
     <%= mail_to user.email,{} ,:title => "Send a email", :class => "view-mail-list"%>

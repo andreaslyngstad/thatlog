@@ -1,0 +1,60 @@
+<div id="left">
+<%= render "private/home_header" %>
+  	<div class="html_tab_content"> 
+<div class="update update_firm">
+  			<%= form_for current_firm, :url => firm_update_path, :html => {:method => :put, :multipart => true }  do |firm| %>
+  			
+  			<div class="update-form-field">
+		    <%= firm.label :Firm_name %>
+		    <%= firm.text_field :name, :class => "required form-input", :AUTOCOMPLETE => "OFF" %>
+    		</div>
+  			
+  			<div class="update-form-field">
+    		<%= firm.label :phone %>
+    		<%= firm.text_field :phone, :class => "form-input", :AUTOCOMPLETE => "OFF" %>
+    		</div>
+  			 			
+  			<div class="update-form-field">
+		    <%= firm.label :Address %>
+		    <%= firm.text_field :address, :class => "form-input", :AUTOCOMPLETE => "OFF" %>
+		    </div>
+  		
+  			<div class="update-form-field">
+		    <%= firm.label :language %>
+		    <%= firm.language_select :lang,  nil, {},  :class => "form-input" %>
+		    </div>
+  			
+  			<div class="update-form-field">
+		    <%= firm.label :currency %>
+		    <%= firm.currency_select :currency, ["US Dollar", "British Pound", "Euro", "Norwegian Kroner", "Swedish Krona"],  {},  :class => "form-input"%>
+		    </div>
+  			
+  			<div class="update-form-field">
+		    <%= firm.label :time_zone %>
+		    <%= firm.time_zone_select :time_zone,  nil, :class => "form-input", :default => "UTC"%>
+		    </div>
+  			
+  			<div class="update-form-field">
+		    <%= firm.label :logo %>
+		     <%= firm.file_field :logo %>		    
+		   </div>
+		  	<div class="update-form-field">
+		    <%= firm.label :background %>
+		    <%= firm.text_field :background, :class => "form-input background_style", :AUTOCOMPLETE => "OFF"%>
+		    
+		   	<div class="background_style_color"></div>
+		    </div>
+		  	<div class="update-form-field">
+		    <%= firm.label :Text %>
+		    <%= firm.text_field :color, :class => "form-input text_style", :AUTOCOMPLETE => "OFF"%>
+		    <div class="text_style_color"></div>
+		    </div>
+  			
+
+  <%= firm.submit "Save", :class => "submit" %>
+  
+  
+<% end %>
+</div>
+</div>
+</div>

@@ -1,104 +1,65 @@
+$(".flash_notice").empty();
 <% if @log.nil? %>
-  $(".new_log").find("select.big_select").selectmenu("destroy");
-  $("#new_log_todo_id").empty();
-  $("#new_log_customer_id").empty();
-  $("#new_log_employee_id").empty();
-  <% if !@project.nil? %>
-  <% if !@project.customer.nil? %>
- 
-    $("#new_log_customer_id").append("<option selected='selected' value='" + "<%= escape_javascript(@project.customer.id.to_s) %>" + "'>" + "<%= escape_javascript(@project.customer.name) %>" + "</option>");
-              <% if !@project.customer.employees.empty? %> 
-                $("#new_log_employee_id").append("<option value=''>Select a employee</option>");
-                <% @project.customer.employees.each do |employees| %>
-                  $("#new_log_employee_id").append("<option value='" + "<%= escape_javascript(employees.id.to_s) %>" + "'>" + "<%= escape_javascript(employees.name) %>" + "</option>");
-                <% end %>
-               <% else %>
-               $("#new_log_employee_id").append("<option value=''>No employees</option>");
-              <% end %>  
-   <% else %>
-     $("#new_log_customer_id").append("<option value=''>" + "Select a customer" + "</option>");
-     $("#new_log_employee_id").append("<option value=''>Select a customer</option>");
-    <% @customers.each do |customer| %>
-    $("#new_log_customer_id").append("<option value='" + "<%= escape_javascript(customer.id.to_s) %>" + "'>" + "<%= escape_javascript(customer.name) %>" + "</option>");
-     <% end %>
-    <% end %>
-          <% if @todos.is_a? String %>
-            $("#new_log_todo_id").append("<option value=''>" + "<%= escape_javascript(@todos) %>" + "</option>");
-          <% else %>
-          <% if @todos.empty? %>
-			  $("#new_log_todo_id").append("<option value=''>No tasks</option>");
-			  <% else %>
-            $("#new_log_todo_id").append("<option value=''>Select a task</option>");
-            <% @todos.each do |todo| %>
-              $("#new_log_todo_id").append("<option value='" + "<%= escape_javascript(todo.id.to_s) %>" + "'>" + "<%= escape_javascript(todo.name) %>" + "</option>");
-            <% end %>
-            <% end %>
-          <% end %>
-  
-  <% else %>
-  $("#new_log_todo_id").append("<option value=''>Select a project</option>");
-  $("#new_log_customer_id").append("<option value=''>" + "Select a customer" + "</option>");
-  <% @customers.each do |customer| %>
-    $("#new_log_customer_id").append("<option value='" + "<%= escape_javascript(customer.id.to_s) %>" + "'>" + "<%= escape_javascript(customer.name) %>" + "</option>");
-     <% end %>
-   $("#new_log_employee_id").append("<option value=''>Select a customer</option>");  
-  <% end %>
-  $(".new_log").find("select.big_select").selectmenu({width:369});
-  
-  
-  
-  
+<% if @tracking.nil? %>
+var customer = $("#new_log_customer_id")
+var employee = $("#new_log_employee_id")
+var todo 	 = $("#new_log_todo_id")
+var form	 = $(".new_log")	
+<% else %>	
+var customer = $("#log_customer_id_")
+var employee = $("#log_employee_id_")
+var todo 	 = $("#log_todo_id_")
+var form	 = $("#start_tracking_form")
+<% end %>	
 <% else %>
-  $("#edit_log_<%= escape_javascript(@log.id.to_s) %>").find("select.big_select").selectmenu("destroy");
-  $("#log_todo_id_<%= escape_javascript(@log.id.to_s) %>").empty();
-  $("#log_customer_id_<%= escape_javascript(@log.id.to_s) %>").empty();
-  $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").empty();
+var form	 = $("#log_update_<%= escape_javascript(@log.id.to_s) %>_form")
+var customer = $("#log_customer_id_<%= escape_javascript(@log.id.to_s)%>")
+var employee = $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>")
+var todo 	 = $("#log_todo_id_<%= escape_javascript(@log.id.to_s) %>")
+<% end %>  
+  form.find(".big_select").selectmenu("destroy");
+  form.find(".small_selector").selectmenu("destroy");
+  todo.empty();
+  customer.empty();
+  employee.empty();
   <% if !@project.nil? %>
-      <% if !@project.customer.nil? %>
-            
-            $("#log_customer_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value='" + "<%= escape_javascript(@project.customer.id.to_s) %>" + "'>" + "<%= escape_javascript(@project.customer.name) %>" + "</option>");
-            
+      <% if !@project.customer.nil? %>  
+          customer.append("<option value='" + "<%= escape_javascript(@project.customer.id.to_s) %>" + "'>" + "<%= escape_javascript(@project.customer.name) %>" + "</option>");
             <% if @project.customer.employees.empty? %>
-                $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>No employees</option>");
+                employee.append("<option value=''>No employees</option>");
             <% else %>
-              $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>Select a employee</option>");
+              employee.append("<option value=''>Select a employee</option>");
               <% @project.customer.employees.each do |employees| %>
-                $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value='" + "<%= escape_javascript(employees.id.to_s) %>" + "'>" + "<%= escape_javascript(employees.name) %>" + "</option>");
-              <% end %>
+              employee.append("<option value='" + "<%= escape_javascript(employees.id.to_s) %>" + "'>" + "<%= escape_javascript(employees.name) %>" + "</option>");
             <% end %>
-        <% else %>
-        
-         $("#log_customer_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>" + "None" + "</option>");
-         $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>Select a customer</option>");
-        <% @customers.each do |customer| %>
-        $("#log_customer_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value='" + "<%= escape_javascript(customer.id.to_s) %>" + "'>" + "<%= escape_javascript(customer.name) %>" + "</option>");
-         <% end %>
-         
-        <% end %>
-      
+       <% end %>
+  <% else %>
+	 customer.append("<option value=''>" + "None" + "</option>");
+	 employee.append("<option value=''>Select a customer</option>");
+		<% @customers.each do |customer| %>
+	   		customer.append("<option value='" + "<%= escape_javascript(customer.id.to_s) %>" + "'>" + "<%= escape_javascript(customer.name) %>" + "</option>");
+	 	<% end %>
+ <% end %>  
       <% if @todos.is_a? String %>
-        $("#log_todo_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>" + "<%= escape_javascript(@todos) %>" + "</option>");
+        todo.append("<option value='' SELECTED>" + "<%= escape_javascript(@todos) %>" + "</option>");
       <% else %>
-      <% if @todos.empty? %>
-			  $("#log_todo_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>No tasks</option>");
-			  <% else %>
-        $("#log_todo_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>none</option>");
-        <% @todos.each do |todo| %>
-          $("#log_todo_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value='" + "<%= escape_javascript(todo.id.to_s) %>" + "'>" + "<%= escape_javascript(todo.name) %>" + "</option>");
-         <% end %>
-         <% end %>
+      	<% if @todos.empty? %>
+			  todo.append("<option value='' SELECTED>No tasks</option>");
+		<% else %>
+        	todo.append("<option value='' SELECTED >none</option>");
+        	<% @todos.each do |todo| %>
+          	todo.append("<option value='" + "<%= escape_javascript(todo.id.to_s) %>" + "'>" + "<%= escape_javascript(todo.name) %>" + "</option>");
+        <% end %>
+      	<% end %>
       <% end %>
   <% else %>
-    $("#log_todo_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>Select a project</option>");
-    $("#log_customer_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>" + "None" + "</option>");
+    todo.append("<option value=''>Select a project</option>");
+    customer.append("<option value=''>" + "None" + "</option>");
     <% @customers.each do |customer| %>
-      $("#log_customer_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value='" + "<%= escape_javascript(customer.id.to_s) %>" + "'>" + "<%= escape_javascript(customer.name) %>" + "</option>");
+      customer.append("<option value='" + "<%= escape_javascript(customer.id.to_s) %>" + "'>" + "<%= escape_javascript(customer.name) %>" + "</option>");
        <% end %>
-     $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>").append("<option value=''>Select a customer</option>");  
+     employee.append("<option value=''>Select a customer</option>");  
   <% end %>
-   $("#edit_log_<%= escape_javascript(@log.id.to_s) %>").find("select.small_selector").selectmenu({width:200});
-  $("#edit_log_<%= escape_javascript(@log.id.to_s) %>").find("select.big_select").selectmenu({width:369});
-  
-<% end %>
-
+  form.find(".big_select").selectmenu({width:369});
+   form.find(".small_selector").selectmenu({width:200});
 $(".spinning").hide();

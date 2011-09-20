@@ -1,14 +1,87 @@
 
-<div id="main_container">
-<div id="home_left">
-  Show tasks for 
+<div id="left">
+<%= render "home_header" %>
+  	<div class="html_tab_content" id="tabs-1"> 
+  		<div class="report_top">
+  			
+  			<% if @log_week.empty?  %>
+  		
+  			<div class="statistics_head">
+  			No hours is logged this week</div>
+  			<% else %>
+  			<div class="statistics_head">
+  			Total hours this week</div>
+  			<% @log_week.each do |date, hours|%>
+  			
+  			<div class="statistics_unit white">
+  					<%= date.to_time.strftime('%A') %><br/><%= time_diff(hours) %>
+  					
+  			</div>
+  			<% end %>
+  			<% end %>
+  		</div>
+  		<div class="report_middle">
+  			<% if @logs_project.empty?  %>
+  			<br/>
+  			
+  			<% else %>
+  			<div class="statistics_head">
+  			Hours for projects this week</div>
+  			<% @logs_project.each do |project, hours| %>
+  			<%= link_to(project_path(project)) do %>
+			<div class="statistics_unit white">
+  					<%= time_diff(hours) %><br/><span class="unit"><%= project.name%></span>
+  			</div>
+  			<% end %>
+  			<% end %>
+  			<% end %>
+  			
+  			
+  			
+  		</div>
+  		<div class="report_bottom">
+  			<% if @logs_customer.empty?  %>
+  			
+  			<% else %>
+  			<div class="statistics_head">
+  			Work for customers this week</div>
+  			
+  			<% @logs_customer.each do |customer, hours| %> 
+  			<%= link_to(customer_path(customer)) do %>  
+  			<div class="statistics_unit white">
+  					<%= time_diff(hours) %><br/><span class="unit"><%= customer.name%></span>
+  					
+  				</div>
+  			<% end %>
+  			<% end %>
+  			<% end %>
+  		</div>
+  		<div class="report_bottom">
+  			<% if @logs_customer.empty?  %>
+  			
+  			<% else %>
+  			<div class="statistics_head">
+  			Hours for each user this week</div>
+  			
+  			<% @logs_user.each do |user, hours| %> 
+  			<%= link_to(user_path(user)) do%>
+  			<div class="statistics_unit white">
+  				<%= time_diff(hours) %><br/><span class="unit"><%= user.name%></span>
+  					
+  				</div>
+  			<% end %>
+  			<% end %>
+  			<% end %>
+  		</div>
+  		
+  		
 
- <%= select(:user, :id, @users.map {|user| [user.name, user.id]}, {:prompt => "All users"}, :class => "small_selector")%>
-  <%= render "private/projects_and_todos" %>
+  	</div>
+  	
+ </div>
 
-</div>
-<div id="center">
-  
-    </div>
+
+    
+   
 
 

@@ -1,30 +1,18 @@
-<div id="above_header">
-  Loggyit 
-   <% if current_user %>
-  <%= "for" + " " + current_user.firm.name %> 
+
+<div id="header" style="background-color:<%= current_firm.background ? current_firm.background : "black"%> ; color: <%= current_firm.color ? current_firm.color : "white"%>; ">
+	<div class="common_header">
+	<div id="firm_logo_view">
+		<% if !current_firm.logo_file_name.nil? %>
+		<%= image_tag current_firm.logo.url( :original)%>
+		<% end %>
+	</div>
+	<div id="user_info_header">
+	  <%= current_firm.name %><br /> 
+	 <span style="font-size:12px;"> <%= current_user.name %>
+	  <%= Time.now.strftime('%d.%m.%y')%>|<span class="jclock"></span></span> 
+	</div>
  
-  <%= "logged in as" + " " + current_user.name %> 
-	<%= gravatar(current_user, "gravatar32") %>
-  <%end%>
+   
   </div>
-<div id="header">
-  <%= Time.now.strftime('%d.%m.%y')%>|<span class="jclock"></span>
-	<span class="spinning" style="display:none;"></span>
-	<span class="flash_notice" style="color: #87E32B;"><%= flash[:notice] %></span>
-	<span class="flash_notice" style="color: red;"><%= flash[:error] %></span>
-  <div id="user_nav">
-  
-    <% if current_user %>
-    <%= link_to "Statistics", statistics_path(:subdomain => current_firm.name)%> |
-    <%= link_to "Projects", projects_path(:subdomain => current_user.firm.name)%> |
-    <%= link_to "Logs", logs_path(:subdomain => current_user.firm.name)%> |
-      <%= link_to "Customers", customers_path %> |
-      <%= link_to "Users", users_path(:subdomain => current_user.firm.name) %> |
-      <%= link_to "Sign out", destroy_user_session_path%>
-    <% else %>
-      <%= link_to "Register", new_user_registration_path %> |
-      <%= link_to "Sign in", new_user_session_path %>
-    <% end %>
-    <div class="link_text"></div>
-  </div>
+
 </div>

@@ -1,15 +1,45 @@
-<ul class="form_layout">
+<div class="update update_firm">
+  			<%= form_for  @firm, :url => firm_update_path, :html => {:method => :put}  do |firm| %>
+  			
+  			<div class="signup-form-field">
+		    <%= firm.label :Firm_name %>
+		    <%= firm.text_field :name, :class => "required form-input", :AUTOCOMPLETE => "OFF" %>
+    		</div>
+  			
+  			<div class="signup-form-field">
+    		<%= firm.label :phone %>
+    		<%= firm.text_field :phone, :class => "form-input", :AUTOCOMPLETE => "OFF" %>
+    		</div>
+  			
+  			<div class="signup-form-field">
+		    <%= firm.label :phone %>
+		    <%= firm.text_field :phone, :class => "form-input", :AUTOCOMPLETE => "OFF" %>
+		    </div>
+  			
+  			<div class="signup-form-field">
+		    <%= firm.label :Address %>
+		    <%= firm.text_field :address, :class => "form-input", :AUTOCOMPLETE => "OFF" %>
+		    </div>
+  		
+  			<div class="signup-form-field">
+		    <%= firm.label :language %>
+		    <%= firm.language_select :lang,  nil, {},  :class => "form-input" %>
+		    </div>
+  			
+  			<div class="signup-form-field">
+		    <%= firm.label :currency %>
+		    <%= firm.currency_select :currency, ["US Dollar", "British Pound", "Euro", "Norwegian Kroner", "Swedish Krona"],  {},  :class => "form-input"%>
+		    </div>
+  			
+  			<div class="signup-form-field">
+		    <%= firm.label :time_zone %>
+		    <%= firm.time_zone_select :time_zone,  nil, :class => "form-input", :default => "UTC"%>
+		    </div>
+		  
+  		
+
+  <%= firm.submit "Save", :class => "submit" %>
   
-<%= form_for @firm do |f| %>
-  <% @firm.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
- 
-  <li>
-    <%= f.label :Name %>
-    <%= f.text_field :name %>
-  </li>
-  <br />
-  <li><%= f.submit "Register" %></li>
+  
 <% end %>
-</ul>
+</div>

@@ -1,16 +1,31 @@
-<div class="list_header">
-	
-	<a class="back_button" data-object="project" data-firm-id="<%= current_firm.id %>">Back</a>
-		<%=h @project.name %> <% if !@project.customer.nil? %> linked to<%= @project.customer.name %><% end %>
+<div id="left">
+	<div class="inner" style="left: -980px">
+		  <div class="index-view">
+	  	<div class="list_header orange_bgr">
+		
+		
+		Loading....
+		</div>
+  </div>
+<div class="show-view">
+<div class="list_header orange_bgr">
+	<%= link_to "Back", projects_path, :class => "back_button" %>
+	<%= @project.name %>
 </div>
 <div id="description">
 	<%= @project.description %>
 </div>
 <div id="charts">	
-	
+	<div class="statistics_unit white">
+		Total hours
+  					<%= time_diff(@hours) %>
+  			</div>
 	<div id="todos_chart">
-		
-	<%= done_not_done(@done_todos, @not_done_todos) %>
+		<div class="statistics_unit tasks white">
+			Task done
+			<% if !@project.todos.blank? %>
+	<%= done_not_done(@done_todos, @not_done_todos) %></div>
+	<% end %>
 	</div>
 	<div id="milestones_chart">
 		<p>Milestones</p> 
@@ -28,13 +43,14 @@
 	
 </div>  
   <div id="tabs">
-    <ul>
+    <ul class="tabsul">
     <li><a href="#tabs-1">Tasks</a></li>
     <li><a href="#tabs-2">Milestones</a></li>
     <li><a href="/get_logs_project/<%= @project.id %>">Logs<span>&nbsp;</span></a></li>
     <li><a href="/get_users_project/<%= @project.id %>">Users<span>&nbsp;</span></a></li>
     </ul>
     <div id="tabs-1">
+    	<div class="log_menu">
   <span class="add_some">  
     <a id="dialog_task">Add another</a>
    
@@ -44,8 +60,8 @@
         <%= f.hidden_field :firm_id, :value => current_firm.id%>
           <li><%= f.label :name %><%= f.text_field :name %></li>
           <li><%= f.label :user_id %>
-            <select id="todo_user_id" class="selector" name="todo[user_id]"><option value=""></option>
-              <%for user in @project.users do %>
+            <select id="todo_user_id" class="selector" name="todo[user_id]"><option value="">Select user</option>
+              <%for user in @users do %>
               <option value="<%=user.id.to_i%>"
               <%if user == current_user%>selected="<%=current_user.id.to_i%><%end%>">
               <%= user.name %></option>
@@ -61,14 +77,22 @@
       <% end %>
     </div>
   </span>
-   
+   </div>
   <div id="todos_list">
-   
+   <div class="info" > 
+	<div class="name_todo info_head">Task</div>
+	<div class="project_todo info_head">Project</div>
+	<div class="user_todo info_head">Assigned to</div>
+	
+	
+  <div class="date_all info_head">Due</div>
+  </div>
     <div id="not_done_tasks">
     <%= render :partial => @not_done_todos %>
     </div>
     <br/>
     <div id="done_tasks">
+    	<div class=" info_head">Done</div>
       <%= render :partial => @done_todos %>
     </div> 
   </div>
@@ -77,6 +101,7 @@
   
     
   <div id="tabs-2">
+  	<div class="log_menu">
     <span class="add_some">
       <a id="dialog_milestone">Add another</a>
       
@@ -90,7 +115,14 @@
        <% end %>
     </div>
   </span>
+  </div>
     <div id="listing_milestones">
+    	<div class="info" >   
+  
+  <div class="name_milestone info_head">Goal</div>
+  <div class="date_all info_head">Due</div>
+  
+  </div>
    <%= render :partial => @project.milestones.order("due ASC")   %>
      
     </div>
@@ -104,6 +136,9 @@
   <div id="tabs-4">
 
   </div> 
+</div>  
+</div>  
+</div>  
 </div>  
     
     

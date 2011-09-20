@@ -1,0 +1,34 @@
+
+<div id="left">
+<%= render "home_header" %>
+
+  		<div class="firm_account">
+  			<ul>
+				<li><span class="preference_label">Sercure site:</span><%= @firm.name %></li>
+				<li><span class="preference_label">Memeber since:</span><%= @firm.created_at %></li>
+				<li><span class="preference_label">Plan:</span><%= @firm.phone %></li>
+				
+			</ul>
+  			<%= link_to "Upgrade plan", upgrade_path, :class => "submit"%>
+  			</div>
+  			<div class="firm_preferences">
+  			<ul>
+				<li><span class="preference_label">Name:</span><%= @firm.name %></span></li>
+				<li><span class="preference_label">Subdomain:</span><%= @firm.subdomain %></li>
+				<li><span class="preference_label">Phone:</span><%= @firm.phone %></li>
+				<li><span class="preference_label">Address:</span><%= @firm.address %></li>
+				<li><span class="preference_label">Language:</span><%= @firm.lang %></li>
+				<li><span class="preference_label">Currency:</span><%= @firm.currency %></li>
+				<li><span class="preference_label">Time zone:</span><%= @firm.time_zone %></li>
+				<li><span class="preference_label">Logo:</span><%=  @firm.logo_file_name ?  image_tag(@firm.logo.url( :original)) : ""%></li>    
+				<li><span class="preference_label">Background color:</span><span style="display: inline-block;width:100px;"><%= @firm.background %></span><div class="text_style_color" style="background-color:<%= @firm.background %>"></div></li>
+				<li><span class="preference_label">Text color:</span><span style="display: inline-block;width:100px;"><%= @firm.color %></span><div class="text_style_color" style="background-color:<%= @firm.color %>"></div></li>
+
+			</ul>
+			
+			<%= link_to "Edit preferences", firm_edit_path, :class => "submit"%>
+		   </div>
+  	
+  	
+ </div>
+

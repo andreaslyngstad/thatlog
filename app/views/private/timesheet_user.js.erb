@@ -1,0 +1,5 @@
+$(".flash_notice").empty()
+$(".timesheet").replaceWith("<%= escape_javascript(render "timesheet") %>")
+$(".small_selector").selectmenu({width:200});
+$("select#timeheet_user_select").timeheet_user_select();
+$(".spinning").hide();

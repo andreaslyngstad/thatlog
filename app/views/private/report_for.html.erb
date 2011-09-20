@@ -1,0 +1,52 @@
+<div id="left">
+<%= render "home_header" %>
+  	<div class="html_tab_content" id="tabs-1"> 
+  		
+<table>
+<tr>
+<th>Header 1</th>
+<th>Header 2</th>
+</tr>
+<tr>
+<td>row 1, cell 1</td>
+<td>row 1, cell 2</td>
+</tr>
+<tr>
+<td>row 2, cell 1</td>
+<td>row 2, cell 2</td>
+</tr>
+</table>
+  		<% if !@user.nil? %>
+  		<div class="statistics_unit white">
+  		<%= @user.name %>
+  			</div>
+  			
+  			
+  			<% @logs_hours_by_project.each do |log,date| %>
+  				<div class="statistics_unit white">
+  					
+  			
+  					<%= log.project.name %><br/>
+  				
+  				
+  					<%= log.date %>
+  					<%= time_diff(log.hours) %>
+  					
+  			</div>
+  				
+  			
+  			<% end %>
+  		
+		<% end %> 	
+  		<% if !@project.nil? %>
+  		<% @project.logs.each do |log|%>
+		<%= time_diff(log.hours)  %>
+		<% end %>  	
+		<% end %> 	
+  		<% if !@customer.nil? %>
+  		<% @customer.logs.each do |log|%>
+		<%= time_diff(log.hours) %>
+		<% end %>  	
+		<% end %> 	
+	</div>
+ </div>

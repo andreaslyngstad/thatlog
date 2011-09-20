@@ -1,0 +1,64 @@
+
+    <div class="tracking_select" style="display: none;">
+	<div id="tracking_project_task">
+    <%= n.label :project %>
+         <select class="small_selector" id="log_project_id" log="<%= log.id %>" name="log[project_id]">
+           <option value="" data-customer="">None</option>
+           <% @all_projects.each do |project| %>
+                <% if project == log.project  %>
+                  <option value="<%= project.id %>" selected="selected"><%= truncate_string(project.name) %></option>
+                <% else %>
+                  <option value="<%= project.id %>"><%= truncate_string(project.name) %></option>
+                  <% end %>
+                 <% end %>
+          </select>
+          <div><%= n.label :Task %>
+          <select class="small_selector" id="log_todo_id_<%= log.id %>" name="log[todo_id]">
+              <% if log.project.nil? %>
+          <option value="" id="value">Select a project</option>
+          <%else%>
+          <option value>none</option>
+          <% log.project.todos.each do |todo| %>
+          <% if todo == log.todo %>
+          <option value="<%= todo.id %>" selected="selected"><%=truncate_string(todo.name)%></option>
+          <%else%>
+          <option value="<%= todo.id %>"><%= truncate_string(todo.name)%></option>
+          <% end %>
+          <% end %>
+          <% end %>
+          </select>
+                      <% if !log.todo.nil? %>
+            <% if log.todo.completed == true %>
+            <%= n.label :done?%><%= check_box_tag "done", 1 ,true, {:style => "margin:13px 0 0 7px"} %>
+            <% else %>
+            <%= n.label :done?%><%= check_box_tag "done", 1, false, {:style => "margin:13px 0 0 7px"}  %>
+            <% end %>
+            <% else %>
+            <%= n.label :done?%><%= check_box_tag "done", 1, false, {:style => "margin:13px 0 0 7px"}  %>
+            <% end %>
+           </div> </div>
+           <div id="tracking_customer_employee">
+          <%= n.label :customer %>
+          	<%= n.select(:customer_id, @customers.map {|customer| [truncate_string(customer.name), customer.id]},
+          	{ :include_blank => "None"}, :class => "small_selector", :id => "log_customer_id_#{log.id}", :log => "#{log.id}" )%>
+       <%= n.label :employee %>
+       <select class="small_selector" id="log_employee_id_<%= log.id %>" name="log[employee_id]">
+            
+            <% if !log.customer.nil? %>
+             <option value>none</option>
+            <% log.customer.employees.each do |employee| %>
+              <% if employee == log.employee %>
+          <option value="<%= employee.id %>" selected="selected"><%=truncate_string(employee.name)%></option>
+          <%else%>
+          <option value="<%= employee.id %>"><%= truncate_string(employee.name)%></option>
+          <% end %>
+            <% end %>
+            <%else%>
+            <option value="">Select a customer</option>
+            <% end %>
+        </select>
+    
+     
+      </div>
+      </div>
+     

@@ -41,11 +41,11 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(params[:todo])
     @project = @todo.project
-    @firm = @todo.project.firm
+    @firm = current_firm
     @todo.completed = false
     respond_to do |format|
       if @todo.save
-        flash[:notice] = 'Todo was successfully created.'
+        flash[:notice] = flash_helper('Todo was successfully created.')
         format.html { redirect_to(project_path(@project)) }
         format.xml  { render :xml => @todo, :status => :created, :location => @todo }
         format.js
@@ -66,7 +66,7 @@ class TodosController < ApplicationController
     @project = @todo.project
     respond_to do |format|
       if @todo.update_attributes(params[:todo])
-        flash[:notice] = 'Todo was successfully updated.'
+        flash[:notice] = flash_helper('Todo was successfully updated.')
         format.html { redirect_to(@todo) }
         format.xml  { head :ok }
         format.js
@@ -85,9 +85,9 @@ class TodosController < ApplicationController
     @todo.destroy
     @project = @todo.project
     @firm = @todo.project.firm
-    flash[:notice] = 'Todo was successfully deleted.'
+    flash[:notice] = flash_helper('Todo was successfully deleted.')
     respond_to do |format|
-      format.html { redirect_to(firm_project_path(@firm, @project), :notice => 'Todo was successfully deleted.') }  
+      format.html { redirect_to(firm_project_path(@firm, @project)) }  
       format.js
     end
   end

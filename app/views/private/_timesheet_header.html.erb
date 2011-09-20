@@ -1,0 +1,81 @@
+<div class="log_menu">
+   
+   <div class="add_some_timesheet">
+       Timesheet for <%= @user.name %> 
+        </div>
+       <div class="add_some_timesheet_buttons">
+       <a id="dialog_log">Log more hours</a> 
+       <%= select_tag :user_id, options_from_collection_for_select(@users, "id", "name"), :class => "small_selector", 
+  		:id => "timeheet_user_select", :data_url => url_splitter(request.fullpath),:include_blank => 'Select User' %>
+  		</div>
+  		
+      
+  		
+      <div id="dialog_log_form" class="dialog_form" title="Create new log" style="display:none;">
+      
+      <%= form_for(Log.new, :url => add_log_timesheet_path ) do |l| %>
+    
+      	<%= l.hidden_field :user_id, :value => @user.id %>
+      
+        <li><%= l.label :log %><%= l.text_field(:event, :class => "required", :minlength => "2", :AUTOCOMPLETE => "OFF") %></li>
+        <li><div class="date_on_log"><%= l.label :date %><%= l.text_field(:log_date, :value => time_zone_now.strftime("%m/%d/%Y"), :class => "date", :id => "log_date_new") %></div></li>
+        <li style="margin-bottom: 0px;"><%= l.label :from %><%= l.label :to, :style => "margin-left: 30px;" %></li>
+        <li><%= l.text_field(:begin_time, :value => time_zone_now.strftime("%H:%M"), :class => "log_times required clock", :id => "log_times_from_") %>
+        <%= l.text_field(:end_time, :value => time_zone_now.strftime("%H:%M"), :class => "log_times required clock", :id => "log_times_to_") %></li>
+        <li class="slider_range" log=""></li>
+        <% if url_splitter(request.fullpath) == "get_logs_project"%>
+        <li><%= l.label :project %>
+         <select class="big_select" id="log_project_id" log="" name="log[project_id]">
+           <option value="<%= @project.id.to_s %>"><%= truncate_string(@project.name) %></option>
+          </select></li>
+          <li><%= l.label :Task %><%= l.label :done?, :style => "margin-left: 255px;" %><%= check_box_tag "done"%>
+            <select class="big_select" id="new_log_todo_id" name="log[todo_id]">
+            	<option value="">None</option>
+              <% @todos.each do |todo| %>
+                  <option value="<%= todo.id %>"><%= truncate_string(todo.name) %></option>
+                  <% end %>
+          </select></li>
+        <% else %>
+        <li><%= l.label :project %>
+         <select class="big_select" id="log_project_id" log="" name="log[project_id]">
+           <option value="">None</option>
+           <% @all_projects.each do |project| %>
+                  <option value="<%= project.id %>"><%= truncate_string(project.name) %></option>
+                  <% end %>
+          </select></li>
+          
+          <li><%= l.label :Task %><%= l.label :done?, :style => "margin-left: 255px;" %><%= check_box_tag "done"%>
+            <select class="big_select" id="new_log_todo_id" name="log[todo_id]">
+              <option value="" id="value">Select a project</option>
+          </select></li>
+          <% end %>
+           <% if url_splitter(request.fullpath) == "get_logs"%>
+            <li><%= l.label :customer %>
+            <select class="big_select" id="new_log_customer_id" log="" name="log[customer_id]">
+               <option value="<%= @customer.id.to_s %>"><%= truncate_string(@customer.name) %></option>
+            </select></li>
+       <li><%= l.label :employee %>
+            <select class="big_select" id="new_log_employee_id" name="log[employee_id]">
+            	<option value="">None</option>
+            	<% @employees.each do |todo| %>
+                  <option value="<%= todo.id %>"><%= truncate_string(todo.name) %></option>
+                  <% end %>
+            </select></li>
+           <% else %>
+          <li><%= l.label :customer %>
+            <select class="big_select" id="new_log_customer_id" log="" name="log[customer_id]">
+              <option value="">None</option>
+              <% @customers.each do |customer| %>
+              <option value="<%= customer.id %>"><%= truncate_string(customer.name) %></option>
+              <% end %>
+            </select></li>
+       <li><%= l.label :employee %>
+            <select class="big_select" id="new_log_employee_id" name="log[employee_id]">
+                    <option value="">Select a customer</option>
+            </select></li>
+            <% end %>
+      <li><%= l.submit "Save", :class => "submit" %></li>
+    <% end %>
+   </div>  
+  
+</div>

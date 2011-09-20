@@ -1,13 +1,12 @@
 class UsersController < ApplicationController 
-  set_tab :users	
-  load_and_authorize_resource :firm
-  load_and_authorize_resource :user
   
+  set_tab :users
+  skip_before_filter :authenticate_user!, :only => [:valid]
   
   # GET /users
   # GET /users.xml
   def index
-  	 @firm = current_firm
+  	@firm = current_firm
     @users = @firm.users.all
     @user = User.new
    
@@ -18,8 +17,8 @@ class UsersController < ApplicationController
   def show
   	 @firm = current_firm
     @user = User.find(params[:id])
-    @done_todos = @user.todos.where(["completed = ?", true]).includes(:project)
-    @not_done_todos = @user.todos.where(["completed = ?", false]).includes(:project)
+    @done_todos = @user.todos.where(["completed = ?", true]).includes(:project, :user)
+    @not_done_todos = @user.todos.where(["completed = ?", false]).includes(:project, :user)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -40,8 +39,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    
-    @users = @firm.users.all
+    @firm = current_firm
+    @user = current_user
   end
 
   # POST /users
@@ -49,13 +48,13 @@ class UsersController < ApplicationController
   
     def create
       @user = User.new(params[:user])
-      @user.firm = @firm
-      @users = @firm.users
+      @user.firm = current_firm
+      @users = current_firm.users
       @model = "user"
       @model_instanse = @user
        respond_to do |format|
         if @user.save
-          flash[:notice] = "Registration successful."
+          flash[:notice] = flash_helper("Registration successful.")
           format.html {redirect_to(users_path())}
           format.js
         else
@@ -67,16 +66,21 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-     @users = @firm.users.all
+     @users = current_firm.users.all
      @user = User.find(params[:id])
-     @user.firm = @firm
+     @model = "user"
+     @model_instanse = @user
+      
       respond_to do |format|
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated profile."
-      format.html { redirect_to(users_path())}
+      flash[:notice] = flash_helper("Successfully updated profile.")
+      format.html { redirect_to(user_path(@user))}
       format.js
     else
-      render :action => 'edit'
+    	
+      format.js { render "shared/validate_update" }
+      flash[:notice] = flash_helper("something went wrong #{@user.errors}")
+      format.html { redirect_to(edit_user_path(@user))}
     end
     end
   end
@@ -87,12 +91,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
      respond_to do |format|
     if @user == current_user
-    flash[:notice] = "You are logged in as #{@user.name}. You cannot delete your self."
+    flash[:notice] = flash_helper("You are logged in as #{@user.name}. You cannot delete your self.")
       format.html{ redirect_to(users_path())}
       format.js
     else
     @user.destroy
-   		flash[:notice] = "#{@user.name} was deleted."
+   		flash[:notice] = flash_helper("#{@user.name} was deleted.")
       format.html { redirect_to(users_url()) }
       format.xml  { head :ok }
       format.js
@@ -100,6 +104,15 @@ class UsersController < ApplicationController
     end
   end
   
-
+  def valid 
+  	token_user = User.valid_token?(params)
+    if token_user
+      sign_in(:user, token_user)
+      flash[:notice] = flash_helper("You have been logged in")
+    else
+      flash[:alert] = "Login could not be validated"
+    end
+    redirect_to account_path
+  end
   
 end

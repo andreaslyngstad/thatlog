@@ -11,4 +11,7 @@ module UrlHelper
     end
     super
   end
+  def set_mailer_url_options
+    ActionMailer::Base.default_url_options[:host] = with_subdomain(request.subdomains.first)
+  end
 end

@@ -5,4 +5,5 @@ $("#milestone_<%= escape_javascript(@milestone.id.to_s)%>").css("background-colo
 $(".open_milestone_update").UIdialogs_edit_links();
 $("#dialog_milestone").UIdialogs_links();
 $("#dialog_milestone_form").UIdialogs();
+$("body").find(".dialog_form:last").remove();
 $(".spinning").hide();

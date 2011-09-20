@@ -5,7 +5,7 @@ class Ability
      user ||= User.new
      
      if user.manager?
-       can :read, Firm
+       can :manage, Firm
         can :manage, User, :firm => {:id => user.firm_id}
         can :manage, Customer, :firm => {:id => user.firm_id}
         can :manage, Project, :firm => {:id => user.firm_id}

@@ -1,9 +1,9 @@
 (function($) {
   jQuery.fn.stopwatchEdit = function() {
+  	 $(".tracking_form").submitWithAjax();
     var clock = $(this);
     var timer = 0;
     var logform = $(".log_form")
-    var logformrec = $(".log_form_rec")
     var tracking_select = $(".tracking_select")
     
     clock.addClass('stopwatch');
@@ -20,21 +20,20 @@
     var s = clock.find('.sec');
     var start = logform.find('.start');
     var stop = logform.find('.stop');
-    var reset = clock.find('.reset')
+   
     
     
     timer = setInterval(do_time, 1000);
     stop.hide();
     //logformrec.hide();
-
+	
     start.bind('click', function() {
-      
       logform.removeClass('blue').addClass('red');
       tracking_select.removeClass('blue').addClass('red');
-      start.hide();
-      stop.show();
-      
+      $(this).removeClass("start").addClass("stop");
+           
     });
+   
     
     stop.bind('click', function() {
       clearInterval(timer);
@@ -50,15 +49,7 @@
       
     });
     
-    reset.bind('click', function() {
-      clearInterval(timer);
-      timer = 0;
-      h.html("00");
-      m.html("00");
-      s.html("00");
-      stop.hide();
-      start.show();
-    });
+    
     
     function do_time() {
       // parseInt() doesn't work here...

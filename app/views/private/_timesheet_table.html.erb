@@ -1,0 +1,56 @@
+<table class="timesheet_table">
+<tr>
+	<th class="timesheet_day"></th>
+	<% @dates.each do |date|%>
+		<th class="timesheet_day"><%= link_to date.strftime('%a %d.%m'), timesheet_logs_day_path(@user, (date))  %></th>
+	<% end %>
+	<th class="timesheet_day">Total</th>
+		
+</tr>
+<% for project in @projects do %>
+<% if project_week_log_hour_total(@log_project, project) != "<span style='color:grey;'>0:00</span>" %>
+<tr>
+	
+	<td class="timesheet_project"><%= project.name %></td>
+	
+	<% @dates.each do |date| %>
+	
+			<td class="number">
+			
+				<%= every_day_log_hour(@log_week_project, date, project)%>
+				
+			</td>
+		<% end %>
+	<td><%= project_week_log_hour_total(@log_project, project) %></td>
+	
+</tr>
+<% end %>
+<% end %>
+<tr>
+	<td class="timesheet_project">No project</td>
+<% @dates.each do |date| %>
+	<td class="number">
+			
+				<%= every_day_log_hour(@log_week_project, date, project)%>
+				
+			</td>
+		<% end %>
+</tr>
+<td class="timesheet_project"><%= %></td>
+
+
+<% @dates.each do |date| %>
+	<td class="number">
+<input class="form-input" id="" data-project="<%=  %>" data-date="<%= date %>" name="" size="3" type="text" value="<%= %>">
+		</td>
+		<% end %>				
+<tr>
+	  <tfoot>
+	<td class="timesheet_project"><b>Total</b></td>
+	<% @dates.each do |date| %>
+			<td class="timesheet_total"><%= every_day_log_hour_total(@log_week, date)%></td>
+		<% end %>
+	<td class="timesheet_total"><%= time_diff(@log_total)%></td>
+	  </tfoot>
+</tr>
+</table>

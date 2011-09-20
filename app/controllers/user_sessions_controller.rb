@@ -9,7 +9,7 @@ class UserSessionsController < Devise::SessionsController
     
     if @user_session.save
       @firm = current_user.firm
-      flash[:notice] = "Successfully logged in."
+      flash[:notice] = flash_helper("Successfully logged in.")
       redirect_to root_url
     else
       render :action => 'new'
@@ -18,7 +18,7 @@ class UserSessionsController < Devise::SessionsController
   def destroy
     @user_session = UserSession.find
     @user_session.destroy
-    flash[:notice] = "successfully logged out"
+    flash[:notice] = flash_helper("successfully logged out")
     redirect_to root_url
   end
 

@@ -14,7 +14,7 @@ class MilestonesController < ApplicationController
     @firm = @project.firm 
     respond_to do |format|
       if @milestone.save
-        flash[:notice] = 'Milestone was successfully created.'
+        flash[:notice] = flash_helper('Milestone was successfully created.')
         format.html { redirect_to(firm_project_path(@firm, @project)) }
         format.js { render :action => "create_success"}
         else
@@ -31,7 +31,7 @@ class MilestonesController < ApplicationController
     @project = @milestone.project
     @firm = @milestone.project.firm
     if @milestone.update_attributes!(params[:milestone])
-      flash[:notice] = 'Milestone was successfully updated.'
+      flash[:notice] = flash_helper('Milestone was successfully updated.')
       respond_to do |format|
         format.js
       end
@@ -50,7 +50,7 @@ class MilestonesController < ApplicationController
     @milestone.destroy
     
     respond_to do |format|
-      flash[:notice] = 'Milestone was successfully deleted.'
+      flash[:notice] = flash_helper('Milestone was successfully deleted.')
       format.html { redirect_to(firm_project_path(@firm, @project)) }
       format.js
     end

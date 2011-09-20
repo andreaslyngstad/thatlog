@@ -22,7 +22,7 @@ class EmployeesController < ApplicationController
     @customer = @employee.customer
     respond_to do |format|
       if @employee.update_attributes(params[:employee])
-        flash[:notice] = "Employee was successfully saved."
+        flash[:notice] = flash_helper("Employee was successfully saved.")
         format.js
       else
         format.html { render :action => "edit" }
@@ -37,7 +37,7 @@ class EmployeesController < ApplicationController
     @employee.destroy
 
     respond_to do |format|
-       flash[:notice] = "Employee was deleted."
+       flash[:notice] = flash_helper("Employee was deleted.")
       format.html { redirect_to(employees_url) }
       format.xml  { head :ok }
       format.js

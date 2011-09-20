@@ -1,7 +1,14 @@
 jQuery.ajaxSetup({ 
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
 })
-
+//display help
+jQuery.fn.display_help = function(){
+  $(this).click(function(){
+    $(".page_help").slideToggle()
+   
+    });
+  
+};
 //submitting forms with ajax
 jQuery.fn.submitWithAjax = function() {
   this.submit(function() { 
@@ -63,37 +70,7 @@ jQuery.fn.disableUIdialogs = function(){
   $(this).dialog("destroy");
 };
 
-jQuery.fn.UIdialogs_log_links = function(){
-  var form = '#' + $(this).attr('id') + '_form'
-  $(this).button().click(function(){
-    $(form).UIdialogs();
-    $(form).find("select#log_project_id").change(function(){
-    $('.spinning').show();
-    var log_id = $(this).attr("log")
-    var project_id = this.value
-    if(project_id === ""){
-      $.get("/project_todos/0/" + log_id)
-    }else{
-      var project_id = this.value
-      $.get("/project_todos/" + project_id + "/" + log_id)
-    }
-    });
-    $(form).find("select#new_log_customer_id").change(function(){
-    $('.spinning').show();
-    var log_id = $(this).attr("log")
-    var customer_id = this.value
-    if(customer_id === ""){
-      $.get("/customer_employees/0/" + log_id)
-    }else{
-      var customer_id = this.value
-      $.get("/customer_employees/" + customer_id + "/" + log_id)
-    }
-    });
-    $(form).find("select").selectmenu({width:369});
-      $(form).dialog( "open" );
-    });
 
-};
 jQuery.fn.validateWithErrors = function(){
     $(this).validate({
      submitHandler: function(form) {  
@@ -170,7 +147,7 @@ jQuery.fn.activate_projects = function(){
   	$.get("/activate_projects/" + id)
     });
 	
-}
+};
 jQuery.fn.activate_projects_no_button = function(){
 	$(this).click(function(){
 		$('.spinning').show();
@@ -178,12 +155,46 @@ jQuery.fn.activate_projects_no_button = function(){
   	$.get("/activate_projects/" + id)
     });
 	
-}
+};
+jQuery.fn.UIdialogs_log_links = function(){
+  var form = '#' + $(this).attr('id') + '_form'
+  $(this).button().click(function(){
+    $(form).UIdialogs();
+     $(form).find(".date").datepicker().attr( 'readOnly' , 'true' );
+    $(form).find("select#log_project_id").change(function(){
+    $('.spinning').show();
+    var log_id = $(this).attr("log")
+    var project_id = this.value
+    if(project_id === ""){
+      $.get("/project_todos/0/" + log_id)
+    }else{
+      var project_id = this.value
+      $.get("/project_todos/" + project_id + "/" + log_id)
+    }
+    });
+    $(form).find("select#new_log_customer_id").change(function(){
+    $('.spinning').show();
+    var log_id = $(this).attr("log")
+    var customer_id = this.value
+    if(customer_id === ""){
+      $.get("/customer_employees/0/" + log_id)
+    }else{
+      var customer_id = this.value
+      $.get("/customer_employees/" + customer_id + "/" + log_id)
+    }
+    });
+    $(form).find("select").selectmenu({width:369});
+      $(form).dialog( "open" );
+    });
+
+};
+
 jQuery.fn.UIdialogs_edit_links = function(){
   $(this).click(function(){
     var data_id = $(this).attr('data-id')
     var object = $(this).attr("data-object")
     var form_id = '#' + $(this).attr('id') + '_' + data_id + '_form'
+    
     $(form_id).find("#date" + '_' + object + '_' + data_id).datepicker().attr( 'readOnly' , 'true' );
     $(form_id).children(".edit_" + object).validateWithErrors();
     $(form_id).find("select").selectmenu({width:369});
@@ -244,38 +255,54 @@ jQuery.fn.open_not_required = function(){
   	return false
   });
 };
-
+//ok
 jQuery.fn.UIdialogs_tracking_logs_links = function(){
   $(this).click(function(){
   	$(".tracking_select").slideToggle();
   	$(".open_tracking_select").toggleClass("close_tracking_select");
-  
-  	
     var data_id = $(this).attr('data-id')
     var form_id = '#form_holder'
-    
-    
     $("select.small_selector").selectmenu({width:200});
     $(form_id).find("select#log_project_id").change(function(){
     $('.spinning').show();
     var log_id = $(this).attr("log")
     var project_id = this.value
-    if(project_id === ""){
-      $.get("/project_todos/0/" + log_id)
+    if (log_id === "") {
+    	if(project_id === ""){
+	      $.get("/project_todos/true/0/0"  )
+	    }else{
+	      var project_id = this.value
+	      $.get("/project_todos/true/" + project_id + "/0" )
+	     }
     }else{
-      var project_id = this.value
-      $.get("/project_todos/" + project_id + "/" + log_id)
+	    if(project_id === ""){
+	      $.get("/project_todos/true/0/" + log_id  )
+	    }else{
+	      var project_id = this.value
+	      $.get("/project_todos/true/" + project_id + "/" + log_id)
     }
+    };
+    
     });
     $(form_id).find("select#log_customer_id_" + data_id).change(function(){
     $('.spinning').show();
     var log_id = $(this).attr("log")
     var customer_id = this.value
+    if (log_id === "") {
+    	if(customer_id === ""){
+      $.get("/customer_employees/true/0/0")
+    }else{
+      var customer_id = this.value
+      $.get("/customer_employees/true/" + customer_id + "/0")
+    }
+    	
+    }else{
     if(customer_id === ""){
       $.get("/customer_employees/0/" + log_id)
     }else{
       var customer_id = this.value
       $.get("/customer_employees/" + customer_id + "/" + log_id)
+    }
     }
     });
     
@@ -291,7 +318,7 @@ function slideTime(event, ui){
     var hours1 = parseInt(ui.values[ 1 ]  / 60 % 24);
     $("#log_times_from_" + log).val(getTime(hours0, minutes0));
     $("#log_times_to_" + log).val(getTime(hours1, minutes1));
-    }
+   };
  
 function getTime(hours, minutes) {
     var time = null;
@@ -299,8 +326,13 @@ function getTime(hours, minutes) {
     if (minutes.length == 1) {
         minutes = "0" + minutes;
     }
+    hours = hours + "";
+    if (hours.length == 1) {
+        hours = "0" + hours;
+    }
+    
     return hours + ":" + minutes;
-}
+};
 function time_to_value(time){
     var b = time
     var temp = new Array
@@ -310,54 +342,46 @@ function time_to_value(time){
     var min = parseInt(temp[1])
     
     return hours + min
-}
-
-jQuery.fn.back_button_function = function(){
-  $(this).live("click", function(){
-	$('.spinning').show();
-	var object = $(this).attr("data-object");
-	$.getScript("/" + object + "s");
-	$(".inner").animate({left:0, duration:500});
-	$(".show-view").empty();
-	$(".show-view").append("<div class='show-view'><div class='list_header'>Loading....</div></div>");
-	return false
-});
 };
-	
-///////////////////////////////////////////////////////////////document.ready///////////////////////////////////////////////////////
 
+jQuery.fn.current_link = function(){
+  $(this).click(function(){
+  $("#html_tabs a.current_link").removeClass("current_link")
+  $(this).addClass("current_link")
+    
+    });
+
+};
+jQuery.fn.logs_pr_date_select = function(){
+		this.change(function(){
+  $('.spinning').show();
+  var time = this.value
+  var url = $(this).attr("data-url");
+  var id = $(this).attr("data-id");
+  $.get("/logs_pr_date/" + time + "/" + url + "/" + id)
+  
+  });
+  };
+jQuery.fn.timeheet_user_select = function(){
+		this.change(function(){
+  $('.spinning').show();
+  var id = this.value
+  $.get("/timesheets/" + id)
+  
+  });
+};  
+//ok
+  
+///////////////////////////////////////////////////////////////document.ready///////////////////////////////////////////////////////
 
 
   
   
 $(document).ready(function() {
-	
-	$(".view-tabs-list").live("click", function(){
-		$('.spinning').show();
-		var id = $(this).attr("data-id");
-		var object = $(this).attr("data-object");
-		var firm_id = $(this).attr("data-firm-id");
-		$(".inner").animate({left:-980, duration:500});
-		$.get("/" + object + "s/" + id);
-	});
-	
-
    $('.jclock').jclock();
-
- 
- $( "#tabs" ).tabs({ cache: true },
-  {spinner: '<img src="/images/spinner2.gif" />'},
-   {
-      ajaxOptions: {
-        
-        error: function( xhr, status, index, anchor ) {
-          $( anchor.hash ).html(
-            "Couldn't load this tab. We'll try to fix this as soon as possible. ");
-        }
-      }
-    });
-$(".back_button").back_button_function();
-
+   
+   $("#html_tabs a").current_link();
+   $(".display_help").display_help();
 //jquery UI dialogs
   
   $("#dialog_milestone").UIdialogs_links();
@@ -382,12 +406,29 @@ $(".back_button").back_button_function();
 
   
   $(".open_project_update").UIdialogs_edit_links();
+  $(".open_user_update").UIdialogs_edit_links();
   $(".open_customer_update").UIdialogs_edit_links();
   $(".open_milestone_update").UIdialogs_edit_links();
   $(".open_todo_update").UIdialogs_edit_links();
   $(".open_employee_update").UIdialogs_edit_links();
   $(".open_log_update").UIdialogs_edit_logs_links();
-
+  
+  $(".small_selector").selectmenu({width:200});
+  $(".big_select").selectmenu({width:369});
+  $(".range").find(":submit").button();
+  $(".date").datepicker().attr( 'readOnly' , 'true' );
+  
+  $(".show_avatar_upload").click(function(){
+  	$(".avatar_upload").show();
+  	$(".avatar_show_page").hide();
+  	return false	
+  });
+  $(".hide_avatar_upload").click(function(){
+  	$(".avatar_upload").hide();
+  	$(".avatar_show_page").show();
+  	return false	
+  });
+  
 //submitting new_project
   $(".new_project_form").validateWithErrors();
 
@@ -413,20 +454,52 @@ $("#form_holder").find(".edit_log").submitWithAjax();
 $(".open_tracking_select").UIdialogs_tracking_logs_links();
 $(".activate_project").activate_projects();
 $(".activate_projects_no_button").activate_projects_no_button();
-$("select#logs_pr_date_select").change(function(){
-  $('.spinning').show();
-  var time = this.value
-  $.get("/logs_pr_date/" + time)
-  
-  });
+$("select#logs_pr_date_select").logs_pr_date_select();
+//timesheet begin
+$("select#timeheet_user_select").timeheet_user_select();
+$("table.timesheet_table tbody tr td.number input").focusout(function(){
+	var val_input 	= this.value
+	var project 	= $(this).attr("data-project")
+	var date 		= $(this).attr("data-date")
+	var regexp1 	= /^[0-9,:]+$/  // test denne => /[0-9,:]+(?:\.[0-9]*)?/
+	var regexp2		= /^[:]+$/
+	
+	if (regexp1.test(val_input)){
+		this.value = project
+		alert (project + date )
+		
+	}else{
+		this.value = "no"
+	var val_input = this.value
 
-$(".signup select").selectmenu({width:364});
+		setTimeout(function(){
+	      
+		},0);}
+	
+	
+	
+	
+  });
+//timesheet end
+ $(".background_style_color").css({"background-color":$("input.background_style").val()})
+  $(".text_style_color").css({"background-color":$("input.text_style").val()})
+  $(".background_style").keyup(function(){
+  	var val_input = this.value
+  $(".background_style_color").css({"background-color":val_input})
+  
+	});
+  $(".text_style").keyup(function(){
+  	var val_input = this.value
+  $(".text_style_color").css({"background-color":val_input})
+  
+	});
+$(".signup select, .update select").selectmenu({width:364});
  $("input.done_box").mark_todo_done();
  $("input.membership").membership();
  $(".register_firm").validateNoSubmit();
  $(".first_user").validateNoSubmit();
  $(".register_firm_subdomain").validates_uniqe();
-
+$(".range_date").datepicker().attr( 'readOnly' , 'true' );
    
    $(".slider_range").slider({
         range: true,

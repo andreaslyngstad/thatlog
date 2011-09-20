@@ -1,13 +1,19 @@
 
 <div id="registration" class="blue">
+	<% if flash[:notice] %>
+	<span class="flash_notice" style="display:block;height:30px; width:560px; background-color: #87E32B; text-align:center; line-height: 175%;"><%= flash[:notice] %></span>
+	<% end %>
+	<% if flash[:error] %>
+	<span class="flash_error" style="display:block;height:30px; width:560px; background-color: red; text-align:center; line-height: 175%;" ><%= flash[:error] %></span>
+	<% end %>
 <p>Last step </p>
-<p>Create your first user. </p>
+<p>Create your first user.</p>
 <p>This user will become a manager, but this can be changed later</p>
 </div>
 		
 	
 <div class="signup signup_user">
-<%= form_for [@firm, @user], :url => {:controller => "public"}, :html => { :class => "first_user", :id => "first_user" } do |f| %>
+<%= form_for [@firm, @user], :url => {:controller => "public"}, :html => { :class => "first_user", :id => "first_user", :multipart => true } do |f| %>
  <%= f.hidden_field :firm_id %>
 
 	<div class="signup-form-field">
@@ -21,14 +27,15 @@
     <%= f.label :password %>
     <%= f.password_field :password, :class => "required form-input", :minlength => "4", :AUTOCOMPLETE => "OFF"  %>
   </div>
-	<div class="signup-form-field">
-    <%= f.label :password%>
-    <%= f.password_field :password_confirmation, :class => "required form-input", :minlength => "4", :AUTOCOMPLETE => "OFF"  %>
-  	</div>
+	
 	<div class="not_required" style="display: none;">
 		<div class="signup-form-field">
     <%= f.label :phone%>
     <%= f.password_field :phone, :class => "form-input", :AUTOCOMPLETE => "OFF"  %>
+  	</div>
+  	<div class="signup-form-field">
+    <%= f.label :image%>
+   <%= f.file_field :avatar%> 
   	</div>
 		</div>
   <%= f.submit "Save", :class => "submit" %>

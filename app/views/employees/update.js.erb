@@ -5,4 +5,5 @@ $("#employee_<%= escape_javascript(@employee.id.to_s)%>").css("background-color"
 $(".open_employee_update").UIdialogs_edit_links();
 $("#dialog_employees").UIdialogs_links();
 $("#dialog_employees_form").UIdialogs();
+$("body").find(".dialog_form:last").remove();
 $(".spinning").hide();

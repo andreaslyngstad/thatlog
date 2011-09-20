@@ -2,9 +2,9 @@
 	<p>Members of this project.</p>
     <div id="members">
     	<% @members.each do |user| %>
-    	<div class="user_info" id="user_<%=user.id%>"> 
+    	<div class="user_info user_info_big" id="user_<%=user.id%>"> 
     <input class="membership" project_id="<%= @project.id %>" id="<%=user.id%>" type="checkbox" checked="checked"/>
-    <%= gravatar(user, "gravatar64") %>
+    <%= image(user, "image64") %>
     <%= user.name %>
     </div>
       <% end %>
@@ -13,9 +13,9 @@
 	<p>Other users. Check the box to grat access.</p> 
     <div id="not_members">
       <% @not_members.each do |user| %>
-      <div class="user_info" id="user_<%=user.id%>"> 
+      <div class="user_info user_info_small" id="user_<%=user.id%>"> 
       <input class="membership" project_id="<%= @project.id %>"  id="<%=user.id%>" type="checkbox"/>
-      <%= gravatar(user, "gravatar64") %>
+     <%= image(user, "image32") %>
       <%= user.name %>
     </div> 
     <% end %>

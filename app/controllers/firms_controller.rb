@@ -1,5 +1,6 @@
 class FirmsController < ApplicationController
   authorize_resource :firm
+  
   skip_before_filter :authenticate_user!, :only => [:create]
   
   # GET /firms
@@ -66,8 +67,8 @@ class FirmsController < ApplicationController
 
     respond_to do |format|
       if @firm.update_attributes(params[:firm])
-        flash[:notice] = 'Firm was successfully updated.'
-        format.html { redirect_to(@firm) }
+        flash[:notice] = flash_helper('Firm was successfully updated.')
+        format.html { redirect_to account_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

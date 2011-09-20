@@ -18,11 +18,12 @@ class PublicController < ApplicationController
   def create
     @user = User.new(params[:user])
     @firm = @user.firm
-    @user.update_attributes(:manager => "true") 
+    @user.update_attributes(:roles => "Admin") 
         if @user.save
           flash[:notice] = "Registration successful."
-         redirect_to(root_url(:subdomain => @firm.name))
+         sign_in_and_redirect(@user)
         else
+        	flash[:error] = "Registration could not be saved because:"
           render :action => 'first_user'
       end
   end

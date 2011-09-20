@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101029201138) do
+ActiveRecord::Schema.define(:version => 20101029201141) do
 
   create_table "customers", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(:version => 20101029201138) do
     t.string   "time_zone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "background"
+    t.string   "color"
   end
 
   create_table "logs", :force => true do |t|
@@ -57,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20101029201138) do
     t.datetime "log_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "hours"
   end
 
   create_table "memberships", :force => true do |t|
@@ -113,18 +120,27 @@ ActiveRecord::Schema.define(:version => 20101029201138) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "loginable_token"
+    t.string   "invitation_token",     :limit => 60
+    t.datetime "invitation_sent_at"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "roles"
     t.string   "phone"
     t.string   "name"
     t.integer  "firm_id"
     t.boolean  "manager"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["loginable_token"], :name => "index_users_on_loginable_token"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

@@ -1,0 +1,19 @@
+ <% content_for :help do %>
+ <div class="page_help">
+	
+	<h2><img src="../system/info.png"/> Timesheet use.</h2>
+		<p>You can add hours to a project in two ways. </p> 
+		<ul>
+		<li>1. Add logs to your projets.</li>
+		<li>2. Add hours to projects directly in the timesheet, if you do not have any logs on the project at a spesific date.</li>
+		</ul>
+		</div>
+<% end %>
+
+<div class="timesheet">
+	
+	<%= render "private/timesheet_header" %>
+	
+	<%= render "private/timesheet_table" %>	
+	
+</div>

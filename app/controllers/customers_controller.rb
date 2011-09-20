@@ -61,7 +61,7 @@ class CustomersController < ApplicationController
     @customer.firm = current_firm
     respond_to do |format|
       if @customer.save
-      	flash[:notice] = "#{@customer.name}" + " is added."
+      	flash[:notice] = flash_helper("#{@customer.name}" + " is added.")
       	format.js
         
       end
@@ -77,7 +77,7 @@ class CustomersController < ApplicationController
     
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-        flash[:notice] = 'Customer was successfully updated.'
+        flash[:notice] = flash_helper("Customer was successfully updated.")
         format.js
         
       else
@@ -93,7 +93,7 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.destroy
       respond_to do |format|
-      flash[:notice] = 'Customer was successfully deleted.'
+      flash[:notice] = flash_helper('Customer was successfully deleted.')
      format.html { redirect_to projects_path }
       format.js
     end
@@ -106,7 +106,7 @@ class CustomersController < ApplicationController
     @project.firm = @firm
       respond_to do |format|
       if @project.save
-      flash[:notice] = "Project is added."
+      flash[:notice] = flash_helper("Project is added.")
       format.js
       end
       end

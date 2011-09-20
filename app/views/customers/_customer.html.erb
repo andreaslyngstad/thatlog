@@ -3,8 +3,7 @@
 <div class="tab_list_text">
   <%= link_to customer.name, customer_path(customer) %>
   </div>
-  <span class='view-tabs-list' data-id="<%= customer.id %>" data-object="customer" title="View customer" data-firm-id="<%= @firm.id %>"></span>
-  
+  <%= link_to "", customer_path(customer), :class => 'view-tabs-list', :title => "View customer" %>
   <%= link_to(customer_path(customer), :confirm => "Are you sure?", :title => "Delete customer", :method => :delete, :remote => true) do%>
   <span class='delete-tabs-list'></span>
     <% end %>
@@ -12,11 +11,12 @@
  <span class='open_customer_update edit-tabs-list edit' id="customer_update" data-id="<%= customer.id %>" data-object="customer" title="Edit customer"></span>
   <div class="dialog_form" id="customer_update_<%= customer.id %>_form" title="Update customer" style="display:none;">
  <%= form_for(customer) do |f| %>
+ <ul>
    <li><%= f.label :name %><%= f.text_field :name, :class => "required", :minlength => "2"  %></li>
    <li><%= f.label :phone %><%= f.text_field :phone %></li>
    <li><%= f.label :email %><%= f.text_field :email %></li>
    <li><%= f.label :address %><%= f.text_field :address %></li>
-   <li><%= f.submit 'Save', :class => 'submit' %></li>
+   <li><%= f.submit 'Save', :class => 'submit' %></li></ul>
     <% end %>
     </div>
     <%= mail_to customer.email,{} ,:title => "Send a email", :class => "view-mail-list"%>

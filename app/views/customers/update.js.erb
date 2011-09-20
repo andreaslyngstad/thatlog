@@ -5,4 +5,5 @@ $("#customer_<%= escape_javascript(@customer.id.to_s)%>").replaceWith("<%= escap
 $(".open_customer_update").UIdialogs_edit_links();
 $("#dialog_customer").UIdialogs_links();
 $("#dialog_customer_form").UIdialogs();
+$("body").find(".dialog_form:last").remove();
 $(".spinning").hide();

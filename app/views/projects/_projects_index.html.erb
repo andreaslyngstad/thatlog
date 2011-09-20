@@ -1,7 +1,7 @@
  <li class="tab_list" id="project_<%= project.id.to_s %>"> 
-  
+  <div class="tab_list_text">
  <%= link_to project.name, project_path(project) %>
-
+</div>
   <span class='view-tabs-list' data-id="<%= project.id %>" data-object="project" title="View project" data-firm-id="<%= @firm.id %>"></span>
  
   <%= link_to(project_path(project), :confirm => "Are you sure?", :title => "Delete project", :method => :delete, :remote => true) do%>
@@ -10,14 +10,15 @@
 
  <span class='open_project_update edit-tabs-list edit' id="project_update" data-id="<%= project.id %>" data-object="project" title="Edit project"></span>
    
+ <a class="activate_project" data-object="project" data-id="<%= project.id.to_s %>">Archive</a>
  <div class="dialog_form" id="project_update_<%= project.id %>_form" title="Update project" style="display:none;">
       <%= form_for([@firm, project], :url =>  update_index_path(project)) do |f| %>
+      <ul>
       <li><%= f.label :name %><%= f.text_field :name %></li>
       <li><%= f.label :description %><%= f.text_field :description %></li>
       <li><%= f.label :due %><%= f.text_field :due, :value => project.due.strftime("%m/%d/%Y"), :id => "date_project_#{project.id}"  %></li>
-       <li><%= f.label :customer_id %><%= f.select(:customer_id, @firm.customers.map {|customer| [customer.name, customer.id]}, :prompt => "Select customer")%></li>
-      <li><%= f.submit 'Save', :class => 'submit' %></li>
+       <li><%= f.label :customer_id %><%= f.select(:customer_id, @firm.customers.map {|customer| [customer.name, customer.id]}, {:include_blank => 'None'})%></li>
+      <li><%= f.submit 'Save', :class => 'submit' %></li></ul>
       <% end %>
 </div>
- <a class="activate_project" data-object="project" data-id="<%= project.id.to_s %>">Archive</a>
 </li>

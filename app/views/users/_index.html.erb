@@ -1,20 +1,22 @@
 
-<div id="main_container">
+
 <div id="left" >
 	<div class="inner">
 		<div class="index-view">
-	<div class="list_header">
+	<div class="list_header orange_bgr">
 		<a id="dialog_user" data-object="user">Add new user</a>
 		<div id="dialog_user_form" class="dialog_form" title="Create new user" style="display:none;">
-		<%= form_for(@user) do |f| %>
+		<%= form_for(@user, :url => {:controller => "users", :action => "create"}) do |f| %>
+		<ul>
 		 
   <li><%= f.label :name %><%= f.text_field :name, :class => "required"%> </li>
   <li><%= f.label :email %><%= f.text_field :email, :class => "required", :email => "true" %></li>
   <li><%= f.label :phone %><%= f.text_field :phone %></li>
   <li><%= f.label :password %><%= f.password_field :password, :class => "required", :minlength => "4" %></li>
-  <li><%= f.label :password_confirmation%><%= f.password_field :password_confirmation, :class => "required", :minlength => "4" %></li>
-  <li><%= f.label :manager%><%= f.check_box :manager %></li>
-  <li><%= f.submit "Save", :class => "submit" %></li>
+  <li><p><%= f.radio_button :roles, 'Admin', :checked => true %> <%= label :roles, 'Admin (can see and edit everything)' %></p>
+  		<p><%= f.radio_button :roles, 'Member' %> <%= label :roles, 'Member (can see everything and edit projects where they are members)' %></p>
+  		<p><%= f.radio_button :roles, 'External user' %> <%= label :roles, 'External user (can only see and edit projects where they are members)' %></p></li>
+  <li><%= f.submit "Save", :class => "submit" %></li></ul>
   <% end %>
     </div>
 	    <div class="search">
@@ -26,7 +28,7 @@
   </ul>
 </div>
 <div class="show-view">
-  	<div class="list_header">
+  	<div class="list_header orange_bgr">
 	
 	
 	Loading....
@@ -35,4 +37,3 @@
 </div>
 </div>
 
-</div>

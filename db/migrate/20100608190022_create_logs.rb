@@ -12,6 +12,7 @@ class CreateLogs < ActiveRecord::Migration
       t.datetime :begin_time
       t.datetime :end_time
       t.datetime :log_date
+      t.float :hours
       t.timestamps
     end
   end

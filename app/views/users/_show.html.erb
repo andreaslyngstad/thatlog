@@ -1,20 +1,42 @@
-<div class="list_header">
+<div id="left">
+	<div class="inner" style="left: -980px">
+		  <div class="index-view">
+	  	<div class="list_header orange_bgr">
+		
+		
+		Loading....
+		</div>
+  </div>
+<div class="show-view">
+<div class="list_header orange_bgr">
+	<%= link_to "Back", users_path, :class => "back_button" %>
 	
-	<a class="back_button">Back</a>
 		<%=h @user.name %>
 </div>
 <div id="description">
-  
+  <div class="show_user_text">
 	 <%=h @user.name %><br/>
 	Phone:
 	 <%=h @user.phone %><br/>
 	Email:
 	<%=h @user.email %><br/>
+	</div>
 	
-
+		     <div class="show_user_image">
+	<div class="avatar_show_page">	     	
+<%= image(@user, "image100") %>
+<p><%= link_to "Change image", "", :class => "show_avatar_upload" %></p>  
+  </div>
+<div class="avatar_upload" style="display:none">
+	<%= form_for(@user, :html => { :multipart => true }) do |f| %>
+	<p id="firm_logo"><%= f.file_field :avatar%></p>  
+	<%= f.submit "Upload", :class => "submit"%>  <%= link_to "Cancel", "", :class => "hide_avatar_upload" %>
+		     <% end %>
+		     </div>
+</div>
 </div>
 <div id="tabs">
-  <ul>
+  <ul class="tabsul">
     
     <li><a href="#tabs-1">Tasks</a></li>
     <li><a href="/get_logs_user/<%= @user.id %>">Logs<span>&nbsp;</span></a></li>
@@ -23,6 +45,7 @@
   
   
   <div id="tabs-1"> 
+  		<div class="log_menu">
     <span class="add_some">  
     <a id="dialog_task">Add another</a>
    
@@ -37,14 +60,21 @@
       <% end %>
     </div>
   </span>
-   
+    </div>
   <div id="todos_list">
-   
+   <div class="info" > 
+	<div class="name_todo info_head">Task</div>
+	<div class="project_todo info_head">Project</div>
+	<div class="user_todo info_head">Assigned to</div>
+	
+  <div class="date_all info_head">Due</div>
+  </div>
     <div id="not_done_tasks">
     <%= render :partial => @not_done_todos %>
     </div>
     <br/>
     <div id="done_tasks">
+    	<div class=" info_head">Done</div>
       <%= render :partial => @done_todos %>
     </div> 
   </div>
@@ -52,4 +82,7 @@
   <div id="tabs-2">
    </div>
   
+</div>
+</div>
+</div>
 </div>
