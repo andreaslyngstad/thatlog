@@ -8,7 +8,7 @@ class PrivateController < ApplicationController
   
  
   def account
-  	@project = Project.find(2)
+  
   	@firm = current_firm
   	@user = current_user
   end

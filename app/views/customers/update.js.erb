@@ -3,7 +3,6 @@ $(".flash_notice").append("<%= escape_javascript(flash.delete(:notice))%>");
 $("#customer_<%= escape_javascript(@customer.id.to_s)%>").replaceWith("<%= escape_javascript( render :partial => "customer", :locals => { :customer => @customer })  %>")
 
 $(".open_customer_update").UIdialogs_edit_links();
-$("#dialog_customer").UIdialogs_links();
-$("#dialog_customer_form").UIdialogs();
+
 $("body").find(".dialog_form:last").remove();
 $(".spinning").hide();

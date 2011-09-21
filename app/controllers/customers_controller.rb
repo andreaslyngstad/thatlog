@@ -77,7 +77,7 @@ class CustomersController < ApplicationController
     
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-        flash[:notice] = flash_helper("Customer was successfully updated.")
+        flash[:notice] = flash_helper("#{@customer.name}" + " was successfully updated.")
         format.js
         
       else

@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
      user ||= User.new
      
-     if user.manager?
+     if user.role == "manager"
        can :manage, Firm
         can :manage, User, :firm => {:id => user.firm_id}
         can :manage, Customer, :firm => {:id => user.firm_id}

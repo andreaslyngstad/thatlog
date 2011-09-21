@@ -52,19 +52,6 @@ margin: auto;
 }
 
 
-#user_nav_header {
-clear: right;
-float: right;
-font-size:15px;
-margin:3px 15px 0 0;
-color:white;
-}
-#user_nav_header a{
-color:white;}
-#user_nav_header a:hover{
-text-decoration: underline;; 
-
-}
 
 .page_help{
  display:none;
@@ -120,12 +107,26 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endC
 
 }
 
-.spinning {width:15px;height:15px; float: right;background: url('../images/spinner.gif') no-repeat right !important; }
+.spinning {width:15px;height:15px;margin: 5px 0 0 15px;float: left;background: url('../images/spinner.gif') no-repeat right !important; }
 #flash_messages{
 margin: 3px 0 0 15px;
 font-size:15px;
 float:left;
 }
+#user_nav_header {
+clear: right;
+float: right;
+font-size:15px;
+margin:3px 15px 0 0;
+color:white;
+}
+#user_nav_header a{
+color:white;}
+#user_nav_header a:hover{
+text-decoration: underline;; 
+
+}
+
 #main_container{
 float:right;
 

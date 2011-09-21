@@ -383,7 +383,7 @@ $(document).ready(function() {
    $("#html_tabs a").current_link();
    $(".display_help").display_help();
 //jquery UI dialogs
-  
+
   $("#dialog_milestone").UIdialogs_links();
   
   $("#dialog_task").UIdialogs_links();
