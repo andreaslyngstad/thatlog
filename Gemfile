@@ -1,18 +1,29 @@
 source 'http://rubygems.org'
 
 
-gem 'rails', '~> 3.0.1'
+gem 'rails', '~> 3.1.0'
+gem 'eventmachine', '1.0.0.beta.4.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "cancan"
 gem 'jquery-rails'
-gem 'linecache'
 gem "tabs_on_rails"
-gem "mongrel"
 gem "devise"
-gem "paperclip", "~> 2.3"
+gem "paperclip", "2.3"
+
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+
+group :development, :test do
+ # gem 'rails-dev-tweaks', '~> 0.5.0'
+
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -31,9 +42,4 @@ gem "paperclip", "~> 2.3"
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
-  gem 'launchy'
-  gem 'database_cleaner'
-end
+

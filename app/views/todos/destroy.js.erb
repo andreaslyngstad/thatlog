@@ -1,4 +1,5 @@
 $(".flash_notice").empty()
-$(".flash_notice").append("<%= escape_javascript(flash.delete(:notice))%>")
+$(".flash_notice").append("<%= escape_javascript(flash.discard(:notice))%>")
 $("#todo_<%=@todo.id%>").remove();
+$(".tasks_percent").replaceWith("<div class='statistics_unit tasks_percent one_number white'><%= done_not_done(@done_todos, @not_done_todos) %></div>") 
 $(".spinning").hide();

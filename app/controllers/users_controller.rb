@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @done_todos = @user.todos.where(["completed = ?", true]).includes(:project, :user)
     @not_done_todos = @user.todos.where(["completed = ?", false]).includes(:project, :user)
+    
+    @customers = @firm.customers.includes(:employees)
+    @log = Log.new(:user => @user)
+    @logs = @user.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes([:user, :todo, :employee, {:customer => [:employees]}, {:project => [:customer, :todos]}])
+    @all_projects = current_user.projects.where(["active = ?", true])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -112,7 +117,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "Login could not be validated"
     end
-    redirect_to account_path
+    redirect_to statistics_path
   end
   
 end

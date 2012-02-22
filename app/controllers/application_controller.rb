@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   helper :layout
   helper_method :current_firm, :is_root_domain?, :can_sign_up?, :find_firm, :current_subdomain, :time_zone_now, :ftz
   before_filter :set_mailer_url_options
- 
   
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
@@ -39,11 +38,12 @@ class ApplicationController < ActionController::Base
       current_subdomain = nil
     end
     return current_subdomain
-  end  
-   def flash_helper(message)
+  end
+    
+  def flash_helper(message)
   	return ("<span style='color:#FFF'>" + message + "</span>").html_safe
-  	
   end 
+  
   def time_zone_now
   	#exchange for Time.now
   	Time.zone = current_firm.time_zone
@@ -120,4 +120,11 @@ class ApplicationController < ActionController::Base
   	(Time.now.midnight)..(Time.now.midnight + 1.day)
   end
   
+  def check_log_status(params_log_id)
+    if params_log_id != "0"
+    @log = Log.find(params_log_id)
+    end
+    @firm = current_firm
+    @customers = @firm.customers
+  end
 end

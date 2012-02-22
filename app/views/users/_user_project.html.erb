@@ -1,14 +1,4 @@
-	<% if @project.users.include?(@user) %>
-<div class="user_info user_info_big" id="user_<%=@user.id.to_s%>"> 
-
-    <input class="membership" project_id="<%= @project.id.to_s%>" id="<%=@user.id.to_s%>" type="checkbox" checked="checked"/>
-         <%= image(@user, "image100") %>
-    <%= @user.name %>  
-    </div>
-    <% else %>
-    <div class="user_info user_info_small" id="user_<%=@user.id.to_s%>"> 
-    <input class="membership" project_id="<%= @project.id.to_s%>" id="<%=@user.id.to_s%>" type="checkbox"/>
-     <%= image(@user, "image32") %>
-    <%= @user.name %>
-    </div>
-    <% end %>
+<div class="user_info white draggable user_info_out" id="<%=user.id%>" project_id="<%= @project.id %>"> 
+     <%= image(user, "image64") %>
+     <%= user.name %>
+    </div> 

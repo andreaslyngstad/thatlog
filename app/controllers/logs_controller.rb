@@ -8,7 +8,7 @@ class LogsController < ApplicationController
     @all_projects = current_user.projects.where(["active = ?", true]).includes(:customer, {:todos => [:logs]})
     @customers = current_firm.customers
     
-    @logs = current_user.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes(:project, :todo, :user, :customer )
+    @logs = current_user.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes(:project, :todo, :user, :customer, :employee )
     if !current_user.logs.blank?
     @log = Log.where("end_time IS ?",nil).last
     if @log.nil?
@@ -187,5 +187,124 @@ class LogsController < ApplicationController
     end
     end
     
+   def project_todos
+    check_log_status(params[:log_id])
+    
+    if params[:project_id] != "0"
+    @project = Project.find(params[:project_id])
+    @todos = @project.todos.where(["completed = ?", false])
+    
+    else
+    @todos = "Select a project"
+    end
+  end
+  
+  def customer_employees
+    if params[:log_id] != "0"
+    @log = Log.find(params[:log_id])
+    end
+    @firm = current_firm
+    if params[:customer_id] != "0"
+    @customer = Customer.find(params[:customer_id])
+    @employees = @customer.employees
+    
+    else
+    @employees = "Select a customer"
+    end
+  end
+  def todo_select
+      check_log_status(params[:log_id])
+    if params[:todo_id] != "0"
+      @todo = Todo.find(params[:todo_id])
+      
+    end
+    
+  end
+  
+   def project_select_tracking
+     check_log_status(params[:log_id])
+    if params[:project_id] != "0"
+      @project = Project.find(params[:project_id])
+      @todos = @project.todos.where(["completed = ?", false])
+      if !@log.nil?
+        @log.project = @project 
+          if !@project.customer.nil?
+            @log.customer = @project.customer
+          else
+            @log.customer = nil
+          end
+          
+        @log.save
+      end
+    else
+      @todos = "Select a project"
+      if !@log.nil?
+      @log.project = nil
+      @log.customer = nil
+      @log.save
+      end
+    end
+    
+  end
+  def todo_select_tracking
+    check_log_status(params[:log_id])
+    if params[:todo_id] != "0"
+      @todo = Todo.find(params[:todo_id])
+      if !@log.nil?
+        @log.todo = @todo
+          if !@todo.customer.nil?
+            @log.customer = @todo.customer
+          else
+            @log.customer = nil
+          end
+        @log.save
+      end
+    else
+      if !@log.nil?
+        @log.todo = nil
+        @log.customer = nil
+        @log.save
+      end
+    end
+    
+  end
+  
+  def customer_select_tracking
+  if params[:log_id] != "0"
+    @log = Log.find(params[:log_id])
+    end
+  if params[:customer_id] != "0"
+  @customer = Customer.find(params[:customer_id])
+  @employees = @customer.employees
+    if !@log.nil?
+    @log.customer = @customer 
+    @log.save
+    end
+  else
+  
+    if !@log.nil?
+    @log.empolyee = nil
+    @log.customer = nil
+    @log.save
+    end
+  end
+  end
+  def employee_select_tracking
+    if params[:log_id] != "0"
+    @log = Log.find(params[:log_id])
+    end
+    if params[:customer_id] != "0"
+      @employee = Employee.find(params[:employee_id])
+      if !@log.nil?
+        @log.employee = @employee 
+        @log.save
+      end
+    else
+      if !@log.nil?
+        @log.empolyee = nil
+        @log.save
+      end
+    end
+  end
 	
 end

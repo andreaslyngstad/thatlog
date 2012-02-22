@@ -1,4 +1,4 @@
 $(".flash_notice").empty()
-$(".flash_notice").append("<span style='display:block;height:40px; padding:10px; width:280px; background-color: #87E32B; text-align:center;'><%= escape_javascript(flash.delete(:notice))%></span>")
+$(".flash_notice").append("<span style='display:block;height:40px; padding:10px; width:280px; background-color: #87E32B; text-align:center;'><%= escape_javascript(flash.discard(:notice))%></span>")
 $("#customer_<%=@customer.id%>").remove();
 $(".spinning").hide();

@@ -161,38 +161,7 @@ class PrivateController < ApplicationController
   end
 
 
-  def project_todos
-  	@firm = current_firm
-    @customers = @firm.customers
-    if params[:project_id] != "0"
-    @project = Project.find(params[:project_id])
-    @todos = @project.todos.where(["completed = ?", false])
-    else
-    @todos = "Select a project"
-    end
-    if params[:log_id] and params[:log_id] != "0"
-    @log = Log.find(params[:log_id])
-    end
-  	if params[:tracking] == "true"
-  		@tracking = "tracking"
-  	end
-  end
-  
-  def customer_employees
-	if params[:log_id] and params[:log_id] != "0"
-	@log = Log.find(params[:log_id])
-	end
-	if params[:customer_id] != "0"
-	@customer = Customer.find(params[:customer_id])
-	@employees = @customer.employees
-	else
-	@employees = "Select a customer"
-	end
-	if params[:tracking] == "true"
-		@tracking = "tracking"
-	end
-  end
-  
+ 
   def activate_projects
   	@project = Project.find(params[:id])
   	if @project.active == true
@@ -206,50 +175,54 @@ class PrivateController < ApplicationController
   end
   
 
-  
-  def get_logs
-    @firm = current_user.firm
-    @customers = @firm.customers
-    @customer = Customer.find(params[:customer_id])
-  	@employees = @customer.employees
-    @log = Log.new(:customer => @customer)
-    @all_projects = current_user.projects.where(["customer_id IS ? OR customer_id IS ?", nil, @customer.id]).where(["active = ?", true])
-    @logs = @customer.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes([:todo, :employee, {:customer => [:employees]}, {:project => [:customer, :todos]}])
-  end
-  
-  def get_logs_project
-  	@firm = current_user.firm
-  	@customers = @firm.customers.includes(:employees)
-  	@project = Project.find(params[:project_id])
-  	@log = Log.new(:project => @project)
-  	@logs = @project.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes([:user, :todo, :employee, {:customer => [:employees]}, {:project => [:customer, :todos]}])
-  	@all_projects = current_user.projects.where(["active = ?", true])
-  	@todos = @project.todos.where(["completed = ?", false]).includes(:user)
-  end
-  
-  def get_logs_user
-  	@firm = current_user.firm
-  	@customers = @firm.customers.includes(:employees)
-  	@user = User.find(params[:user_id])
-  	@log = Log.new(:user => @user)
-  	@logs = @user.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes([:user, :todo, :employee, {:customer => [:employees]}, {:project => [:customer, :todos]}])
-  	@all_projects = current_user.projects.where(["active = ?", true])
-  	
-  end
-  
-  def get_users_project
-  	@firm = current_user.firm
-  	@project = Project.find(params[:project_id])
-  	@members = @project.users
-    @not_members = @firm.users - @members
-  end
-  
-  def get_employees
-    @firm = current_user.firm
-    @customer = Customer.find(params[:customer_id])
-    @employees = @customer.employees
-  end
-  
+  def not_in_use
+    
+ 
+  # def get_logs
+    # @firm = current_user.firm
+    # @customers = @firm.customers
+    # @customer = Customer.find(params[:customer_id])
+  	# @employees = @customer.employees
+    # @log = Log.new(:customer => @customer)
+    # @all_projects = current_user.projects.where(["customer_id IS ? OR customer_id IS ?", nil, @customer.id]).where(["active = ?", true])
+    # @logs = @customer.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes([:todo, :employee, {:customer => [:employees]}, {:project => [:customer, :todos]}])
+  # end
+#   
+  # def get_logs_project
+  	# @firm = current_user.firm
+  	# @customers = @firm.customers.includes(:employees)
+  	# @project = Project.find(params[:project_id])
+  	# @log = Log.new(:project => @project)
+  	# @logs = @project.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes([:user, :todo, :employee, {:customer => [:employees]}, {:project => [:customer, :todos]}])
+  	# @all_projects = current_user.projects.where(["active = ?", true])
+  	# @todos = @project.todos.where(["completed = ?", false]).includes(:user)
+#   	
+  # end
+#   
+  # def get_logs_user
+  	# @firm = current_user.firm
+  	# @customers = @firm.customers.includes(:employees)
+  	# @user = User.find(params[:user_id])
+  	# @log = Log.new(:user => @user)
+  	# @logs = @user.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes([:user, :todo, :employee, {:customer => [:employees]}, {:project => [:customer, :todos]}])
+  	# @all_projects = current_user.projects.where(["active = ?", true])
+#   	
+  # end
+#   
+  # def get_users_project
+  	# @firm = current_user.firm
+  	# @project = Project.find(params[:project_id])
+  	# @members = @project.users
+    # @not_members = @firm.users - @members
+  # end
+#   
+  # def get_employees
+    # @firm = current_user.firm
+    # @customer = Customer.find(params[:customer_id])
+    # @employees = @customer.employees
+  # end
+#   
+ end
   def logs_pr_date
     @firm = current_user.firm
     @customers = @firm.customers.includes(:employees)
@@ -279,18 +252,7 @@ class PrivateController < ApplicationController
 	    time_range = (Time.now.beginning_of_year - 1.year)..(Time.now.beginning_of_year - 1.second)
 	   
 	    end
-	    
-	    if params[:url] == "logs"
-	    	logs_on = current_user
-		elsif params[:url] == "get_logs"
-			logs_on = Customer.find(params[:id])
-		elsif params[:url] == "get_logs_project"
-			logs_on = Project.find(params[:id])
-		elsif params[:url] == "get_logs_user"
-			logs_on = User.find(params[:id])
-		end
-		
-		@logs = logs_on.logs.where(:log_date => time_range).order("log_date DESC").includes(:project, :todo, :user, :customer,:employee )
+	   find_logs_on(params[:url], time_range)
   end
   def log_range
   	@firm = current_user.firm
@@ -301,16 +263,7 @@ class PrivateController < ApplicationController
     else
   		time_range = ((Date.parse(params[:from]).midnight)..Date.parse(params[:to]).midnight + 1.day)
   	end
-  	if params[:url] == "logs"
-  		logs_on = current_user
-  	elsif params[:url] == "get_logs"
-  		logs_on = Customer.find(params[:id])	
-  	elsif params[:url] == "get_logs_user"
-  		logs_on = User.find(params[:id])
-  	elsif params[:url] == "get_logs_project"
-  		logs_on = Project.find(params[:id])
-  	end
-    	@logs = logs_on.logs.where(:log_date => time_range).order("log_date DESC").includes(:project, :todo, :user, :customer, :employee )
+   find_logs_on(params[:url], time_range)
   end
   
   def mark_todo_done
@@ -323,9 +276,10 @@ class PrivateController < ApplicationController
     else
       @todo.completed = true
     end
+    @todo.update_attributes(params[:todo])
     @done_todos = @project.todos.where(["completed = ?", true]).includes(:user)
     @not_done_todos = @project.todos.where(["completed = ?", false]).includes(:user)
-    @todo.update_attributes(params[:todo])
+    
     respond_to do |format|
       format.js
   end
@@ -337,12 +291,27 @@ class PrivateController < ApplicationController
   	@user = User.find(params[:id])
   	if @project.users.include?(@user)
   		@project.users.delete(@user)
+  		flash[:notice] = flash_helper("#{@user.name} is NOT a member of the #{@project.name} project.")
   	else
   		@project.users << @user
+  		flash[:notice] = flash_helper("#{@user.name} is a member of the #{@project.name} project.")
   	end
   	@members = @project.users
   	@not_members = @firm.users - @members
   	
+  end
+  
+def find_logs_on(url, time_range)
+    if url == "logs"
+      logs_on = current_user
+    elsif url == "customers"
+      logs_on = Customer.find(params[:id])  
+    elsif url == "users"
+      logs_on = User.find(params[:id])
+    elsif url == "projects"
+      logs_on = Project.find(params[:id])
+    end
+      @logs = logs_on.logs.where(:log_date => time_range).order("log_date DESC").includes(:project, :todo, :user, :customer, :employee )
   end
 end
 

@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   set_tab :projects
 	
   def index
+   
   	@firm = current_firm
     @projects = @firm.projects.where(["active = ?", true])
     @customers = @firm.customers
@@ -21,11 +22,21 @@ class ProjectsController < ApplicationController
     @project = current_firm.projects.find(params[:id])
     @users = @project.users
     @milestone = Milestone.new(:project => @project)
-    @milestones = @project.milestones.includes(:user)
+    @milestones = @project.milestones.order("due ASC")
     @todo = Todo.new(:project => @project)
-    @done_todos = @project.todos.where(["completed = ?", true]).includes( {:user => [:memberships]})
-    @not_done_todos = @project.todos.where(["completed = ?", false]).includes({:user => [:memberships]})
+    @done_todos = @project.todos.where(["completed = ?", true]).includes( {:user => [:memberships]}).order("due ASC")
+    @not_done_todos = @project.todos.where(["completed = ?", false]).includes({:user => [:memberships]}).order("due ASC")
     @hours = @project.logs.sum(:hours)
+    
+    @firm = current_user.firm
+    @customers = @firm.customers.includes(:employees)
+    @log = Log.new(:project => @project)
+    @logs = @project.logs.where(:log_date => time_range_to_day).order("log_date DESC").includes([:user, :todo, :employee, {:customer => [:employees]}, {:project => [:customer, :todos]}])
+    @all_projects = current_user.projects.where(["active = ?", true])
+    @todos = @project.todos.where(["completed = ?", false]).includes(:user)
+    
+    @members = @project.users
+    @not_members = @firm.users - @members
   end
 
   def edit

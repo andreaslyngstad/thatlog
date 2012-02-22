@@ -1,4 +1,103 @@
-<% if !current_user.nil? %>
 
-<%= link_to current_firm.subdomain, root_url(:subdomain => current_firm.subdomain) %>
+<div id="login_link"><p>Log in</p><p style="display: none">Exit Login</p></div> 
+<div class="signup signup_firm hide login_form">
+	<h2 style="margin-left:20px;">Log in</h2>
+<% if flash[:notice] %>
+	<span class="flash_notice" style="display:block;height:30px; width:560px; background-color: #87E32B; text-align:center; line-height: 175%;"><%= flash[:notice] %></span>
+	<% end %>
+	<% if flash[:alert] %>
+	<span class="flash_error" style="display:block;height:30px; width:560px; background-color: red; margin-left:20px;text-align:center; line-height: 175%;" ><%= flash[:alert] %></span>
+	<% end %>
+
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="signup-form-field"><%= f.label :email %>
+ <%= f.text_field :email %></div>
+  <div class="signup-form-field"><%= f.label :password %>
+ <%= f.password_field :password %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="signup-form-field checkbox"><%= f.label :remember_me %><%= f.check_box :remember_me, :id => "check" %> </div>
+  <% end -%>
+
+  <p><%= f.submit "Log in", :class => "submit" %></p>
 <% end %>
+<div class="devise_links">
+<%= render :partial => "devise/shared/links" %>
+</div>
+</div>
+
+<div id="front_logo">
+		<%= image_tag "squadlink.png"  %>
+	</div>
+	<div class="hands_container">
+		<%= image_tag "hands.png"  %>
+	
+	</div>
+	<div class="video_container">	
+		
+	</div>
+	<div class="start_video">
+		<%= image_tag "start64.png"  %>
+		
+	</div>
+	<div class="play_a_video">
+		<%= image_tag "play_a_video.png"  %>
+		
+	</div>
+ <%= link_to('Sign up for free', register_path, :class => "signup_button_link")  %>
+<div id="footer">
+		<div style="margin: 0 auto">
+            <p id="copyright">
+                
+            </p>
+            <div id="locale_selector_cont">
+                <div id="locale_selector"></div>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li class="header">Dropbox</li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/install">Install</a></li>
+                    <li><a href="/anywhere">Mobile</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/features">Features</a></li>
+                    <li><a href="/tour">Tour</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li class="header">Community</li>
+                    <li><a href="/referrals" onmouseup="javascript: MCLog.log('referrals_via_footer');">Referrals</a></li>
+                    <li><a href="http://twitter.com/squadlink" target="_blank">Twitter</a></li>
+                    <li><a href="http://facebook.com/squadlink" target="_blank">Facebook</a></li>
+                    <li><a href="http://wiki.dropbox.com/">Wiki</a></li>
+                    <li><a href="/developers">Developers</a></li>
+                    <li><a href="/anywhere/apps">Partners</a></li>
+
+            </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li class="header">About Us</li>
+                    <li><a href="http://blog.dropbox.com/">Dropbox Blog</a></li>
+                    <li><a href="/about">Our Team</a></li>
+                    <li><a href="/press">Press</a></li>
+                    <li><a href="/terms">Terms</a></li>
+                    <li><a href="/privacy">Privacy</a></li>
+                    <li><a href="http://www.dropbox.com/jobs">Jobs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <ul>
+                    <li class="header">Support</li>
+                    <li><a href="/help">Help Center</a></li>
+                    <li><a href="http://forums.dropbox.com/">Forums</a></li>
+                    <li><a href="/votebox">Votebox</a></li>
+                    <li><a href="#" onclick="return Home.showFeedback();">Feedback</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/dmca">Copyright</a></li>
+                </ul>
+            </div>
+	</div>
+</div>

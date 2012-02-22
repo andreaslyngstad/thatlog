@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.datetime "begin_time"
     t.datetime "end_time"
     t.datetime "log_date"
+    t.float    "hours"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "hours"
   end
 
   create_table "memberships", :force => true do |t|
@@ -109,34 +109,28 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
-    t.string   "reset_password_token"
-    t.string   "remember_token"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                       :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "loginable_token"
-    t.string   "invitation_token",     :limit => 60
-    t.datetime "invitation_sent_at"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "roles"
+    t.string   "role"
     t.string   "phone"
     t.string   "name"
     t.integer  "firm_id"
-    t.boolean  "manager"
+    t.string   "loginable_token",        :limit => 60
+    t.float    "hourly_rate"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

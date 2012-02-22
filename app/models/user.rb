@@ -1,11 +1,19 @@
 class User < ActiveRecord::Base
+  
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
 	has_attached_file :avatar, :styles => { :original => "100x100#", :small => "32x32#" }
                            
 	validates_attachment_size :avatar, :less_than => 2.megabytes
 	validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png']
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
-  devise :invitable, :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
@@ -33,7 +41,7 @@ class User < ActiveRecord::Base
   has_many :todos
   belongs_to :firm
   validates_presence_of :name
-  validates_uniqueness_of  :email, :case_sensitive => false
+  validates :email, :presence => true, :uniqueness => true, :email_format => true
 
   
  # def user_role

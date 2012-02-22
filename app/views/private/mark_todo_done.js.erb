@@ -2,15 +2,16 @@
 $("#todo_<%= escape_javascript( @todo.id.to_s) %>").remove();
 <% if @todo.completed == true %>
 $("#done_tasks").append("<%= escape_javascript(render(:partial => @todo)) %>");
+
 $(".open_todo_update").UIdialogs_edit_links();
 $("#dialog_todo").UIdialogs_links();
 $("#dialog_todo_form").UIdialogs();
-$(".tasks").replaceWith("<div class='statistics_unit tasks white'>Task done <%= done_not_done(@done_todos, @not_done_todos) %></div>")  
+$(".tasks_percent").replaceWith("<div class='statistics_unit tasks_percent one_number white'><%= done_not_done(@done_todos, @not_done_todos) %></div>")  
 <% else %>
 $("#not_done_tasks").append("<%= escape_javascript(render(:partial => @todo)) %>");
 $(".open_todo_update").UIdialogs_edit_links();
 $("#dialog_todo").UIdialogs_links();
 $("#dialog_todo_form").UIdialogs();
-$(".tasks").replaceWith("<div class='statistics_unit tasks white'>Task done <%= done_not_done(@done_todos, @not_done_todos) %></div>")
+$(".tasks_percent").replaceWith("<div class='statistics_unit tasks_percent one_number white'><%= done_not_done(@done_todos, @not_done_todos) %></div>")
 <% end %>
 $(".spinning").hide();

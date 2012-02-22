@@ -8,5 +8,11 @@ class Todo < ActiveRecord::Base
   validates_presence_of :name
   
   
+  def due_to_day
+    Time.now.in_time_zone.strftime("%Y%j") == due.strftime("%Y%j") && completed == false
+  end
   
+  def overdue
+    Time.now.in_time_zone.strftime("%Y%j") > due.strftime("%Y%j") && completed == false
+  end
 end

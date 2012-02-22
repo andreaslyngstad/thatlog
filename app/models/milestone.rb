@@ -5,5 +5,6 @@ class Milestone < ActiveRecord::Base
   def passed
   	Time.now.in_time_zone > due
   end
- 
+  
+  
 end

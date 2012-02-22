@@ -13,7 +13,7 @@
                  <% end %>
           </select>
           <div><%= n.label :Task %>
-          <select class="small_selector" id="log_todo_id_<%= log.id %>" name="log[todo_id]">
+          <select class="small_selector" id="log_todo_id_<%= log.id %>" log="<%= log.id %>" name="log[todo_id]">
               <% if log.project.nil? %>
           <option value="" id="value">Select a project</option>
           <%else%>
@@ -42,7 +42,7 @@
           	<%= n.select(:customer_id, @customers.map {|customer| [truncate_string(customer.name), customer.id]},
           	{ :include_blank => "None"}, :class => "small_selector", :id => "log_customer_id_#{log.id}", :log => "#{log.id}" )%>
        <%= n.label :employee %>
-       <select class="small_selector" id="log_employee_id_<%= log.id %>" name="log[employee_id]">
+       <select class="small_selector" id="log_employee_id_<%= log.id %>" log="<%= log.id %>" name="log[employee_id]">
             
             <% if !log.customer.nil? %>
              <option value>none</option>

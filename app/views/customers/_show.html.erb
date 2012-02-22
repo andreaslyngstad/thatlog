@@ -27,16 +27,18 @@
 <div class="graphs">Grafer</div>
 
 
-   <div id="tabs">
-  <ul class="tabsul">
+   <nav id="sub_tabs">
+  <ul>
     
-    <li><a href="#tabs-1">Projects</a></li>
-    <li><a href="/get_logs/<%= @customer.id %>">Logs<span>&nbsp;</span></a></li>
-    <li><a href="/get_employees/<%= @customer.id %>">Employees<span>&nbsp;</span></a></li>
+    <li class=""><a href="#tabs-1">Projects</a></li>
+    <li><a href="#tabs-2">Logs</a></li>
+    <li><a href="#tabs-3">Employees</a></li>
   </ul>
-  
-  
-  <div id="tabs-1"> 
+  <span class="nav_line"></span>
+    </nav>
+  <div class="boxes">
+  <div class="tab_box" id="tabs-1"> 
+  	<div id="listing_projects">
   	<div class="log_menu">
   	 
     <div class="add_some">
@@ -52,7 +54,7 @@
       </div>
     </div>
     </div>
-    <div class="listing_projects">
+    
     	<div class="info" >
   <div class="name_todo info_head">Name</div>
   <div class="project_desc info_head">Description</div>
@@ -62,10 +64,43 @@
       <%= render @projects %>
     </div>
   </div>
-  <div id="tabs-2"></div>
-   <div id="tabs-3"></div>
+  <div class="tab_box hide" id="tabs-2">
+  	<div class="listing_logs">
+ 	<%= render "logs/logs_menu" %>
+    
+    	<%= render "logs/list_header" %>
+      <%= render @logs %>
+    </div>
+  </div>
+  <div class="tab_box hide" id="tabs-3">
+   	<div id="listing_employees">
+	<div class="log_menu">
+	<div class="add_some">
+       <a id="dialog_employees">Add another</a>
+        <div id="dialog_employees_form" class="dialog_form" title="Create new employee" style="display:none;">  
+      <%= form_for(@employee) do |f| %>
+      <%= f.hidden_field :customer_id %>
+      <li><%= f.label :name %><%= f.text_field :name, :class => "required", :minlength => "2"%></li>
+      <li><%= f.label :phone %><%= f.text_field :phone %></li>
+      <li><%= f.label :email %><%= f.text_field :email %></li>
+      <li><%= f.submit "save", :class => 'submit' %></li>
+      <% end %>
+      </div>
+    </div>
+    </div>
+  
+    
+      <div class="info" > 
+	<div class="name_todo info_head">Name</div>
+	<div class="project_todo info_head">Phone</div>
+	<div class="user_todo info_head">Email</div>
+  </div>
+      <%= render @employees %>
+    </div>
+   </div>
+	</div>
 	</div>
   </div>
 
 </div>
-</div>
+

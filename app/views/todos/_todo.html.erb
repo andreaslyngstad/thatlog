@@ -1,20 +1,25 @@
 
-
-<div class="info" id="todo_<%=todo.id%>"> 
-	<div class="name_todo">
+ <% if todo.due_to_day == true %>
+<div class="info task_info green" id="todo_<%=todo.id%>" data-due="<%= todo.due.strftime("%Y%j")%>"> 
+	<% elsif todo.overdue == true  %>
+	<div class="info task_info red" id="todo_<%=todo.id%>" data-due="<%= todo.due.strftime("%Y%j")%>"> 
+		<% else %>
+	<div class="info task_info" id="todo_<%=todo.id%>" data-due="<%= todo.due.strftime("%Y%j")%>"> 	
+		<% end %>
   <% if todo.completed == false %>
   <input class="done_box" id="<%=todo.id%>" type="checkbox"/>
   <% else %>
   <input class="done_box" id="<%=todo.id%>" type="checkbox" checked="checked"/>
   <% end %>
-  <%= todo.name %> </div>
-  <div class="project_todo"><%=todo.project.name%></div>
-  <div class="user_todo"><% if !todo.user.nil? %><%= todo.user.name %><% end %></div>
+ <div class="name_todo"><%= todo.name %> </div>
+   
+  <div class="project_todo smaller"><%=todo.project.name%></div>
+  <div class="user_todo smaller"><% if !todo.user.nil? %><%= todo.user.name %><% end %></div>
   
   <div class="date_all"><%= todo.due.strftime('%d.%m.%y')%> </div>
    <div class="delete_edit">
   <span class="open_todo_update edit" id="todo_update" data-id="<%= todo.id %>" data-object="todo">edit</span>
-  <%= link_to "delete", todo, :confirm => "Are you sure?", :title => "Delete task", :method => :delete, :class => "delete_todo", :remote => true%>
+  <%= link_to "delete", todo, :confirm => "Are you sure?", :title => "Delete task", :method => :delete, :class => "delete_todo delete", :remote => true%>
 </div>
   </div>
  <div class="dialog_form" id="todo_update_<%= todo.id %>_form" title="Update task" style="display:none;">

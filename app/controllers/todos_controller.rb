@@ -43,6 +43,9 @@ class TodosController < ApplicationController
     @project = @todo.project
     @firm = current_firm
     @todo.completed = false
+    @done_todos = @project.todos.where(["completed = ?", true]).includes(:user)
+    @not_done_todos = @project.todos.where(["completed = ?", false]).includes(:user)
+    @todo_same_day = @project.todos.where(:due => @todo.due).first
     respond_to do |format|
       if @todo.save
         flash[:notice] = flash_helper('Todo was successfully created.')
@@ -85,6 +88,8 @@ class TodosController < ApplicationController
     @todo.destroy
     @project = @todo.project
     @firm = @todo.project.firm
+    @done_todos = @project.todos.where(["completed = ?", true]).includes(:user)
+    @not_done_todos = @project.todos.where(["completed = ?", false]).includes(:user)
     flash[:notice] = flash_helper('Todo was successfully deleted.')
     respond_to do |format|
       format.html { redirect_to(firm_project_path(@firm, @project)) }  

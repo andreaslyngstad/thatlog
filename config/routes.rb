@@ -1,9 +1,26 @@
 require 'subdomain'
 Logit::Application.routes.draw do
+  resources :users
+    resources :firms
+    resources :public do
+      member do
+        get "first_user"
+        post "create_first_user"
+     end
+  end    
+  
+  
+  
+  devise_for :users
+
   devise_for :users, :path_names => { :sign_up => "register" }, :controllers => {:registrations => "users"} do
     	get "sign_in", :to => "devise/sessions#new"
     	get "sign_out", :to => "devise/sessions#destroy"
-    
+    	get "register", :to => "public#register"
+    	get "/register/:firm_id/user" => "public#first_user",  :as => :register_user
+    	post "/register/:firm_id/user" => "public#create",  :as => :create_first_user
+    	get "/validates_uniqe/:subdomain" => "public#validates_uniqe", :as => :validates_uniqe
+      get "/", :to => "public#index"
   	end
   resources :users, :only => [:index, :show, :create, :update, :destroy] do
     member do
@@ -12,7 +29,7 @@ Logit::Application.routes.draw do
   end
 
   constraints(Subdomain) do
- 		
+ 	root :to	=> "private#statistics"
 	match "/statistics" => "private#statistics", :as => :statistics
 	match "/reports" => 'private#reports', :as => :reports
 	match "/timesheets/:user_id" => 'private#timesheets', :as => :timesheets
@@ -30,28 +47,39 @@ Logit::Application.routes.draw do
 	match "projects/update_index/:id" => "projects#update_index",  :as => :update_index
 	match "projects/create_index/" => "projects#create_index",  :as => :create_index
 	match "/logs_pr_date/:time/:url" => "private#logs_pr_date", :as => :logs_pr_date
-	  match "/logs_pr_date/:time/:url/:id" => "private#logs_pr_date", :as => :logs_pr_date
-	  match "/log_range/" => "private#log_range", :as => :log_range  
-	  match "/mark_todo_done/:id" => "private#mark_todo_done", :as => :mark_todo_done
-	  match "/membership/:id/:project_id" => "private#membership", :as => :membership
-	  match "/customer_employees/:customer_id/:log_id" => "private#customer_employees", :as => :customer_employees
-	  match "/customer_employees/:customer_id/" => "private#customer_employees", :as => :customer_employees
-	  match "/customer_employees/:tracking/:customer_id/:log_id" => "private#customer_employees", :as => :customer_employees
-	  match "/customer_employees/:tracking/:customer_id/" => "private#customer_employees", :as => :customer_employees
-	  match "/customer_employees/" => "private#customer_employees", :as => :customer_employees
-	  match "/project_todos/:project_id/:log_id" => "private#project_todos", :as => :project_todos
-	  match "/project_todos/:project_id" => "private#project_todos", :as => :project_todos 
-	  match "/project_todos/:tracking/:project_id/:log_id" => "private#project_todos", :as => :project_todos
-	  match "/project_todos/:tracking/:project_id" => "private#project_todos", :as => :project_todos 
-	  match "/activate_projects/:id" => "private#activate_projects", :as => :activate_projects
-	  match "/project_todos/" => "private#project_todos", :as => :project_todos
-	  match "/get_logs/:customer_id" => "private#get_logs", :as => :get_logs
-	  match "/get_logs_project/:project_id" => "private#get_logs_project", :as => :get_logs_project
-	  match "/get_users_project/:project_id" => "private#get_users_project", :as => :get_users_project
-	  match "/get_logs_user/:user_id" => "private#get_logs_user", :as => :get_logs_user
-	  match "/get_employees/:customer_id" => "private#get_employees", :as => :get_employees
-	  match "/add_todo_to_logs" => "private#add_todo_to_logs", :as => :add_todo_to_logs
-	  match "/destroy_all" => "private#destroy_all", :as => :destroy_all
+  match "/logs_pr_date/:time/:url/:id" => "private#logs_pr_date", :as => :logs_pr_date
+  match "/log_range/" => "private#log_range", :as => :log_range  
+  match "/mark_todo_done/:id" => "private#mark_todo_done", :as => :mark_todo_done
+  match "/membership/:id/:project_id" => "private#membership", :as => :membership
+  
+  match "/customer_employees/:customer_id/:log_id" => "logs#customer_employees", :as => :customer_employees
+  match "/customer_employees/:customer_id/" => "logs#customer_employees", :as => :customer_employees
+  
+  match "/customer_select_tracking/:customer_id/:log_id" => "logs#customer_select_tracking", :as => :customer_select_tracking
+  match "/customer_select_tracking/:customer_id/" => "logs#customer_select_tracking", :as => :customer_select_tracking
+  
+  match "/employee_select_tracking/:employee_id/:log_id" => "logs#employee_select_tracking", :as => :employee_select_tracking
+  match "/employee_select_tracking/:employee_id/" => "logs#employee_select_tracking", :as => :employee_select_tracking
+  match "/customer_employees/" => "logs#customer_employees", :as => :customer_employees
+  
+  match "/project_todos/:project_id/:log_id" => "logs#project_todos", :as => :project_todos
+  match "/project_todos/:project_id" => "logs#project_todos", :as => :project_todos 
+  match "/project_select_tracking/:project_id/:log_id" => "logs#project_select_tracking", :as => :project_select_tracking
+  match "/project_select_tracking/:project_id" => "logs#project_select_tracking", :as => :project_select_tracking 
+  match "/todo_select_tracking/:todo_id/:log_id" => "logs#todo_select_tracking", :as => :todo_select_tracking
+  match "/todo_select_tracking/:todo_id" => "logs#todo_select_tracking", :as => :todo_select_tracking
+  match "/project_todos/" => "logs#project_todos", :as => :project_todos
+  match "/todo_select/:todo_id/:log_id" => "logs#todo_select", :as => :todo_select
+  match "/todo_select/:todo_id" => "logs#todo_select", :as => :todo_select  
+  match "/activate_projects/:id" => "private#activate_projects", :as => :activate_projects
+
+  match "/get_logs/:customer_id" => "private#get_logs", :as => :get_logs
+  match "/get_logs_project/:project_id" => "private#get_logs_project", :as => :get_logs_project
+  match "/get_users_project/:project_id" => "private#get_users_project", :as => :get_users_project
+  match "/get_logs_user/:user_id" => "private#get_logs_user", :as => :get_logs_user
+  match "/get_employees/:customer_id" => "private#get_employees", :as => :get_employees
+  match "/add_todo_to_logs" => "private#add_todo_to_logs", :as => :add_todo_to_logs
+  match "/destroy_all" => "private#destroy_all", :as => :destroy_all
 
 	resources :customers	
 	resources :employees
@@ -61,24 +89,6 @@ Logit::Application.routes.draw do
 	resources :logs 
   
 	end
-resources :users
-		resources :firms
-  resources :public do
-    member do
-      get "first_user"
-      post "create_first_user"
-    end
-  end    
-
-  
-  
-  
-  match "/register" => "public#register",  :as => :register
-  match "/register/:firm_id/user" => "public#first_user",  :as => :register_user
-
-
-  match "/validates_uniqe/:subdomain" => "public#validates_uniqe", :as => :validates_uniqe
-  
   
   root :to => "public#index"
   

@@ -1,5 +1,5 @@
 module ApplicationHelper
-	include UrlHelper
+	
 	
   	def pick_color
       a = ["red", "Orange", "Yellow ", "Green ", "Blue", "Indigo", "Violet", "#51E86F"]

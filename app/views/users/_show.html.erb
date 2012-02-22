@@ -35,16 +35,17 @@
 		     </div>
 </div>
 </div>
-<div id="tabs">
-  <ul class="tabsul">
-    
-    <li><a href="#tabs-1">Tasks</a></li>
-    <li><a href="/get_logs_user/<%= @user.id %>">Logs<span>&nbsp;</span></a></li>
-   
-  </ul>
-  
-  
-  <div id="tabs-1"> 
+
+  <nav id="sub_tabs">
+    <ul>
+    <li class=""><a href="#tabs-1">Tasks</a></li>
+    <li class=""><a href="#tabs-2">Logs</a></li>
+    </ul>
+    <span class="nav_line"></span>
+    </nav>
+   <div class="boxes">
+  <div class="tab_box" id="tabs-1"> 
+  	  <div id="todos_list">
   		<div class="log_menu">
     <span class="add_some">  
     <a id="dialog_task">Add another</a>
@@ -61,7 +62,7 @@
     </div>
   </span>
     </div>
-  <div id="todos_list">
+
    <div class="info" > 
 	<div class="name_todo info_head">Task</div>
 	<div class="project_todo info_head">Project</div>
@@ -79,7 +80,14 @@
     </div> 
   </div>
   </div>
-  <div id="tabs-2">
+  <div class="tab_box hide" id="tabs-2">
+  	<div class="listing_logs">
+  	<%= render "logs/logs_menu" %>
+    
+    	<%= render "logs/list_header" %>
+      <%= render @logs %>
+    </div>
+
    </div>
   
 </div>

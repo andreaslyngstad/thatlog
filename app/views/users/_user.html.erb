@@ -21,9 +21,9 @@
   <li><%= f.label :email %><%= f.text_field :email %></li>
   <li><%= f.label :phone %><%= f.text_field :phone %></li>
    <li><%= f.label :password %><%= f.password_field :password, :class => "required", :minlength => "4" %></li>
-  <li><p><%= f.radio_button :roles, 'Admin', :checked => true %> <%= label :roles, 'Admin (can see and edit everything)' %></p>
-  		<p><%= f.radio_button :roles, 'Member' %> <%= label :roles, 'Member (can see everything and edit projects where they are members)' %></p>
-  		<p><%= f.radio_button :roles, 'External user' %> <%= label :roles, 'External user (can only see and edit projects where they are members)' %></p></li>
+  <li><p><%= f.radio_button :role, 'Admin', :checked => true %> <%= label :role, 'Admin (can see and edit everything)' %></p>
+  		<p><%= f.radio_button :role, 'Member' %> <%= label :role, 'Member (can see everything and edit projects where they are members)' %></p>
+  		<p><%= f.radio_button :role, 'External user' %> <%= label :role, 'External user (can only see and edit projects where they are members)' %></p></li>
   <li><%= f.submit "Save", :class => "submit" %></li></ul>
   <% end %>
     </div>

@@ -1,17 +1,15 @@
 <div class="signup signup_firm">
 <%= form_for :firm, :url => firms_path,  :html => { :class => "register_firm", :id => "register_firm" } do |firm| %>
- 
- 
- <div class="signup-form-field">
+ 	<div class="signup-form-field">
     <%= firm.label :Firm_name %>
     <%= firm.text_field :name, :class => "required form-input", :AUTOCOMPLETE => "OFF" %>
     </div>
- <div class="signup-form-field-subdomain">
-    <%= firm.label :Secure_Site, :title => "This is the domain for your firms loggyit account" %>
+ 	<div class="signup-form-field-subdomain">
+    <%= firm.label :Secure_Site, :title => "This is the domain for your firms squadlink account" %>
     <%= firm.text_field :subdomain, :class => "required noSpecialChars form-input register_firm_subdomain", :AUTOCOMPLETE => "OFF" %>
-   <div id="loggyit_sub">.loggyit.com</div>
-  </div>
-<div class="not_required" style="display: none;">
+   	<div id="loggyit_sub">.squadlink.com</div>
+  	</div>
+	<div class="not_required" style="display: none;">
 	<div class="signup-form-field">
     <%= firm.label :phone %>
     <%= firm.text_field :phone, :class => "form-input", :AUTOCOMPLETE => "OFF" %>

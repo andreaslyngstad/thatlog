@@ -1,42 +1,16 @@
 <html xmlns="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
-  <title>Loggyit</title>
+  <title>Squadlink</title>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <meta name="google-site-verification" content="ynxbxSS6ZtwG1WFHyqmWZ5ELrgNRADdhdEFebN11h5k" />
-
-  <%= stylesheet_link_tag "jquery-ui-1.8.7.custom", "navi_styles",'application' %>
-
+  <meta name="google-site-verification" content="I_bq1crh7G3M7kTRDZlfO95dwRqXX_TS9y2Jrru6Wl4" />
+  	<%= stylesheet_link_tag 'registration' %>
+	<%= javascript_include_tag "registration"%>
    <%= csrf_meta_tag %>
    <link rel="shortcut icon" href="/favicon.png" />
-   
-
-<%= javascript_include_tag "jquery-1.4.4.min",  "jquery.jclock", "jquery-ui-1.8.7.custom.min",  "jquery.ui.selectmenu", "jquery.quicksearch.js", "jquery.validate",  "rails", "application"%>
-
 </head>
-<body>
-  
- <div id="main">
-<div id="above_header">
-	<ul class="hmenu">
-	    <%= render 'devise/menu/registration_items' %>
-	    <%= render 'devise/menu/login_items' %>
-			</ul>
-  Loggyit 
-  
-  </div>
-
-
-<div id="all_container">
-<div id="register_container">
-	
-<%= yield %>
-</div>
-</div>
-</div>
-<div id="footer">
-	
-</div>
-
-
+<body>  
+	<div class="container">
+		<%= yield %>
+	</div>
 </body>
 </html>

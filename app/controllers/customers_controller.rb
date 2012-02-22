@@ -22,10 +22,11 @@ class CustomersController < ApplicationController
     
     @log = Log.new(:customer => @customer)
     @employees = @customer.employees
+    @employee = Employee.new(:customer => @customer)
     @projects = @customer.projects.where(["active = ?", true]).includes(:customer, :todos)
     
     @all_projects = current_firm.projects.where(["customer_id IS ? OR customer_id IS ? AND active = ?", nil, @customer.id, true])
-    @project = @customer.projects.new
+    @project = Project.new(:customer => @customer)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @customer }
