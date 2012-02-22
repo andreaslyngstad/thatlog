@@ -1,0 +1,30 @@
+$(".flash_notice").empty();
+<% if @log.nil? %>
+<% if @tracking.nil? %>
+var form	 = $(".new_log")
+var employee = form.find("#log_employee_id_")	
+<% else %>	
+var employee = $("#log_employee_id_")
+var form	 = $("#start_tracking_form")
+<% end %>	
+<% else %>
+var form	 = $("#log_update_<%= escape_javascript(@log.id.to_s) %>_form")
+var employee = $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>")
+<% end %>  
+	form.find(".big_select").selectmenu("destroy");
+	form.find(".small_selector").selectmenu("destroy");
+  employee.empty();
+  <% if @employees.is_a? String %>
+    employee.append("<option value=''>" + "<%= escape_javascript(@employees) %>" + "</option>");
+  <% else %>
+  <% if @employees.empty? %>
+  employee.append("<option value=''>No employees</option>");
+  <% else %>
+   employee.append("<option value=''>None</option>");
+    <% @employees.each do |employees| %>
+    employee.append("<option value='" + "<%= escape_javascript(employees.id.to_s) %>" + "'>" + "<%= escape_javascript(employees.name) %>" + "</option>");
+    <% end %>
+    <% end %>
+  <% end %>
+  form.find(".big_select").selectmenu({width:369});
+$(".spinning").hide();

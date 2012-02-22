@@ -1,0 +1,227 @@
+@import "jquery-ui-1.8.7custom.css";
+
+html,body {margin:0;padding:0;font-family: Tahoma, sans-serif; font-weight: lighter; letter-spacing:1px; height: 100%; }
+
+.container {
+position: relative;
+min-height: 900px;
+background: white;
+width: 900px;
+margin: 0 auto;
+padding: 5px 0 0 0;
+
+}
+#front_logo{
+position: absolute;
+left: 210px;
+top:75px;
+}
+.video_container{
+display:none;
+position: absolute;
+top: 180px;
+left: 130px;
+}
+.hands_container{
+position: absolute;
+
+top: 341px;
+left: 200px;
+}
+
+.start_video{
+position: absolute;
+top: 300px;
+left: 418px;
+cursor: pointer;
+}
+.on{
+opacity: .8;
+}
+.play_a_video{
+position: absolute;
+top: 370px;
+left: 385px;
+	
+}
+
+.signup_button_link{
+background: #0230BA;
+color:#fff;
+text-align: center;
+text-decoration: none;
+line-height:50px;
+position: absolute;
+top: 550px;
+left: 350px;
+border:1px solid #ddd;
+height:50px;
+width:200px;
+cursor:pointer;
+
+}
+.signup_button_link:hover{
+background: #0230ee;
+}
+#footer{
+position: absolute;
+top: 600px;
+left: 140px;
+
+}
+.footer-col{
+font-size: 11px;
+color: #777;
+float: left;
+max-width: 200px;
+margin: 15px 20px 20px 20px;
+
+}
+.footer-col a{
+text-decoration:none;
+color: #777;
+}
+.footer-col ul{
+list-style: none;
+}
+#register_container{
+position:absolute;
+top: 180px;
+left:150px;
+width:600px;
+display: block;
+margin: 0 auto 0 auto;
+}
+#registration{
+border:1px solid #999;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+float:left;
+ width: 560px;
+padding: 20px;
+color: white;
+background: #0230BA;
+
+}
+
+.signup_firm, .signup_user{
+float:left;
+width: 600px;
+background: #fff;
+margin-top:20px;
+padding: 20px 0 0 0 ;
+border:1px solid #999;
+}
+.hide{
+	display:none;
+}
+#login_link{
+	cursor: pointer;
+}
+.login_form{
+	position:absolute;
+	top: -5px;
+	left: 150px;
+	background: #2D2D2D;
+	color: #dddddd;
+	z-index: 10;
+}
+.login_form a{
+	color: #dddddd;
+}
+
+.signup .signup-form-field-subdomain input{
+width:264px;
+}
+.signup .signup-form-field #check{
+width:15px;
+padding: 0;
+margin: 9px 0 0 0;
+line-height: 30px;
+}
+.signup .signup-form-field-subdomain, .signup-form-field{
+display: block;
+position: relative;
+height: 60px;
+width: 550px;
+
+}
+.signup .signup-form-field-subdomain #loggyit_sub{
+position: absolute;
+top: 0px;
+left:444px;
+font-size: 14px;
+line-height: 35px;
+}
+em.error{
+color: red;
+display: block;
+margin: 5px 0 0 170px;
+
+}
+em.check{
+color: gray;
+display: block;
+margin: 5px 0 0 170px;
+
+}
+em.ok{
+color: green;
+display: block;
+margin: 5px 0 0 170px;
+
+}
+.devise_links{
+margin: 0 0 20px 20px;
+}
+
+.signup input, .update input{
+width:364px;padding:2px; font-size:20px;
+line-height: 1.2em;
+background:#fff;
+}
+.signup label, .update label{
+display: block;
+margin-left: 20px;
+float: left;
+width: 150px;
+line-height: 30px;
+}
+.signup .submit, .update .submit{
+width: 150px;margin-left:170px;cursor:pointer;padding-top:2px;width:100px;border:1px solid #999; font-size:20px;background:#fff;
+background:#3ea60b;
+border: 1px solid #2E8D11;
+color: white;
+}
+
+.signup .submit:hover, .update .submit:hover{
+background: #2E8D11;
+}
+
+
+.open_not_required, .close_not_required{
+  cursor:pointer;
+  margin-left: auto;
+  margin-right: auto;
+  display:block;
+  width: 100px;
+  height: 20px;
+}
+.open_not_required{
+  background: url("open_tracking_select.png") no-repeat scroll left top transparent;
+}
+.close_not_required{
+  background: url("close_tracking_select.png") no-repeat scroll left top transparent;
+}
+
+.open_not_required_container{
+  width: 600px;
+  height: 20px;
+  background:  #E6E6E6;
+  margin-top: 20px; 
+}
+.instruction_1{
+ width: 500px;
+ height: 200px;
+ float:left;
+}

@@ -1,0 +1,12 @@
+@mixin rounded-corners{
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  }
+.chart{
+	width:500px;
+	height: 200px;
+	float:left;
+	@include rounded-corners
+}
+///

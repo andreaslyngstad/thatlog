@@ -1,0 +1,44 @@
+$(".flash_notice").empty();
+<% if @log.nil? %>
+var customer = $("#log_customer_id_")
+var employee = $("#log_employee_id_")
+var form	 = $("#start_tracking_form")	
+<% else %>
+var form	 = $("#log_update_<%= escape_javascript(@log.id.to_s) %>_form")
+var customer = $("#log_customer_id_<%= escape_javascript(@log.id.to_s)%>")
+var employee = $("#log_employee_id_<%= escape_javascript(@log.id.to_s) %>")
+<% end %>  
+  form.find(".small_selector").selectmenu("destroy");
+  customer.empty();
+  employee.empty();
+  <% if !@todo.nil? %>
+      <% if !@todo.customer.nil? %>  
+          customer.append("<option value='" + "<%= escape_javascript(@todo.customer.id.to_s) %>" + "'>" + "<%= escape_javascript(@todo.customer.name) %>" + "</option>");
+            <% if @todo.customer.employees.empty? %>
+                employee.append("<option value=''>No employees</option>");
+            <% else %>
+              employee.append("<option value=''>Select a employee</option>");
+              <% @todo.customer.employees.each do |employees| %>
+              employee.append("<option value='" + "<%= escape_javascript(employees.id.to_s) %>" + "'>" + "<%= escape_javascript(employees.name) %>" + "</option>");
+            <% end %>
+       <% end %>
+  <% else %>
+	 customer.append("<option value=''>" + "None" + "</option>");
+	 employee.append("<option value=''>Select a customer</option>");
+		<% @customers.each do |customer| %>
+	   		customer.append("<option value='" + "<%= escape_javascript(customer.id.to_s) %>" + "'>" + "<%= escape_javascript(customer.name) %>" + "</option>");
+	 	<% end %>
+ <% end %>  
+     
+  <% else %>
+    customer.append("<option value=''>" + "None" + "</option>");
+    <% @customers.each do |customer| %>
+      customer.append("<option value='" + "<%= escape_javascript(customer.id.to_s) %>" + "'>" + "<%= escape_javascript(customer.name) %>" + "</option>");
+       <% end %>
+     employee.append("<option value=''>Select a customer</option>");  
+  <% end %>
+  form.find(".small_selector").selectmenu({width:200});
+  <% if !@log.nil? %>
+  $("#log_<%= escape_javascript(@log.id.to_s)%>").replaceWith("<%= escape_javascript(render(:partial => @log)) %>");
+  <% end %>
+$(".spinning").hide();
