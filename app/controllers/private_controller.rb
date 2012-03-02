@@ -1,12 +1,15 @@
 class PrivateController < ApplicationController
    set_tab :home, :only => %w(statistics)
       authorize_resource :firm
+
+  # skip_before_filter :find_firm, :only => :statistics
+
   def index
     @customers = Customer.search(params[:search])
     @customer = Customer.new
   end
-  
- 
+
+
   def account
   
   	@firm = current_firm
@@ -31,13 +34,14 @@ class PrivateController < ApplicationController
     end
   end
   def statistics
-    @firm = current_firm
     @log_week = current_firm.logs.where(:log_date => (Time.now.beginning_of_week + 1.second)..(Time.now.end_of_day)).group("date(log_date)").sum(:hours)
- 	@logs_project = current_firm.logs.where(['log_date > ? AND project_id NOT ?', Time.now.beginning_of_week, nil]).group("project").sum(:hours)
+ 	  @logs_project = current_firm.logs.where(['log_date > ? AND project_id NOT ?', Time.now.beginning_of_week, nil]).group("project").sum(:hours)
     
     @logs_customer = current_firm.logs.where(['log_date > ? AND customer_id NOT ?', Time.now.beginning_of_week, nil]).group("customer").sum(:hours)
     @logs_user = current_firm.logs.where(['log_date > ?', Time.now.beginning_of_week]).group("user").sum(:hours)
   end
+
+
   def reports
   	
   	 @users = current_firm.users

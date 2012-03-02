@@ -1,16 +1,43 @@
-<h2>Change your password</h2>
+<div id="above_header">
+  </div>
+<div id="front_logo">
+		<%= link_to image_tag("squadlink.png" ), root_url   %>
+	</div>
 
+<div id="all_container">
+<div id="register_container">
+
+
+
+ <div id="registration" class="blue">
+
+
+ 	<p>Change your password</p>
+    <span class="flash_notice" style="color: red;"><%= devise_error_messages! %></span>
+    <span class="flash_notice" style="color: #87E32B;"><%= flash[:notice] %></span>
+
+ </div>
+
+<div class="signup signup_firm">
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+
   <%= f.hidden_field :reset_password_token %>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+   <div class="signup-form-field"><%= f.label :password, "New password" %>
+  <%= f.password_field :password %></div>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+   <div class="signup-form-field"><%= f.label :password_confirmation, "Confirm new password" %>
+  <%= f.password_field :password_confirmation %></div>
 
-  <p><%= f.submit "Change my password" %></p>
+  <div><%= f.submit "Change my password", :class => "submit" %></div>
 <% end %>
+</div>
+  <div class="instruction_1">
+	<p><%= render "links" %></p>
+</div>
 
-<%= render :partial => "devise/shared/links" %>
+
+
+
+</div>
+</div>

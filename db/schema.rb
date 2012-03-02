@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -18,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.string   "email"
     t.string   "address"
     t.integer  "firm_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "employees", :force => true do |t|
@@ -27,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.string   "phone"
     t.string   "email"
     t.integer  "customer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "firms", :force => true do |t|
@@ -39,8 +40,8 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.string   "currency"
     t.string   "lang"
     t.string   "time_zone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -62,15 +63,15 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.datetime "end_time"
     t.datetime "log_date"
     t.float    "hours"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "memberships", :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "milestones", :force => true do |t|
@@ -79,8 +80,8 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.integer  "firm_id"
     t.boolean  "completed"
     t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -92,8 +93,8 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.float    "hour_price"
     t.integer  "firm_id"
     t.integer  "customer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "todos", :force => true do |t|
@@ -104,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.integer  "customer_id"
     t.date     "due"
     t.boolean  "completed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -113,20 +114,22 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
     t.string   "phone"
     t.string   "name"
     t.integer  "firm_id"
-    t.string   "loginable_token",        :limit => 60
     t.float    "hourly_rate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.string   "loginable_type",         :limit => 40
+    t.integer  "loginable_id"
+    t.string   "loginable_token"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",                   :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -134,7 +137,6 @@ ActiveRecord::Schema.define(:version => 20101029201141) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["loginable_token"], :name => "index_users_on_loginable_token"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

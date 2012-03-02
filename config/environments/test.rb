@@ -1,4 +1,4 @@
-Logit::Application.configure do
+Squadlink::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
   # The test environment is used exclusively to run your application's
@@ -39,4 +39,7 @@ Logit::Application.configure do
   
   # This config option was shown in the episode but is actually not used, so don't bother adding it.
   # config.assets.allow_debugging = true
+
+  # Raise exception on mass assignment protection for Active Record models
+  config.active_record.mass_assignment_sanitizer = :strict
 end

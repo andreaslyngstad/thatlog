@@ -1,0 +1,16 @@
+development:
+  :address: smtp.gmail.com
+  :port: 587
+  :domain: lizz.no
+  :authentication: plain
+  :user_name: andreas@lizz.no
+  :password: lekmedmeg
+  :enable_starttls_auto: true
+production:
+  :address: smtp.gmail.com
+  :port: 587
+  :domain: squadlink.com
+  :authentication: plain
+  :user_name: no_reply@squadlink.com
+  :password: lekmedmeg
+  :enable_starttls_auto: true

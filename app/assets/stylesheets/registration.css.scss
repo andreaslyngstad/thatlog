@@ -1,7 +1,7 @@
 @import "jquery-ui-1.8.7custom.css";
 
 html,body {margin:0;padding:0;font-family: Tahoma, sans-serif; font-weight: lighter; letter-spacing:1px; height: 100%; }
-
+img {border:none;}
 .container {
 position: relative;
 min-height: 900px;
@@ -188,7 +188,7 @@ width: 150px;
 line-height: 30px;
 }
 .signup .submit, .update .submit{
-width: 150px;margin-left:170px;cursor:pointer;padding-top:2px;width:100px;border:1px solid #999; font-size:20px;background:#fff;
+width:auto;margin-left:170px;cursor:pointer;padding:2px 15px 2px 15px;border:1px solid #999; font-size:20px;background:#fff;
 background:#3ea60b;
 border: 1px solid #2E8D11;
 color: white;

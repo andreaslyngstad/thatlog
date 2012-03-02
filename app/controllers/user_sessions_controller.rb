@@ -10,7 +10,7 @@ class UserSessionsController < Devise::SessionsController
     if @user_session.save
       @firm = current_user.firm
       flash[:notice] = flash_helper("Successfully logged in.")
-      redirect_to root_url
+
     else
       render :action => 'new'
     end

@@ -1,12 +1,4 @@
 class User < ActiveRecord::Base
-  
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
 	has_attached_file :avatar, :styles => { :original => "100x100#", :small => "32x32#" }
                            
 	validates_attachment_size :avatar, :less_than => 2.megabytes
@@ -24,9 +16,9 @@ class User < ActiveRecord::Base
   				:name, 
   				:phone, 
   				:firm_id, 
-  				:manager, 
-  				:loginable_token, 
-  				:roles,  
+  				:manager,
+  				:role,
+          :loginable_token,
   				:avatar,
   				:avatar_file_name, 
     			:avatar_content_type, 
@@ -51,19 +43,27 @@ class User < ActiveRecord::Base
   def admin?
     false
   end
-  
+
   def self.current_firm(firm)
     where("users.firm = ?", firm)
   end
-  
-  def self.valid_token?(params)
-    token_user = self.where(["loginable_token = ?", params[:id]]).first
+  def self.valid_recover?(params)
+    token_user = self.where(:loginable_token => params).first
     if token_user
       token_user.loginable_token = nil
       token_user.save
     end
     return token_user
   end
+  def self.valid?(params)
+    token_user = self.where(:loginable_token => params[:id]).first
+    if token_user
+      token_user.loginable_token = nil
+      token_user.save
+    end
+    return token_user
+  end
+
    def self.find_for_database_authentication(conditions)
    self.where(:email => conditions[:email]).first
   end

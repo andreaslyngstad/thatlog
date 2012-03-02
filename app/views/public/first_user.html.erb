@@ -20,7 +20,7 @@
 		
 	
 <div class="signup signup_user">
-<%= form_for [@firm, @user], :url => create_first_user_path, :html => { :class => "first_user", :id => "first_user", :multipart => true } do |f| %>
+<%= form_for :user, :url => create_first_user_path, :html => { :class => "first_user", :id => "first_user", :multipart => true } do |f| %>
  <%= f.hidden_field :firm_id %>
 
 	<div class="signup-form-field">

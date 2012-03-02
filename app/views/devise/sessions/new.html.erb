@@ -1,27 +1,50 @@
+<div id="above_header">
+  </div>
+<div id="front_logo">
+		<%= link_to image_tag("squadlink.png" ), root_url(:subdomain => nil)   %>
+	</div>
+
+<div id="all_container">
+<div id="register_container">
+
+
+
+ <div id="registration" class="blue">
+
+
+ 	<p>Please sign in.</p>
+
+     <span class="flash_notice" style="color: #87E32B;"><%= flash[:notice] %></span>
+    <span class="flash_notice" style="color: red;"><%= flash[:alert] %> </span>
+ </div>
 
 <div class="signup signup_firm">
-	<h2 style="margin-left:20px;">Sign in</h2>
-<% if flash[:notice] %>
-	<span class="flash_notice" style="display:block;height:30px; width:560px; background-color: #87E32B; text-align:center; line-height: 175%;"><%= flash[:notice] %></span>
-	<% end %>
-	<% if flash[:alert] %>
-	<span class="flash_error" style="display:block;height:30px; width:560px; background-color: red; margin-left:20px;text-align:center; line-height: 175%;" ><%= flash[:alert] %></span>
-	<% end %>
 
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="signup-form-field"><%= f.label :email %>
- <%= f.text_field :email %></div>
-  <div class="signup-form-field"><%= f.label :password %>
- <%= f.password_field :password %></div>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div class="signup-form-field">
+      <%= f.label :email %>
+      <%= f.email_field :email %></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="signup-form-field"><%= f.label :remember_me %><%= f.check_box :remember_me, :id => "check" %> </div>
-  <% end -%>
+      <div class="signup-form-field"><%= f.label :password %>
+      <%= f.password_field :password %></div>
 
-  <p><%= f.submit "Sign in", :class => "submit" %></p>
-<% end %>
-<div class="devise_links">
-<%= render :partial => "devise/shared/links" %>
+      <% if devise_mapping.rememberable? -%>
+        <div class="signup-form-field checkbox"><%= f.check_box :remember_me, :id => "check" %> <%= f.label :remember_me %></div>
+      <% end -%>
+
+      <div><%= f.submit "Sign in", :class => "submit"%></div>
+    <% end %>
+
+
+</div>
+  <div class="instruction_1">
+	<p><%= render "links" %></p>
+</div>
+
+
+
+
 </div>
 </div>
+

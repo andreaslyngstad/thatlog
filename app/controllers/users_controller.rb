@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-  	 @firm = current_firm
+  	@firm = current_firm
     @user = User.find(params[:id])
     @done_todos = @user.todos.where(["completed = ?", true]).includes(:project, :user)
     @not_done_todos = @user.todos.where(["completed = ?", false]).includes(:project, :user)
@@ -109,8 +109,10 @@ class UsersController < ApplicationController
     end
   end
   
-  def valid 
-  	token_user = User.valid_token?(params)
+  def valid
+
+  	token_user = User.valid?(params)
+
     if token_user
       sign_in(:user, token_user)
       flash[:notice] = flash_helper("You have been logged in")

@@ -10,7 +10,7 @@ class Log < ActiveRecord::Base
   belongs_to :employee
   
   before_save :set_hours
- 
+
   
   def time_diff(time)
   	seconds    	=  (time % 60).to_i

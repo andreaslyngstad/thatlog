@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 
-gem 'rails', '~> 3.1.0'
+gem 'rails', '3.2.1'
 gem 'eventmachine', '1.0.0.beta.4.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,17 +11,19 @@ gem "cancan"
 gem 'jquery-rails'
 gem "tabs_on_rails"
 gem "devise"
-gem "paperclip", "2.3"
+gem "paperclip"
 
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
+  gem 'sass-rails', "  ~> 3.2.3"
+  gem 'coffee-rails', "~> 3.2.1"
+  gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
- # gem 'rails-dev-tweaks', '~> 0.5.0'
-
+  gem 'ruby-debug19'
+  gem 'minitest'
+  gem 'factory_girl'
+  gem 'turn'
 end
 
 # Use unicorn as the web server

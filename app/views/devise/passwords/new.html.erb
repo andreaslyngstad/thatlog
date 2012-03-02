@@ -1,15 +1,39 @@
+<div id="above_header">
+  </div>
+<div id="front_logo">
+		<%= link_to image_tag("squadlink.png" ), root_url(:subdomain => nil)   %>
+	</div>
+
+<div id="all_container">
+<div id="register_container">
+
+
+
+ <div id="registration" class="blue">
+ 	<p>Forgot your password?</p>
+    <p>Enter your email and we'll send instructions on how to reset it.</p>
+      <span class="flash_notice" style="color: red;"><%= devise_error_messages! %></span>
+     <span class="flash_notice" style="color: #87E32B;"><%= flash[:notice] %></span>
+
+ </div>
+
 <div class="signup signup_firm">
-
-<h2>Forgot your password?</h2>
-
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="signup-form-field"><%= f.label :email %>
-  <%= f.text_field :email %></div>
 
-  <%= f.submit "Ok", :class => "submit"%>
+  <div class="signup-form-field"><%= f.label :email %><%= f.email_field :email %></div>
+
+
+  <div><%= f.submit "Send instructions", :class => "submit" %></div>
 <% end %>
-
-<%= render :partial => "devise/shared/links" %>
+ </div>
+  <div class="instruction_1">
+	<p><%= render "links" %></p>
 </div>
+
+
+
+
+</div>
+</div>
+

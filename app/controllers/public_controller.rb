@@ -1,12 +1,11 @@
 class PublicController < ApplicationController
-  skip_before_filter :authenticate_user!
+  skip_before_filter :authenticate_user!, :find_firm
   layout "registration"
-  prepend_before_filter :require_no_authentication, :only => [ :new, :create ]
-  before_filter :allow_params_authentication!, :only => :create
-  include Devise::Controllers::InternalHelpers
+
+
   def index
-    resource = build_resource
-    clean_up_passwords(resource)
+
+
   end
 
   def register
@@ -21,11 +20,13 @@ class PublicController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    @firm = @user.firm
-    @user.update_attributes(:role => "Admin") 
+    @firm = Firm.find(params[:firm_id])
+    @user.role = "Admin"
+    @user.firm = @firm
+
         if @user.save
           flash[:notice] = "Registration successful."
-         sign_in_and_redirect(@user)
+          sign_up_and_redirect(@firm)
         else
         	flash[:error] = "Registration could not be saved because:"
           render :action => 'first_user'

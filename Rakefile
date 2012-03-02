@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Logit::Application.load_tasks
+Squadlink::Application.load_tasks

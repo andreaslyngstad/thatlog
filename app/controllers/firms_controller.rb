@@ -2,7 +2,7 @@ class FirmsController < ApplicationController
   authorize_resource :firm
   
   skip_before_filter :authenticate_user!, :only => [:create]
-  
+  skip_before_filter :find_firm
   # GET /firms
   # GET /firms.xml
   def index

@@ -1,6 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+# Pick the frameworks you want:
+require "active_record/railtie"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "active_resource/railtie"
+require "sprockets/railtie"
+# require "rails/test_unit/railtie"
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -11,7 +17,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Logit
+module Squadlink
   class Application < Rails::Application
     config.colorize_logging = true
     # Enable the asset pipeline
@@ -30,8 +36,8 @@ module Logit
       config.active_record.timestamped_migrations = false
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
-    config.autoload_paths += %W[#{config.root}/lib/]
-		config.authenticate_to_home = false
+    config.autoload_paths += %W[#{config.root}/lib]
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -54,7 +60,6 @@ module Logit
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
-    config.filter_parameters << :password
+    config.filter_parameters += [:password, :password_confirmation]
   end
 end
