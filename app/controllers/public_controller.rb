@@ -26,7 +26,7 @@ class PublicController < ApplicationController
 
         if @user.save
           flash[:notice] = "Registration successful."
-          sign_up_and_redirect(@firm)
+          redirect_to statistics_path
         else
         	flash[:error] = "Registration could not be saved because:"
           render :action => 'first_user'

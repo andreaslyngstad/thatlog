@@ -55,6 +55,7 @@ class ApplicationController < ActionController::Base
   end
   def sign_up_and_redirect(firm)
       redirect_to statistics_path(:subdomain => firm.subdomain)
+
   end
   def find_firm
     subdom = request.subdomain

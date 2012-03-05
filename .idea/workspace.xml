@@ -2,130 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf2b49b4-abb5-4548-8d4e-d6e44e3c411f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/passwords_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/helpers/devise_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/email.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/setup_mail.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/subdomain_login.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/tasks/minitest.rake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/tasks/minitest_lib.rake" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/factories.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/lib/subdomain_login_spec.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/minitest_lib_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/minitest_helper.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/models/logs_test.rb" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\controllers\._application_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\controllers\._application_controller.rb.rails2" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\controllers\._customers_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\controllers\._firms_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\controllers\._logs_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\controllers\devise\sessions_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\helpers\._application_helper.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\helpers\._application_helper.rb.rails2" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\views\devise\menu\_login_items.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\views\devise\menu\_registration_items.html.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\app\views\devise\shared\_links.erb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\config\initializers\._.DS_Store" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\config\locales\devise.en.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\admins.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\bosses.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\customers.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\emploees.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\employees.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\firms.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\logs.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\memberships.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\milestones.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\projects.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\todos.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\fixtures\users.yml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\customers_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\emploees_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\employees_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\firms_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\logs_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\milestones_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\private_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\projects_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\public_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\todos_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\user_session_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\functional\users_controller_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\performance\browsing_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\test_helper.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\test_helper.rb.rails2" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\admin_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\boss_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\customer_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\emploee_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\employee_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\firm_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\customers_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\emploees_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\employees_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\firms_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\logs_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\milestones_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\private_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\projects_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\public_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\todos_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\user_session_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\helpers\users_helper_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\log_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\membership_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\milestone_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\project_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\todo_test.rb" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\test\unit\user_test.rb" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\db\migrate\20101029201138_devise_create_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20101029201138_create_users.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/thatlog.iml" afterPath="$PROJECT_DIR$/.idea/thatlog.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\Thumbs.db" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\Thumbs-0d3098595e29c3f8f450147969e8165f.db" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\arrow_close-915c8fd9d031da7e68210b5a9161bb2b.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\arrow_open-e5d53ae6ae3acc6734bff9158fb1a89d.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\canvas-list-nav-item-arrow--a704e18e2f42e9221c35da9ffdeca6d2.gif" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\circle-check-b5e343b801b258a93eb68c5b9a7a0c43.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\circle-delete-2cf5a485b155635f5c1c227fcafa2053.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\circle-plus-1db10e520e0b7c1362721b2789122d07.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\close_tracking_select-36f376557394e6b6c416b83eaa272924.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\edit-531cf06e1fd2d9b6aea7de194710f046.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\edit_hover-48515d8a1f23b56a87573d992107065f.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\favicon-b5ee5335a8e3e5c8badbc07f7a903106.ico" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\gears-f42e49e3152a3481e14e7b6b5f350adb.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\grass-b82a1c6cd1724678ed5e3261bc841a57.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\hands-99b8f7fb8dfbbdabc22264bd36b9aa36.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\icons-18-white-794d4d7808de0ee023c32bea3e1f9fc2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\mail-509f4fbeead56452668299a0b07a9e1d.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\mail_hover-26c61c59974f038c243d376fd8ffba65.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\open_tracking_select-27edf6d327b4a6d299223ae4a7427721.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\pencil-31032786dbbe07e8d6146b8803b14a9b.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\play_a_video-ea873d5263eb52d7075e9411f3e280eb.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\pointer-1aa7b0f5c266bdeb245a75b6acfdf325.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\running-144ff94dd24884dbf672a876671c945a.gif" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\show-7955ddae7f4433659b6f91a2f9a0fc12.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\show_hover-1798fe3d666b012f2f6a432251319df2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\spinner-eba59e3d53704e30395d938e8b68152a.gif" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\spinner2-376ad78a3c6a4731a4d08e6a7a958a08.gif" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\squadlink-62ca16959350993e6e18c66255bf2c8d.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\star-9cd15d29c131dfbaa4a6e1657b735385.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\start48-29bf92c527ed620c5ba97df2aafc2661.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\start48-b1b7aee1d912480adec30affe4bc0607.ico" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\start48_down-b7b8607569c7ae1a26023e944614ac3c.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\start64-2280522588184bb6ce80a31467525a7f.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\stop64-d785785ba6d5f3ebbb864709af4db5f8.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\timer-bar-570e1a38eebcc7dd077cdc695d16d2ae.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\trash-4e3ead00dfe11a9b668b611db54ecbd5.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\trash_hover-e0364cd7ecd5a8d3fcf39fd7fac1ba57.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_flat_30_cccccc_40x100-3c1d5742a3f93ba0c88a380b0b625541.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_flat_50_5c5c5c_40x100-6a8300a4c2610c0d8abb2db9e9d87b41.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_glass_20_555555_1x400-8b9a8f48d66e80f3e7f57efd8ac75235.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_glass_40_0078a3_1x400-109f5e2134c3606bc2badc0ca0bcb71d.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_glass_40_ffc73d_1x400-6dcfea2c8651772722e2ab86111ea2ed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_gloss-wave_25_333333_500x100-21e1119141952701447e1ab1e437c3f3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_highlight-soft_80_eeeeee_1x100-998e88207593bb9dc0752a51413303cb.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_inset-soft_25_000000_1x100-0c7f8561f4852ef3c222c8365ab8dde1.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-bg_inset-soft_30_f58400_1x100-99e6639bb67260e21690c33887ffa553.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-icons_222222_256x240-390b74b682a6e3601e0265cacd1ac422.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-icons_4b8e0b_256x240-769368023253e0b719a531ecf64e92bc.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-icons_a83300_256x240-d7a0ae9b9b0aeebc8e7185a7ad40f2cc.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-icons_cccccc_256x240-329eccfd644ba436f391d49bd66296f0.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\ui-icons_ffffff_256x240-47c682725bc49963b14b9afc06a9d4be.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\user-add-f85986f48d1b97b80f885d615d3ecb49.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Andreas\RubymineProjects\thatlog\public\assets\user-delete-2db8c60997754d2092fd8eeeedd3686a.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Rakefile" afterPath="$PROJECT_DIR$/Rakefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/registration.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/registration.css.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/customers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/customers_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/firms_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/firms_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/private_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/private_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/public_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/public_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/user_sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/user_sessions_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/log.rb" afterPath="$PROJECT_DIR$/app/models/log.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/customers/_customer.html.erb" afterPath="$PROJECT_DIR$/app/views/customers/_customer.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" afterPath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/first_user.html.erb" afterPath="$PROJECT_DIR$/app/views/public/first_user.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/public/index.html.erb" afterPath="$PROJECT_DIR$/app/views/public/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/_user.html.erb" afterPath="$PROJECT_DIR$/app/views/users/_user.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ru" afterPath="$PROJECT_DIR$/config.ru" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environment.rb" afterPath="$PROJECT_DIR$/config/environment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/test.rb" afterPath="$PROJECT_DIR$/config/environments/test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/devise.rb" afterPath="$PROJECT_DIR$/config/initializers/devise.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/secret_token.rb" afterPath="$PROJECT_DIR$/config/initializers/secret_token.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/session_store.rb" afterPath="$PROJECT_DIR$/config/initializers/session_store.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20101029201141_add_devise_to_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20101029201141_add_devise_to_users.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/subdomain.rb" afterPath="$PROJECT_DIR$/lib/subdomain.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/spec_helper.rb" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" />
     </list>
     <ignored path="thatlog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -152,73 +84,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/devise/passwords/new.html.erb">
+      <file leaf-file-name="application.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="76" selection-start="106" selection-end="125" vertical-scroll-proportion="-2.0689654">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/devise/sessions/new.html.erb">
+      <file leaf-file-name="public_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/public_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="76" selection-start="125" selection-end="125" vertical-scroll-proportion="-2.0689654">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registration.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/registration.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="17" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="3" selection-start="2988" selection-end="2988" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_index.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/_index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="10.344828">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_user.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/_user.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="40" selection-start="1532" selection-end="1532" vertical-scroll-proportion="-13.793103">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="21" selection-start="1212" selection-end="1980" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="25" selection-start="1444" selection-end="1458" vertical-scroll-proportion="0.12126538">
+            <state line="29" column="93" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -233,10 +111,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="passwords_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/passwords_controller.rb">
+      <file leaf-file-name="application_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="8" selection-start="419" selection-end="434" vertical-scroll-proportion="0.0">
+            <state line="57" column="6" selection-start="2078" selection-end="2078" vertical-scroll-proportion="0.5925297">
               <folding />
             </state>
           </provider>
@@ -256,7 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/config/initializers/devise.rb" />
         <option value="$PROJECT_DIR$/config/environments/development.rb" />
         <option value="$PROJECT_DIR$/config/initializers/setup_mail.rb" />
         <option value="$PROJECT_DIR$/config/environment.rb" />
@@ -264,7 +141,6 @@
         <option value="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/users/_user.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/registration.css.scss" />
         <option value="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" />
@@ -272,6 +148,8 @@
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/public_controller.rb" />
       </list>
     </option>
   </component>
@@ -347,7 +225,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -361,25 +239,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
+              <option name="myItemId" value="system" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -393,157 +257,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="users" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="devise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="devise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sessions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="devise" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="passwords" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -576,46 +294,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thatlog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -920,17 +598,17 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802139" sideWeight="0.21800433" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802139" sideWeight="0.44360086" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802139" sideWeight="0.22125813" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2802139" sideWeight="0.44034708" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.670282" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329718" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -978,20 +656,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/environment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20101029201141_add_devise_to_users.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/email.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="29" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
@@ -1055,13 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="21" selection-start="1212" selection-end="1980" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="112" column="3" selection-start="2988" selection-end="2988" vertical-scroll-proportion="0.0">
@@ -1071,7 +728,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/passwords_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="8" selection-start="419" selection-end="434" vertical-scroll-proportion="0.0">
+        <state line="11" column="8" selection-start="419" selection-end="434" vertical-scroll-proportion="0.37351444">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="25" selection-start="1444" selection-end="1458" vertical-scroll-proportion="0.11714771">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1083,9 +754,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/public_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="25" selection-start="1444" selection-end="1458" vertical-scroll-proportion="0.12126538">
+        <state line="29" column="93" selection-start="559" selection-end="559" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="6" selection-start="2078" selection-end="2078" vertical-scroll-proportion="0.5925297">
           <folding />
         </state>
       </provider>
