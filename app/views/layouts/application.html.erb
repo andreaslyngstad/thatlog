@@ -39,23 +39,13 @@
 	
 <div id="navigation">
 	<ul>
-<% if current_user %>
-    <%= tabs_tag(:builder => ApplicationHelper::MenuTabBuilder) do |tab| %>
-  
-      <%= tab.statistics  "Statistics", statistics_path(:subdomain => current_firm.name), :pos => "0"%>
-  	  <%= tab.logs  "Logs", logs_path(:subdomain => current_user.firm.name), :pos => "75"%>
-  	  <%= tab.projects  "Projects", projects_path(:subdomain => current_user.firm.name), :pos => "150"%>
-	  <%= tab.customers "Customers", customers_path, :pos => "225" %>
-	  <%= tab.users   "Users", users_path(:subdomain => current_user.firm.name), :pos => "300" %>
-<% end %>
-<% end %>
+      <li class="navigation" id="statistics_navi" pos="0"><a href="/statistics">Statistics</a></li>
+  	  <li class="navigation" id="logs_navi" pos="75"><a href="/logs">Logs</a></li>
+  	  <li class="navigation" id="projects_navi" pos="150"><a href="/projects">Projects</a></li>
+	  <li class="navigation" id="customers_navi" pos="225"><a href="/customers">Customers</a></li>
+	  <li class="navigation" id="users_navi" pos="300"><a href="/users">Users</a></li>
     </ul>
-<span  id="pointer"><span id="pointer-text">Statistics</span>
-<span class="indicator" style="display:none;"></span>
-</span>
-
-	</div>
-	
+</div>
 
 <div id="main_container">
 <%= yield %>

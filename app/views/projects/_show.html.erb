@@ -25,12 +25,11 @@
   			</div>
   	
 	<div id="todos_chart">
-		<div class="statistics_unit one_number tasks_percent white">
-			
+		<div class="statistics_unit one_number tasks_percent white">		
 			<% if !@project.todos.blank? %>
-	<%= done_not_done(@done_todos, @not_done_todos) %>
-	<% end %>
-	</div>
+			<%= done_not_done(@done_todos, @not_done_todos) %>
+			<% end %>
+		</div>
 	</div>
 	
 	<div id="milestones_chart">

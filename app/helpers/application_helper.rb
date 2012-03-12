@@ -1,26 +1,13 @@
 module ApplicationHelper
-	
-	
-  	def pick_color
-      a = ["red", "Orange", "Yellow ", "Green ", "Blue", "Indigo", "Violet", "#51E86F"]
-      return a
-    end
-    
-  	def truncate_string(text, length = 18, truncate_string = '...')
-	     if text.nil? then return end
-	     l = length - truncate_string.length
-	     text.length > length ? text[0...l] + truncate_string : text
-	end
+	def pick_color
+    a = ["red", "Orange", "Yellow ", "Green ", "Blue", "Indigo", "Violet", "#51E86F"]
+    return a
+  end
   
-  
-	class MenuTabBuilder < TabsOnRails::Tabs::Builder
-	  def tab_for(tab, name, options, item_options = {})
-	    item_options[:class] = (current_tab?(tab) ? 'navigation active' : 'navigation') 
-	    item_options[:id] = name.downcase + "_navi"
-	    @context.content_tag(:li, item_options) do
-	      @context.link_to(name, options)
-	    end
-	  end
+	def truncate_string(text, length = 18, truncate_string = '...')
+     if text.nil? then return end
+     l = length - truncate_string.length
+     text.length > length ? text[0...l] + truncate_string : text
 	end
 
 	def image(person, css_class)

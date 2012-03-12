@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   				:firm_id, 
   				:manager,
   				:role,
-          :loginable_token,
+         			:loginable_token,
   				:avatar,
   				:avatar_file_name, 
     			:avatar_content_type, 

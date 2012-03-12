@@ -1,6 +1,4 @@
 class CustomersController < ApplicationController
-  
-  set_tab :customers
   load_and_authorize_resource :firm
   
   # GET /customers

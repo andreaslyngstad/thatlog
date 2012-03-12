@@ -1,5 +1,4 @@
 class PrivateController < ApplicationController
-   set_tab :home, :only => %w(statistics)
       authorize_resource :firm
 
   # skip_before_filter :find_firm, :only => :statistics

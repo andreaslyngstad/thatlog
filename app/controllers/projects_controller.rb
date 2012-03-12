@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource :firm
-  set_tab :projects
 	
   def index
    
@@ -48,6 +47,7 @@ class ProjectsController < ApplicationController
     @project.firm = current_firm
     @project.active = true
     @project.users << current_user
+   
       respond_to do |format|
       if @project.save
       flash[:notice] = flash_helper("Project is added.")

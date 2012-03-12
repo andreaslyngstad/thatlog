@@ -1,4 +1,3 @@
-
 jQuery.fn.back_button_function = function(){
   $(this).live("click", function(){
 	$('.spinning').show();
@@ -25,62 +24,52 @@ $(function() {
 		if(tab_text == "Firm_edit" ){$("#html_tabs a:contains(Account)").addClass("current_link");}
 		if(tab_text == "Timesheet_logs_day" ){$("#html_tabs a:contains(Timesheets)").addClass("current_link");}
 	}
-	
-	
-	
 	if (text == null){
-		$("#pointer-text").text("Statistics");
-		var pos = "0"
-		var cssObj = {'top': pos + 'px'}
- 		$("#pointer").css(cssObj);
- 		
+		$('#navigation li#statistics_navi').addClass("current_main")
+		// $("#pointer-text").text("Statistics");
 		
-		
+		// var pos = "0"
+		// var cssObj = {'top': pos + 'px'}
+ 		// $("#pointer").css(cssObj);	
 	}else{
-	
-	var cap_text = text.toString().charAt(0).toUpperCase() + text.toString().substr(1);
-	$("#pointer-text").text(cap_text);
-	if(cap_text == "Statistics")
-	{var pos = "0"
-	
-	} 
-	else if (cap_text == "Logs")
-	{var pos = "75"} 
-	else if (cap_text == "Customers")
-	{var pos = "225"} 
-	else if (cap_text == "Projects")
-	{var pos = "150"}
-	else if (cap_text == "Archive")
-	{var pos = "150"}
-	else if (cap_text == "Users")
-	{var pos = "300"}
-	var cssObj = {'top': pos + 'px'}
-	$("#pointer").css(cssObj);
+	var cap_text = text.toString();
+	$('#navigation li#' + cap_text +'_navi').addClass("current_main")
+//	$("#pointer-text").text(cap_text);
+	// if(cap_text == "Statistics")
+	// {var pos = "0"} 
+	// else if (cap_text == "Logs")
+	// {} 
+	// else if (cap_text == "Customers")
+	// {var pos = "225"} 
+	// else if (cap_text == "Projects")
+	// {var pos = "150"}
+	// else if (cap_text == "Archive")
+	// {var pos = "150"}
+	// else if (cap_text == "Users")
+	// {var pos = "300"}
+	// var cssObj = {'top': pos + 'px'}
+	//$("#pointer").css(cssObj);
 	}
   $('#navigation li').live('click', function(e) { 
-  	
-  	var href =	$(this).find("a").attr("href");
-   
-	$(".indicator").show(); // show loading spinner
-	var text = $(this).text();
-	var pos = $(this).attr("pos")
-	
- 	var cssObj = {'top': pos + 'px'}
- 		$("#pointer").animate(cssObj);
- 		$("#pointer-text").text(text);
-			
-			
-		
-  });
+   $('#navigation li').removeClass("current_main")
+   $(this).addClass('current_main')
+//  	var href =	$(this).find("a").attr("href");
+// 	$(".indicator").show(); // show loading spinner
+	// var text = $(this).text();
+	// var pos = $(this).attr("pos")
+// 	
+ 	// var cssObj = {'top': pos + 'px'}
+ 		// $("#pointer").animate(cssObj);
+ 		// $("#pointer-text").text(text);
+		});
   $("#active_projects").button();
   $("#archive").button().live('click', function(e) { 
   	var href =	$(this).attr("href");
   	$("#pointer-text").text(text);
   });
-  $(".view-tabs-list").live("click", function(){
+ $(".view-tabs-list").live("click", function(){
 		$('.spinning').show();
-		$(".inner").animate({left:-980, duration:500});
-		
+		$(".inner").animate({left:-980, duration:500});	
 	});
 	
 

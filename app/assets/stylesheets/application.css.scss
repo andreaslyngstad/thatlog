@@ -151,10 +151,8 @@ width: 980px;
  }
     
 #navigation{
-
-
-float:left;
-position: relative;
+  float:left;
+  position: relative;
 	width:200px;
 	display:inline;
 
@@ -166,21 +164,18 @@ position: relative;
 }
 #navigation li{
 	background: #0095CD;
-background: -webkit-gradient(linear, left top, left bottom, from(#00ADEE), to(#0078A5));
-background: -moz-linear-gradient(top, #00ADEE, #0078A5);
-background: linear-gradient(top, #00ADEE, #0078A5);
-background: -o-linear-gradient(top, #00ADEE, #0078A5);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ADEE', endColorstr='#0078A5');
-
-	clear:both;
-	color:#FFFFFF;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#4D90FE),to(#4787ED));
+  background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+  background-image: -moz-linear-gradient(top,#4D90FE,#4787ED);
+  background-image: -ms-linear-gradient(top,#4D90FE,#4787ED);
+  background-image: -o-linear-gradient(top,#4D90FE,#4787ED);
+  background-image: linear-gradient(top,#4D90FE,#4787ED);
 	font-size:20px;
 	height:75px;
 	list-style-type:none;
-	
 	width:200px;
 	cursor:pointer;
-
+  border-bottom: 1px solid #3079ED;
 }
 
 #navigation li a { 
@@ -188,19 +183,27 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ADEE', endC
 	margin: 0px; 
 	display: block; 
 	width: 160px; 
-	
 	height:55px;
-	border-bottom:1px solid #666;
+	line-height: 35px;
+	
 	}
 #navigation .link_text{
 	padding: 20px 0px 0 40px;
 
 }	
 
-#navigation li.active {
-	
-	
+#navigation li.current_main{
+	background: black;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#000000),to(#333333));
+  background-image: -webkit-linear-gradient(top,#000000,#333333);
+  background-image: -moz-linear-gradient(top,#000000,#333333);
+  background-image: -ms-linear-gradient(top,#000000,#333333);
+  background-image: -o-linear-gradient(top,#000000,#333333);
+  background-image: linear-gradient(top,#000000,#333333);	
 	}
+#navigation li.current_main a{
+  color:white;
+  }
 .tab_box{
   float:left;
 }

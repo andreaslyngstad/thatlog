@@ -1,6 +1,11 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui-1.8.7custom.min
+//= require jquery.ui.draggable
+//= require jquery.ui.droppable
+//= require jquery.ui.button
+//= require jquery.ui.dialog
+//= require jquery.ui.slider
+//= require jquery.ui.datepicker
 //= require jquery.ui.selectmenu
 //= require jquery.validate
 //= require jquery.ba-bbq.min
@@ -125,7 +130,7 @@ jQuery.fn.UIdialogs_links = function(){
  
   $(this).button().click(function(){
   	$(form).UIdialogs();
-      $(date).datepicker().attr( 'readOnly' , 'true' );
+      $(date).datepicker({ dateFormat: "yy-mm-dd" }).attr( 'readOnly' , 'true' );
        $(form).children(".new_" + object).validateWithErrors();
       $(form).find("select").selectmenu({width:369});
       $(form).dialog( "open" );

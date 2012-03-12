@@ -1,6 +1,5 @@
 class UsersController < ApplicationController 
-  
-  set_tab :users
+
   skip_before_filter :authenticate_user!, :only => [:valid]
   
   # GET /users
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-  	@firm = current_firm
+    @firm = current_firm
     @user = User.find(params[:id])
     @done_todos = @user.todos.where(["completed = ?", true]).includes(:project, :user)
     @not_done_todos = @user.todos.where(["completed = ?", false]).includes(:project, :user)
